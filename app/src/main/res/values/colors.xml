@@ -20,4 +20,11 @@
     <color name="paper_4">#474747</color>
     <color name="header">#252525</color>
     <color name="text_gray">#C2C2C2</color>
+
+    <color name="chip1_color">#FEDA52</color>
+    <color name="chip2_color">#FF847D</color>
+    <color name="chip3_color">#DAFE78</color>
+    <color name="chip4_color">#7ADBFF</color>
+    <color name="chip5_color">#B98EFD</color>
+    <color name="chip6_color">#C4C4C4</color>
 </resources>

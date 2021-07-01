@@ -19,7 +19,10 @@
     <color name="paper_3">#838383</color>
     <color name="paper_4">#474747</color>
     <color name="header">#252525</color>
-    <color name="text_gray">#C2C2C2</color>
+    <color name="title">#141414</color>
+    <color name="text_grey">#C2C2C2</color>
+    <color name="icon_grey">#A1A1A1</color>
+    <color name="bg">#F9F9F9</color>
 
     <color name="chip1_color">#FEDA52</color>
     <color name="chip2_color">#FF847D</color>

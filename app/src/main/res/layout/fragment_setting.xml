@@ -5,129 +5,259 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tv_setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="설정"
-        android:textColor="#000000"
-        android:textSize="20sp"
+        android:id="@+id/tv_setting_header"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
         android:fontFamily="@font/nanum_square_extrabold"
+        android:gravity="center"
+        android:text="@string/setting_header"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_delete_duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:text="삭제 휴지통 기한"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_setting" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="3일"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toStartOf="@id/image_delete_time"
-        app:layout_constraintTop_toTopOf="@id/tv_delete_duration" />
-
-    <ImageView
-        android:id="@+id/image_delete_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/brn_edit"
-        app:layout_constraintBottom_toBottomOf="@id/tv_delete_duration"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_delete_duration" />
-
-    <TextView
-        android:id="@+id/tv_trash_setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="휴지통 관리"
-        app:layout_constraintStart_toStartOf="@id/tv_delete_duration"
-        app:layout_constraintTop_toBottomOf="@id/tv_delete_duration" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/btn_left"
-        app:layout_constraintBottom_toBottomOf="@id/tv_trash_setting"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_trash_setting" />
-
-    <TextView
-        android:id="@+id/tv_push"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="푸시알림"
-        app:layout_constraintStart_toStartOf="@id/tv_delete_duration"
-        app:layout_constraintTop_toBottomOf="@id/tv_trash_setting" />
-
-    <Switch
-        android:id="@+id/switch_push"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:checked="true"
-        app:layout_constraintBottom_toBottomOf="@id/tv_push"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_push" />
-
-    <View
-        android:id="@+id/view_half"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="20dp"
-        android:background="#CACACA"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/setting"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_push" />
+        app:layout_constraintTop_toBottomOf="@id/tv_setting_header">
 
-    <TextView
-        android:id="@+id/tv_producer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="비움을 만든 이쁜잘생쁜사람들^^"
-        app:layout_constraintStart_toStartOf="@id/tv_delete_duration"
-        app:layout_constraintTop_toBottomOf="@id/view_half" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_delete_duration"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tv_terms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="서비스 이용약관"
-        app:layout_constraintStart_toStartOf="@id/tv_delete_duration"
-        app:layout_constraintTop_toBottomOf="@id/tv_producer" />
+            <TextView
+                android:id="@+id/tv_delete_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/setting_delete_duration"
+                android:textColor="@color/paper_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_license"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="오픈소스 라이센스"
-        app:layout_constraintStart_toStartOf="@id/tv_delete_duration"
-        app:layout_constraintTop_toBottomOf="@id/tv_terms" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/setting_day"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@id/image_delete_time"
+                app:layout_constraintTop_toTopOf="@id/tv_delete_duration" />
 
-    <TextView
-        android:id="@+id/tv_privacy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="개인정보 처리방침"
-        app:layout_constraintStart_toStartOf="@id/tv_delete_duration"
-        app:layout_constraintTop_toBottomOf="@id/tv_license" />
+            <ImageView
+                android:id="@+id/image_delete_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/brn_edit"
+                app:layout_constraintBottom_toBottomOf="@id/tv_delete_duration"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_delete_duration" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_trash_management"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_delete_duration">
+
+            <TextView
+                android:id="@+id/tv_trash_management"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/setting_trash_management"
+                android:textColor="@color/paper_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/btn_left"
+                app:layout_constraintBottom_toBottomOf="@id/tv_trash_management"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_trash_management" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_push"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_trash_management">
+
+            <TextView
+                android:id="@+id/tv_push"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/setting_push"
+                android:textColor="@color/paper_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Switch
+                android:id="@+id/switch_push"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:checked="true"
+                app:layout_constraintBottom_toBottomOf="@id/tv_push"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_push" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/view_half"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_push" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_privacy"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_half">
+
+            <TextView
+                android:id="@+id/tv_privacy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/setting_privacy"
+                android:textColor="@color/paper_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/btn_left"
+                app:layout_constraintBottom_toBottomOf="@id/tv_privacy"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_privacy" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_service_terms"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_privacy">
+
+            <TextView
+                android:id="@+id/tv_service_terms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/setting_service_terms"
+                android:textColor="@color/paper_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/btn_left"
+                app:layout_constraintBottom_toBottomOf="@id/tv_service_terms"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_service_terms" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_license"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_service_terms">
+
+            <TextView
+                android:id="@+id/tv_license"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/setting_license"
+                android:textColor="@color/paper_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/btn_left"
+                app:layout_constraintBottom_toBottomOf="@id/tv_license"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_license" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_license">
+
+            <TextView
+                android:id="@+id/tv_introduce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/setting_introduce"
+                android:textColor="@color/paper_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/btn_left"
+                app:layout_constraintBottom_toBottomOf="@id/tv_introduce"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_introduce" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

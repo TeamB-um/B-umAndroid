@@ -51,14 +51,14 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
             binding.btnCancel.isVisible = true
             binding.btnCancel.text = btnCancelText
             binding.btnCancel.setOnClickListener {
-                clickListener?.onClickNo()
+                clickListener?.onClickCancel()
                 dismiss()
             }
         }
         if (showClose) {
             binding.close.isVisible = true
-            binding.btnCancel.setOnClickListener {
-                clickListener?.onClickNo()
+            binding.close.setOnClickListener {
+                clickListener?.onClickClose()
                 dismiss()
             }
         }
@@ -83,7 +83,8 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
 
     interface ClickListener {
         fun onClickYes() {}
-        fun onClickNo() {}
+        fun onClickCancel() {}
+        fun onClickClose() {}
     }
 
     companion object {

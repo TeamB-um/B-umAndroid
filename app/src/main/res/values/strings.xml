@@ -11,4 +11,9 @@
     <string name="setting_service_terms">서비스 이용약관</string>
     <string name="setting_license">오프소스 라이센스</string>
     <string name="setting_introduce">비움 미화원 소개</string>
+
+    <string name="setting_explain">클릭하면 텍스트 수정이 가능해요</string>
+    <string name="setting_number">6</string>
+    <string name="setting_total_number">/9</string>
+    <string name="setting_item_category">취업</string>
 </resources>

@@ -51,13 +51,12 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
             binding.btnCancel.isVisible = true
             binding.btnCancel.text = btnCancelText
             binding.btnCancel.setOnClickListener {
-                clickListener?.onClickNo()
-                dismiss()
+                clickListener?.onClickYes()
             }
         }
         if (showClose) {
             binding.close.isVisible = true
-            binding.btnCancel.setOnClickListener {
+            binding.close.setOnClickListener {
                 clickListener?.onClickNo()
                 dismiss()
             }

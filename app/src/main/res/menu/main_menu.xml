@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/btn_disable_home_no"
+        android:title="@string/menu_home" />
+
+    <item
+        android:id="@+id/collection"
+        android:icon="@drawable/btn_disable_collection_no"
+        android:title="@string/menu_collection" />
+
+    <item
+        android:id="@+id/archive"
+        android:icon="@drawable/btn_disable_mywriting_no"
+        android:title="@string/menu_archive" />
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/btn_disable_setting_no"
+        android:title="@string/menu_setting" />
+</menu>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="statusbar_color">#C2C2C2</color>
+    <color name="statusbar_color">#E1E1E1</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue_2_main">#6ED5F5</color>
@@ -19,9 +19,11 @@
     <color name="paper_3">#838383</color>
     <color name="paper_4">#474747</color>
     <color name="header">#252525</color>
-    <color name="text_gray">#C2C2C2</color>
     <color name="line">#DADADA</color>
-    <color name="setting">#F9F9F9</color>
+    <color name="title">#141414</color>
+    <color name="text_grey">#C2C2C2</color>
+    <color name="icon_grey">#A1A1A1</color>
+    <color name="bg">#F9F9F9</color>
 
     <color name="chip1_color">#FEDA52</color>
     <color name="chip2_color">#FF847D</color>

@@ -2,6 +2,7 @@ package team.bum.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import team.bum.databinding.ActivityMainBinding
 import team.bum.ui.main.archive.ArchiveFragment
@@ -22,17 +23,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        configureBottomNavi()
+        configureNavigation()
     }
 
-    private fun configureBottomNavi() {
+    private fun configureNavigation() {
         binding.bottomNavi.apply {
             setOnNavigationItemSelectedListener {
                 when (it.itemId) {
-                    menu.getItem(0).itemId -> navigateFragment(homeFragment)
-                    menu.getItem(1).itemId -> navigateFragment(collectionFragment)
-                    menu.getItem(2).itemId -> navigateFragment(archiveFragment)
-                    menu.getItem(3).itemId -> navigateFragment(settingFragment)
+                    menu.getItem(0).itemId -> replaceFragment(homeFragment)
+                    menu.getItem(1).itemId -> replaceFragment(collectionFragment)
+                    menu.getItem(2).itemId -> replaceFragment(archiveFragment)
+                    menu.getItem(3).itemId -> replaceFragment(settingFragment)
                 }
                 true
             }
@@ -40,8 +41,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateFragment(fragment: Fragment) {
+    fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(binding.fragmentContainer.id, fragment).commit()
+    }
+
+    fun hideBottomNav() {
+        binding.bottomNavi.visibility = View.GONE
+    }
+
+    fun showBottomNav() {
+        binding.bottomNavi.visibility = View.VISIBLE
     }
 }

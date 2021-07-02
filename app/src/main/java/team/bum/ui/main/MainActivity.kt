@@ -2,13 +2,14 @@ package team.bum.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.Fragment
 import team.bum.databinding.ActivityMainBinding
 import team.bum.ui.main.archive.ArchiveFragment
 import team.bum.ui.main.collection.CollectionFragment
 import team.bum.ui.main.home.HomeFragment
 import team.bum.ui.main.setting.SettingFragment
+import team.bum.util.setInvisible
+import team.bum.util.setVisible
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,10 +48,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun hideBottomNav() {
-        binding.bottomNavi.visibility = View.GONE
+        binding.bottomNavi.setInvisible()
     }
 
     fun showBottomNav() {
-        binding.bottomNavi.visibility = View.VISIBLE
+        binding.bottomNavi.setVisible()
     }
 }

@@ -5,4 +5,10 @@
     <string name="menu_collection">collection</string>
     <string name="menu_archive">archive</string>
     <string name="menu_setting">setting</string>
+
+    <!--HOME-->
+    <string name="home_writing_header">글쓰기</string>
+    <string name="home_writing_title_hint">제목</string>
+    <string name="home_writing_body_hint">당신의 고민을 적어주세요.</string>
+    <string name="home_writing_total">/20</string>
 </resources>

@@ -2,14 +2,14 @@ package team.bum.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.animation.AlphaAnimation
 import android.view.animation.AnimationUtils
 import team.bum.R
 import team.bum.databinding.ActivityMainBinding
 import team.bum.ui.main.archive.ArchiveFragment
 import team.bum.ui.main.collection.CollectionFragment
 import team.bum.ui.main.home.HomeFragment
-import team.bum.ui.main.home.drop.HomeDropFragment
+import team.bum.ui.main.home.drop.HomeDropCollectionFragment
+import team.bum.ui.main.home.drop.HomeDropDeleteFragment
 import team.bum.ui.main.home.writing.HomeWritingFragment
 import team.bum.ui.main.setting.SettingFragment
 import team.bum.util.popFragment
@@ -49,8 +49,13 @@ class MainActivity : AppCompatActivity() {
         slideDownBottomNav()
     }
 
-    fun navigateWritingToDrop() {
-        replaceFragment(binding.fragmentContainer, HomeDropFragment::class.java, true)
+    fun navigateWritingToDropDelete() {
+        replaceFragment(binding.fragmentContainer, HomeDropDeleteFragment::class.java, true)
+        slideUpBottomNav()
+    }
+
+    fun navigateWritingToDropCollection() {
+        replaceFragment(binding.fragmentContainer, HomeDropCollectionFragment::class.java, true)
         slideUpBottomNav()
     }
 
@@ -59,8 +64,13 @@ class MainActivity : AppCompatActivity() {
         slideUpBottomNav()
     }
 
-    fun popHomeDrop() {
-        popFragment(HomeDropFragment::class.java)
+    fun popHomeDropDelete() {
+        popFragment(HomeDropDeleteFragment::class.java)
+        slideDownBottomNav()
+    }
+
+    fun popHomeDropCollection() {
+        popFragment(HomeDropCollectionFragment::class.java)
         slideDownBottomNav()
     }
 

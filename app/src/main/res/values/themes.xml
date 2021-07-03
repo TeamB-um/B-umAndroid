@@ -7,6 +7,7 @@
         <item name="android:fontFamily">@font/nanum_square_regular</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textSize">16dp</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheet</item>
     </style>
 
     <style name="RoundButton" parent="Widget.MaterialComponents.Button">
@@ -31,5 +32,36 @@
         <item name="strokeWidth">1dp</item>
         <item name="strokeColor">@color/disable</item>
         <item name="rippleColor">@color/disable</item>
+    </style>
+
+    <style name="AppBottomSheet" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_white_radius_15</item>
+    </style>
+
+    <style name="NumberPicker">
+        <item name="android:textSize">21dp</item>
+        <item name="android:textColorPrimary">@color/picker_main</item>
+        <item name="colorControlNormal">@android:color/transparent</item>
+    </style>
+
+    <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/chip_background_color</item>
+        <item name="android:textColor">@color/chip_text_color</item>
+        <item name="chipStrokeColor">@color/chip_stroke_color</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipCornerRadius">20dp</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="chipMinHeight">36dp</item>
+        <item name="textStartPadding">8dp</item>
+        <item name="textEndPadding">8dp</item>
+    </style>
+
+    <style name="ChipText" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">@font/nanum_square_regular</item>
     </style>
 </resources>

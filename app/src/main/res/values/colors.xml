@@ -24,6 +24,7 @@
     <color name="text_grey">#C2C2C2</color>
     <color name="icon_grey">#A1A1A1</color>
     <color name="bg">#F9F9F9</color>
+    <color name="picker_main">#232326</color>
 
     <color name="chip1_color">#FEDA52</color>
     <color name="chip2_color">#FF847D</color>

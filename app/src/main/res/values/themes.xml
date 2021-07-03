@@ -7,6 +7,7 @@
         <item name="android:fontFamily">@font/nanum_square_regular</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textSize">16dp</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheet</item>
     </style>
 
     <style name="RoundButton" parent="Widget.MaterialComponents.Button">
@@ -32,4 +33,18 @@
         <item name="strokeColor">@color/disable</item>
         <item name="rippleColor">@color/disable</item>
     </style>
+
+    <style name="AppBottomSheet" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_white_radius_15</item>
+    </style>
+
+    <style name="NumberPicker">
+        <item name="android:textColorPrimary">@color/picker_main</item>
+        <item name="colorControlNormal">@color/line</item>
+    </style>
+
 </resources>

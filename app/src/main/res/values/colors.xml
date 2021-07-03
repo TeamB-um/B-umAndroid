@@ -28,4 +28,5 @@
     <color name="chip_stroke">#8fd4b1</color>
     <color name="toast">#faf9fb</color>
     <color name="picker_main">#232326</color>
+    <color name="picker_line">#e6e4ea</color>
 </resources>

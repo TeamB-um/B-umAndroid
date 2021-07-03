@@ -98,11 +98,11 @@
             android:id="@+id/scroll"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingStart="9dp"
             android:paddingEnd="16dp"
-            android:layout_marginTop="8dp"
             android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/setting"
@@ -141,10 +141,12 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:hint="@string/home_writing_title_hint"
+            android:inputType="text"
             android:maxLength="20"
             android:paddingHorizontal="8dp"
             android:paddingVertical="16dp"
             android:textColor="@color/header"
+            android:textColorHint="@color/paper_3"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -162,12 +164,12 @@
             android:id="@+id/count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/home_writing_count"
             android:textColor="@color/header"
             android:textSize="13dp"
             app:layout_constraintBottom_toBottomOf="@id/count_total"
             app:layout_constraintRight_toLeftOf="@id/count_total"
-            app:layout_constraintTop_toTopOf="@id/count_total"
-            tools:text="0" />
+            app:layout_constraintTop_toTopOf="@id/count_total" />
 
         <View
             android:id="@+id/divider2"
@@ -189,6 +191,7 @@
             android:paddingHorizontal="8dp"
             android:paddingVertical="16dp"
             android:textColor="@color/header"
+            android:textColorHint="@color/paper_3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider2" />
 

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import team.bum.R
@@ -24,6 +25,7 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
 
         configureWritingNavigation()
         configureChips()
+        configureTitle()
     }
 
     private fun configureWritingNavigation() {
@@ -62,6 +64,13 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
 
     private val emptyText
         get() = listOf(binding.arrow, binding.emptyText)
+
+    private fun configureTitle() {
+        binding.title.addTextChangedListener {
+            if (!it.isNullOrBlank()) binding.count.text = it.length.toString()
+            else binding.count.text = "0"
+        }
+    }
 
     override fun onClickYes() {
         (activity as MainActivity).navigateWritingToDropCollection()

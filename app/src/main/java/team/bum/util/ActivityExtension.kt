@@ -14,7 +14,7 @@ fun AppCompatActivity.replaceFragment(
     val exists = supportFragmentManager.findFragmentByTag(tagName)
 
     supportFragmentManager.commit {
-        if(withAnim) {
+        if (withAnim) {
             setCustomAnimations(
                 R.anim.enter_from_right, R.anim.exit_to_left, R.anim.pop_enter_from_left, R.anim.pop_exit_to_right
             )

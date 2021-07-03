@@ -48,7 +48,6 @@
         <item name="colorControlNormal">@android:color/transparent</item>
     </style>
 
-
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
         <item name="chipBackgroundColor">@color/chip_background_color</item>
         <item name="android:textColor">@color/chip_text_color</item>
@@ -57,7 +56,12 @@
         <item name="chipCornerRadius">20dp</item>
         <item name="rippleColor">@android:color/transparent</item>
         <item name="chipMinHeight">36dp</item>
-        <item name="textStartPadding">16dp</item>
-        <item name="textEndPadding">16dp</item>
+        <item name="textStartPadding">8dp</item>
+        <item name="textEndPadding">8dp</item>
+    </style>
+
+    <style name="ChipText" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">@font/nanum_square_regular</item>
     </style>
 </resources>

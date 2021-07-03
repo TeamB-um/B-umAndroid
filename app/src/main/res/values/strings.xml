@@ -3,7 +3,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="setting_header">설정</string>
-    <string name="setting_delete_duration">삭제 휴지통 기한</string>
+    <string name="setting_delete_duration">삭제 휴지통 기간</string>
     <string name="setting_day">3일</string>
     <string name="setting_trash_management">휴지통 관리</string>
     <string name="setting_push">푸시알림</string>
@@ -15,6 +15,8 @@
     <string name="setting_number">6</string>
     <string name="setting_total_number">/9</string>
     <string name="setting_item_category">취업</string>
+    <string name="setting_dialog_ok">확인</string>
+    <string name="setting_dialog_explain">미화원이 휴지통을 비울 기간을 정해주세요</string>
 
     <string name="menu_home">home</string>
     <string name="menu_collection">collection</string>
@@ -26,4 +28,6 @@
     <string name="home_writing_title_hint">제목</string>
     <string name="home_writing_body_hint">당신의 고민을 적어주세요.</string>
     <string name="home_writing_total">/20</string>
+    <string name="home_drop_delete_header">삭제 휴지통</string>
+    <string name="home_drop_collection_header">분리수거함</string>
 </resources>

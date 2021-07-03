@@ -2,7 +2,6 @@ package team.bum.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.animation.AlphaAnimation
 import android.view.animation.AnimationUtils
 import team.bum.R
 import team.bum.databinding.ActivityMainBinding

@@ -24,11 +24,7 @@
     <color name="text_grey">#C2C2C2</color>
     <color name="icon_grey">#A1A1A1</color>
     <color name="bg">#F9F9F9</color>
-
-    <color name="chip1_color">#FEDA52</color>
-    <color name="chip2_color">#FF847D</color>
-    <color name="chip3_color">#DAFE78</color>
-    <color name="chip4_color">#7ADBFF</color>
-    <color name="chip5_color">#B98EFD</color>
-    <color name="chip6_color">#C4C4C4</color>
+    <color name="chip_background">#b7e3cd</color>
+    <color name="chip_stroke">#8fd4b1</color>
+    <color name="toast">#faf9fb</color>
 </resources>

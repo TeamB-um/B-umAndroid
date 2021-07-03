@@ -9,8 +9,6 @@ import team.bum.databinding.FragmentHomeWritingBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity
-import team.bum.ui.main.home.HomeFragment
-import team.bum.ui.main.home.drop.HomeDropFragment
 
 class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDialog.ClickListener {
 
@@ -25,7 +23,10 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
 
     private fun configureWritingNavigation() {
         binding.back.setOnClickListener {
-            navigateToHome()
+            (activity as MainActivity).popHomeWriting()
+        }
+        requireActivity().onBackPressedDispatcher.addCallback {
+            (activity as MainActivity).popHomeWriting()
         }
         binding.post.setOnClickListener {
             CommonDialog.newInstance(
@@ -34,26 +35,9 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
                 "분리수거", true, "삭제", true
             ).show(childFragmentManager, null)
         }
-        requireActivity().onBackPressedDispatcher.addCallback {
-            navigateToHome()
-        }
     }
 
-    private fun navigateToHome() {
-        (activity as MainActivity).replaceFragment(HomeFragment())
-        (activity as MainActivity).showBottomNav()
-    }
+    override fun onClickYes() = (activity as MainActivity).navigateWritingToDrop()
 
-    private fun navigateToDrop() {
-        (activity as MainActivity).replaceFragment(HomeDropFragment())
-        (activity as MainActivity).hideBottomNav()
-    }
-
-    override fun onClickYes() {
-        navigateToDrop()
-    }
-
-    override fun onClickCancel() {
-        navigateToDrop()
-    }
+    override fun onClickCancel() = (activity as MainActivity).navigateWritingToDrop()
 }

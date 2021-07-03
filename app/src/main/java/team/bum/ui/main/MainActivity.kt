@@ -2,39 +2,38 @@ package team.bum.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import team.bum.databinding.ActivityMainBinding
 import team.bum.ui.main.archive.ArchiveFragment
 import team.bum.ui.main.collection.CollectionFragment
 import team.bum.ui.main.home.HomeFragment
+import team.bum.ui.main.home.drop.HomeDropFragment
+import team.bum.ui.main.home.writing.HomeWritingFragment
 import team.bum.ui.main.setting.SettingFragment
+import team.bum.util.popFragment
+import team.bum.util.replaceFragment
 import team.bum.util.setInvisible
 import team.bum.util.setVisible
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val homeFragment by lazy { HomeFragment() }
-    private val collectionFragment by lazy { CollectionFragment() }
-    private val archiveFragment by lazy { ArchiveFragment() }
-    private val settingFragment by lazy { SettingFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        configureNavigation()
+        configureBottomNav()
     }
 
-    private fun configureNavigation() {
+    private fun configureBottomNav() {
         binding.bottomNavi.apply {
             setOnNavigationItemSelectedListener {
                 when (it.itemId) {
-                    menu.getItem(0).itemId -> replaceFragment(homeFragment)
-                    menu.getItem(1).itemId -> replaceFragment(collectionFragment)
-                    menu.getItem(2).itemId -> replaceFragment(archiveFragment)
-                    menu.getItem(3).itemId -> replaceFragment(settingFragment)
+                    menu.getItem(0).itemId -> replaceFragment(binding.fragmentContainer, HomeFragment::class.java, withAnim = false)
+                    menu.getItem(1).itemId -> replaceFragment(binding.fragmentContainer, CollectionFragment::class.java, withAnim = false)
+                    menu.getItem(2).itemId -> replaceFragment(binding.fragmentContainer, ArchiveFragment::class.java, withAnim = false)
+                    menu.getItem(3).itemId -> replaceFragment(binding.fragmentContainer, SettingFragment::class.java, withAnim = false)
                 }
                 true
             }
@@ -42,16 +41,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(binding.fragmentContainer.id, fragment).commit()
+    fun navigateHomeToWriting() {
+        replaceFragment(binding.fragmentContainer, HomeWritingFragment::class.java, true)
+        hideBottomNav()
     }
 
-    fun hideBottomNav() {
-        binding.bottomNavi.setInvisible()
+    fun navigateWritingToDrop() {
+        replaceFragment(binding.fragmentContainer, HomeDropFragment::class.java, true)
+        showBottomNav()
     }
 
-    fun showBottomNav() {
-        binding.bottomNavi.setVisible()
+    fun popHomeWriting() {
+        popFragment(HomeWritingFragment::class.java)
+        showBottomNav()
     }
+
+    fun popHomeDrop() {
+        popFragment(HomeDropFragment::class.java)
+        showBottomNav()
+    }
+
+    private fun hideBottomNav() = binding.bottomNavi.setInvisible()
+
+    private fun showBottomNav() = binding.bottomNavi.setVisible()
 }

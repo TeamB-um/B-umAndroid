@@ -66,7 +66,53 @@
             android:src="@drawable/btn_setting"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/scroll"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:src="@drawable/ic_arrow"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/setting"
+            app:layout_constraintLeft_toRightOf="@id/setting"
+            app:layout_constraintTop_toTopOf="@id/setting"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="@string/home_writing_empty"
+            android:textColor="@color/green_2_main"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/arrow"
+            app:layout_constraintLeft_toRightOf="@id/arrow"
+            app:layout_constraintTop_toTopOf="@id/arrow"
+            tools:visibility="visible" />
+
+        <HorizontalScrollView
+            android:id="@+id/scroll"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/setting"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:singleLine="true"
+                app:singleSelection="true" />
+
+        </HorizontalScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

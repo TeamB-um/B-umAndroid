@@ -37,7 +37,11 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         }
     }
 
-    override fun onClickYes() = (activity as MainActivity).navigateWritingToDrop()
+    override fun onClickYes() {
+        (activity as MainActivity).navigateWritingToDropCollection()
+    }
 
-    override fun onClickCancel() = (activity as MainActivity).navigateWritingToDrop()
+    override fun onClickCancel() {
+        (activity as MainActivity).navigateWritingToDropDelete()
+    }
 }

@@ -18,7 +18,7 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/bg_bottom_navigation"
-        android:elevation="1dp"
+        android:elevation="4dp"
         app:itemBackground="@android:color/transparent"
         app:itemIconTint="@color/main_menu_color"
         app:itemRippleColor="@color/disable"

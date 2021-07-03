@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import team.bum.databinding.FragmentHomeBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.main.MainActivity
-import team.bum.ui.main.home.writing.HomeWritingFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
@@ -22,8 +21,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun configureHomeNavigation() {
         binding.writing.setOnClickListener {
-            (activity as MainActivity).replaceFragment(HomeWritingFragment())
-            (activity as MainActivity).hideBottomNav()
+            (activity as MainActivity).navigateHomeToWriting()
         }
     }
 }

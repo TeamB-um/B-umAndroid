@@ -2,6 +2,9 @@ package team.bum.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.animation.AlphaAnimation
+import android.view.animation.AnimationUtils
+import team.bum.R
 import team.bum.databinding.ActivityMainBinding
 import team.bum.ui.main.archive.ArchiveFragment
 import team.bum.ui.main.collection.CollectionFragment
@@ -43,25 +46,37 @@ class MainActivity : AppCompatActivity() {
 
     fun navigateHomeToWriting() {
         replaceFragment(binding.fragmentContainer, HomeWritingFragment::class.java, true)
-        hideBottomNav()
+        slideDownBottomNav()
     }
 
     fun navigateWritingToDrop() {
         replaceFragment(binding.fragmentContainer, HomeDropFragment::class.java, true)
-        showBottomNav()
+        slideUpBottomNav()
     }
 
     fun popHomeWriting() {
         popFragment(HomeWritingFragment::class.java)
-        showBottomNav()
+        slideUpBottomNav()
     }
 
     fun popHomeDrop() {
         popFragment(HomeDropFragment::class.java)
-        showBottomNav()
+        slideDownBottomNav()
     }
 
-    private fun hideBottomNav() = binding.bottomNavi.setInvisible()
+    private fun slideUpBottomNav() {
+        val slideUp = AnimationUtils.loadAnimation(this, R.anim.slide_up)
+        binding.bottomNavi.apply {
+            startAnimation(slideUp)
+            setVisible()
+        }
+    }
 
-    private fun showBottomNav() = binding.bottomNavi.setVisible()
+    private fun slideDownBottomNav() {
+        val slideDown = AnimationUtils.loadAnimation(this, R.anim.slide_down)
+        binding.bottomNavi.apply {
+            startAnimation(slideDown)
+            setInvisible()
+        }
+    }
 }

@@ -47,4 +47,9 @@
         <item name="colorControlNormal">@color/line</item>
     </style>
 
+    <style name="TabTextStyle">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/nanum_square_extrabold</item>
+    </style>
 </resources>

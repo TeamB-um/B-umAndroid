@@ -1,14 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.archive.bin.ArchiveBinFragment">
+    android:background="@color/bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.main.archive.ArchiveFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="56dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tabIndicatorColor="@color/blue_2_main"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="3dp"
+        app:tabPaddingBottom="10dp"
+        app:tabPaddingTop="13dp"
+        app:tabSelectedTextColor="@color/blue_2_main"
+        app:tabTextAppearance="@style/TabTextStyle"
+        app:tabTextColor="@color/disable">
 
-</FrameLayout>
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabItem_writing"
+            android:layout_width="19dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginEnd="34dp"
+            android:text="@string/archive_header_writing" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabItem_reward"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/archive_header_reward" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabItem_bin"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:text="@string/archive_header_bin" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip1"
+            android:layout_width="137dp"
+            android:layout_height="52dp"
+            android:checkable="false"
+            android:textColor="@color/icon_grey"
+            android:textSize="14sp"
+            android:text="@string/archive_chip_allCategory"
+            app:chipBackgroundColor="@color/white"
+            app:chipIcon="@drawable/btn_check"
+            app:chipIconTint="@color/icon_grey"
+            app:chipStartPadding="8dp"
+            app:chipStrokeColor="@color/disable"
+            app:chipStrokeWidth="1dp"
+            app:rippleColor="@color/blue_2_main" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip2"
+            android:layout_width="80dp"
+            android:layout_height="52dp"
+            android:checkable="false"
+            android:textColor="@color/icon_grey"
+            android:textSize="14sp"
+            android:text="@string/archive_chip_select"
+            app:chipBackgroundColor="@color/white"
+            app:chipIcon="@drawable/btn_check"
+            app:chipIconTint="@color/icon_grey"
+            app:chipStartPadding="8dp"
+            app:chipStrokeColor="@color/disable"
+            app:chipStrokeWidth="1dp"
+            app:rippleColor="@color/blue_2_main" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_bin"
+        android:layout_width="match_parent"
+        android:layout_height="503dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="106dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription,MissingConstraints">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

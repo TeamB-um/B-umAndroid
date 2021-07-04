@@ -54,7 +54,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/category"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         app:layout_constraintTop_toBottomOf="@id/header">
 
         <ImageView
@@ -66,7 +66,58 @@
             android:src="@drawable/btn_setting"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/scroll"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:src="@drawable/ic_arrow"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/setting"
+            app:layout_constraintLeft_toRightOf="@id/setting"
+            app:layout_constraintTop_toTopOf="@id/setting"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="@string/home_writing_empty"
+            android:textColor="@color/green_2_main"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/arrow"
+            app:layout_constraintLeft_toRightOf="@id/arrow"
+            app:layout_constraintTop_toTopOf="@id/arrow"
+            tools:visibility="visible" />
+
+        <HorizontalScrollView
+            android:id="@+id/scroll"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingStart="9dp"
+            android:paddingEnd="16dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/setting"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:chipSpacingHorizontal="8dp"
+                app:singleLine="true"
+                app:singleSelection="true" />
+
+        </HorizontalScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -90,10 +141,12 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:hint="@string/home_writing_title_hint"
+            android:inputType="text"
             android:maxLength="20"
             android:paddingHorizontal="8dp"
             android:paddingVertical="16dp"
             android:textColor="@color/header"
+            android:textColorHint="@color/paper_3"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -111,12 +164,12 @@
             android:id="@+id/count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/home_writing_count"
             android:textColor="@color/header"
             android:textSize="13dp"
             app:layout_constraintBottom_toBottomOf="@id/count_total"
             app:layout_constraintRight_toLeftOf="@id/count_total"
-            app:layout_constraintTop_toTopOf="@id/count_total"
-            tools:text="0" />
+            app:layout_constraintTop_toTopOf="@id/count_total" />
 
         <View
             android:id="@+id/divider2"
@@ -138,6 +191,7 @@
             android:paddingHorizontal="8dp"
             android:paddingVertical="16dp"
             android:textColor="@color/header"
+            android:textColorHint="@color/paper_3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider2" />
 

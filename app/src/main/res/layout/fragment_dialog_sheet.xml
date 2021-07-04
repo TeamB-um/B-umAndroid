@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
     app:behavior_hideable="true"
     app:behavior_peekHeight="56dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
@@ -12,9 +13,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:fontFamily="@font/nanum_square_extrabold"
+        android:letterSpacing="-0.02"
         android:text="@string/setting_delete_duration"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,21 +27,37 @@
         android:id="@+id/tv_delete_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:letterSpacing="-0.03"
         android:text="@string/setting_dialog_explain"
+        android:textColor="@color/paper_3"
         android:textSize="13dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_delete_duration" />
 
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="33dp"
+        android:background="@color/picker_line"
+        app:layout_constraintTop_toTopOf="@id/numberpicker" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="33dp"
+        android:background="@color/picker_line"
+        app:layout_constraintBottom_toBottomOf="@id/numberpicker" />
+
     <NumberPicker
         android:id="@+id/numberpicker"
         android:layout_width="0dp"
-        android:descendantFocusability="blocksDescendants"
         android:layout_height="108dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="31dp"
-        android:layout_marginEnd="16dp"
+        android:descendantFocusability="blocksDescendants"
         android:theme="@style/NumberPicker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,16 +65,14 @@
 
     <Button
         android:id="@+id/btn_check"
-        android:layout_width="0dp"
         style="@style/RoundButton.Blue"
-        android:layout_marginHorizontal="16dp"
+        android:layout_width="0dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/setting_dialog_ok"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/numberpicker"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp"
-        android:text="@string/setting_dialog_ok" />
-
+        app:layout_constraintTop_toBottomOf="@id/numberpicker" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

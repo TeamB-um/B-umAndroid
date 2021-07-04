@@ -3,7 +3,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="setting_header">설정</string>
-    <string name="setting_delete_duration">삭제 휴지통 기한</string>
+    <string name="setting_delete_duration">삭제 휴지통 기간</string>
     <string name="setting_day">3일</string>
     <string name="setting_trash_management">휴지통 관리</string>
     <string name="setting_push">푸시알림</string>
@@ -37,4 +37,8 @@
     <string name="archive_header_bin">휴지통</string>
     <string name="archive_chip_allCategory">전체 카테고리</string>
     <string name="archive_chip_select">선택</string>
+  
+    <string name="home_writing_empty">카테고리를 추가해주세요!</string>
+    <string name="home_writing_count">0</string>
+  
 </resources>

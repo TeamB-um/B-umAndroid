@@ -8,7 +8,11 @@ import androidx.fragment.app.commit
 import team.bum.R
 
 fun AppCompatActivity.replaceFragment(
-    containerView: FragmentContainerView, clazz: Class<out Fragment>, addToBackStack: Boolean = false, withAnim: Boolean = true
+    containerView: FragmentContainerView,
+    clazz: Class<out Fragment>,
+    addToBackStack: Boolean = false,
+    withAnim: Boolean = true,
+    color: Int = getColor(R.color.statusbar_color)
 ) {
     val tagName = clazz.simpleName
     val exists = supportFragmentManager.findFragmentByTag(tagName)
@@ -26,6 +30,7 @@ fun AppCompatActivity.replaceFragment(
         )
         if (addToBackStack) addToBackStack(tagName)
     }
+    StatusBarUtil.changeColor(this, color)
 }
 
 fun AppCompatActivity.popFragment(clazz: Class<out Fragment>) {

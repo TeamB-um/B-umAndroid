@@ -140,10 +140,10 @@
             app:layout_constraintTop_toBottomOf="@id/card_view">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_collection"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="33dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                android:paddingHorizontal="14dp"
                 tools:listitem="@layout/item_collection" />
 
         </ScrollView>

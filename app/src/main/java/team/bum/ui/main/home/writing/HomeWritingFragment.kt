@@ -79,11 +79,11 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
     }
 
     override fun onClickYes() {
-        (activity as MainActivity).navigateWritingToDropCollection()
+        (activity as MainActivity).navigateWritingToDrop(isDelete = false)
     }
 
     override fun onClickCancel() {
-        (activity as MainActivity).navigateWritingToDropDelete()
+        (activity as MainActivity).navigateWritingToDrop(isDelete = true)
     }
 
     companion object {

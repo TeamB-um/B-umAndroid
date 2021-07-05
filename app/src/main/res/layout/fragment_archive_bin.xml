@@ -89,6 +89,22 @@
             app:chipStrokeWidth="1dp"
             app:rippleColor="@color/blue_2_main" />
 
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip3"
+            android:layout_width="80dp"
+            android:layout_height="52dp"
+            android:checkable="false"
+            android:textColor="@color/icon_grey"
+            android:textSize="14sp"
+            android:text="@string/archive_chip_setting"
+            app:chipBackgroundColor="@color/white"
+            app:chipIcon="@drawable/btn_setting"
+            app:chipIconTint="@color/icon_grey"
+            app:chipStartPadding="8dp"
+            app:chipStrokeColor="@color/disable"
+            app:chipStrokeWidth="1dp"
+            app:rippleColor="@color/blue_2_main" />
+
     </com.google.android.material.chip.ChipGroup>
 
     <androidx.recyclerview.widget.RecyclerView

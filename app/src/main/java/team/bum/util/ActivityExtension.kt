@@ -34,7 +34,7 @@ fun AppCompatActivity.replaceFragment(
 }
 
 fun AppCompatActivity.replaceFragment(
-    containerView: FragmentContainerView, fragment: Fragment, addToBackStack: Boolean = false
+    containerView: FragmentContainerView, fragment: Fragment, addToBackStack: Boolean = false, color: Int = getColor(R.color.white)
 ) {
     val tagName = fragment::class.java.simpleName
     val exists = supportFragmentManager.findFragmentByTag(tagName)
@@ -50,6 +50,7 @@ fun AppCompatActivity.replaceFragment(
         )
         if (addToBackStack) addToBackStack(tagName)
     }
+    StatusBarUtil.changeColor(this, color)
 }
 
 fun AppCompatActivity.popFragment(clazz: Class<out Fragment>) {

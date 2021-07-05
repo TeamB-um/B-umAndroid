@@ -41,4 +41,5 @@
     <string name="archive_header_bin">휴지통</string>
     <string name="archive_chip_allCategory">전체 카테고리</string>
     <string name="archive_chip_select">선택</string>
+    <string name="archive_chip_setting">설정</string>
 </resources>

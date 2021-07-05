@@ -11,7 +11,7 @@
         android:layout_width="156dp"
         android:layout_height="156dp"
         card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="4dp"
+        card_view:cardElevation="15dp"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -19,12 +19,12 @@
             android:layout_width="51dp"
             android:layout_height="21dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="119dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="89dp"
             android:fontFamily="@font/nanum_square_regular"
             android:textColor="@color/blue_2_main"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:text="인간관계"/>
 
         <TextView
@@ -32,12 +32,12 @@
             android:layout_width="61dp"
             android:layout_height="18dp"
             android:layout_marginTop="49dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="89dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="79dp"
             android:fontFamily="@font/nanum_square_extrabold"
-            android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textColor="@color/header"
+            android:textSize="18dp"
             android:text="글제목1" />
 
         <TextView
@@ -48,9 +48,11 @@
             android:layout_marginBottom="41dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="18dp"
+            android:gravity="bottom"
+            android:lineSpacingExtra="7dp"
             android:fontFamily="@font/nanum_square_regular"
-            android:textSize="14sp"
-            android:text="대충 글내용 미리보기 어쩌고 저쩌고" />
+            android:textSize="14dp"
+            android:text="대충 글내용 미리보기\n어쩌고 저쩌고" />
 
     </androidx.cardview.widget.CardView>
 

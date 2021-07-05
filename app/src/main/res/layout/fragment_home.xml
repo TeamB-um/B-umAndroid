@@ -13,12 +13,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
         android:fontFamily="@font/nanum_square_extrabold"
-        android:text="2021.07.04"
         android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2021.07.04" />
 
     <TextView
         android:id="@+id/title"
@@ -48,9 +48,102 @@
         android:id="@id/bin"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="8dp"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintDimensionRatio="1"
-        app:layout_constraintTop_toBottomOf="@id/arrow" />
+        app:layout_constraintTop_toBottomOf="@id/arrow"
+        tools:layout_editor_absoluteX="-123dp" />
+
+    <View
+        android:id="@+id/paper1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="48dp"
+        android:background="@color/paper_1"
+        android:visibility="gone"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintWidth_percent="0.13"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/paper2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="120dp"
+        android:background="@color/paper_2"
+        android:visibility="gone"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintWidth_percent="0.13"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/paper3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="120dp"
+        android:background="@color/paper_3"
+        android:visibility="gone"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintWidth_percent="0.13"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/paper4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="48dp"
+        android:background="@color/paper_4"
+        android:visibility="gone"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintWidth_percent="0.13"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/less"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/nanum_square_extrabold"
+        android:text="@string/home_less"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/paper_lottie"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/lot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/nanum_square_extrabold"
+        android:text="@string/home_lot"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/paper_lottie"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:visibility="visible" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/paper_lottie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:lottie_autoPlay="true"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

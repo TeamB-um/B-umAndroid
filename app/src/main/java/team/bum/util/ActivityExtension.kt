@@ -12,7 +12,7 @@ fun AppCompatActivity.replaceFragment(
     clazz: Class<out Fragment>,
     addToBackStack: Boolean = false,
     withAnim: Boolean = true,
-    color: Int = getColor(R.color.statusbar_color)
+    color: Int = getColor(R.color.white)
 ) {
     val tagName = clazz.simpleName
     val exists = supportFragmentManager.findFragmentByTag(tagName)

@@ -20,7 +20,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        StatusBarUtil.changeColor(context as Activity, getColor(R.color.blue_3))
+        StatusBarUtil.changeColor(context as Activity, getColor(R.color.main_statusbar))
         configureHomeNavigation()
     }
 

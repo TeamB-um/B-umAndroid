@@ -11,6 +11,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import team.bum.R
 import team.bum.databinding.FragmentHomeWritingBinding
+import team.bum.ui.Paper
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity
@@ -20,16 +21,32 @@ import team.bum.util.setVisible
 
 class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDialog.ClickListener {
 
-    private val paperIndex
-        get() = arguments?.getInt("paperIndex")
+    private val paperId
+        get() = arguments?.getInt("paperId")
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentHomeWritingBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        configureWritingTheme()
         configureWritingNavigation()
         configureCategory()
         configureTitle()
+    }
+
+    private fun configureWritingTheme() {
+        Paper.values().forEach {
+            if (paperId == it.id) {
+                val text = listOf(binding.title, binding.body, binding.count, binding.countTotal)
+                binding.root.setBackgroundColor(getColor(it.backgroundColor))
+                text.forEach { view -> view.setTextColor(getColor(it.textColor)) }
+                binding.title.setHintTextColor(getColor(it.hintColor))
+                binding.body.setHintTextColor(getColor(it.hintColor))
+                binding.divider1.setBackgroundColor(getColor(it.dividerColor))
+                binding.divider2.setBackgroundColor(getColor(it.dividerColor))
+                binding.setting.setImageResource(it.img)
+            }
+        }
     }
 
     private fun configureWritingNavigation() {
@@ -83,8 +100,8 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
     }
 
     companion object {
-        fun newInstance(paperIndex: Int) = HomeWritingFragment().apply {
-            arguments = bundleOf("paperIndex" to paperIndex)
+        fun newInstance(paperId: Int) = HomeWritingFragment().apply {
+            arguments = bundleOf("paperId" to paperId)
         }
     }
 }

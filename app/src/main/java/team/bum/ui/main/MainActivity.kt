@@ -43,8 +43,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun navigateHomeToWriting(paperIndex: Int) {
-        replaceFragment(binding.fragmentContainer, HomeWritingFragment.newInstance(paperIndex), true)
+    fun navigateHomeToWriting(paperId: Int) {
+        replaceFragment(binding.fragmentContainer, HomeWritingFragment.newInstance(paperId), true)
         slideDownBottomNav()
     }
 

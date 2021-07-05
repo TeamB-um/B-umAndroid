@@ -20,10 +20,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initHome()
         configureHomeNavigation()
-
-        binding.paper4.setOnClickListener {
-            (activity as MainActivity).navigateHomeToWriting(4)
-        }
     }
 
     private fun initHome() {
@@ -44,5 +40,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.title.text = getString(R.string.home_select_title)
         binding.arrow.setInvisible()
         selectView.forEach { it.setVisible() }
+
+        configureSelectedPaperId()
+    }
+
+    private fun configureSelectedPaperId() {
+        binding.paper1.setOnClickListener {
+            (activity as MainActivity).navigateHomeToWriting(1)
+        }
+        binding.paper2.setOnClickListener {
+            (activity as MainActivity).navigateHomeToWriting(2)
+        }
+        binding.paper3.setOnClickListener {
+            (activity as MainActivity).navigateHomeToWriting(3)
+        }
+        binding.paper4.setOnClickListener {
+            (activity as MainActivity).navigateHomeToWriting(4)
+        }
     }
 }

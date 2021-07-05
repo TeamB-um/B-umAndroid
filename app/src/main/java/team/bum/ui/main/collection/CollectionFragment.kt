@@ -5,16 +5,67 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import team.bum.R
+import team.bum.databinding.FragmentCollectionBinding
+import team.bum.databinding.FragmentSettingBinding
+import team.bum.ui.base.BaseFragment
+import team.bum.ui.main.collection.adapter.CollectionAdapter
+import team.bum.ui.main.collection.data.CollectionInfo
 
-class CollectionFragment : Fragment() {
+class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
+    private val collectionAdapter = CollectionAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_collection, container, false)
+    override fun initBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = FragmentCollectionBinding.inflate(inflater, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.recyclerCollection.layoutManager = GridLayoutManager(activity,2)
+        binding.recyclerCollection.adapter = collectionAdapter
+
+        addCollectionInfo()
     }
 
+    private fun addCollectionInfo() {
+        collectionAdapter.setItems(
+            listOf<CollectionInfo>(
+                CollectionInfo(
+                    image = R.drawable.area_collection_1,
+                    name = "취업"
+                ),
+                CollectionInfo(
+                    image = R.drawable.area_collection_1,
+                    name = "취업"
+                ),
+                CollectionInfo(
+                    image = R.drawable.area_collection_1,
+                    name = "취업"
+                ),
+                CollectionInfo(
+                    image = R.drawable.area_collection_1,
+                    name = "취업"
+                ),
+                CollectionInfo(
+                    image = R.drawable.area_collection_1,
+                    name = "취업"
+                ),
+                CollectionInfo(
+                    image = R.drawable.area_collection_1,
+                    name = "취업"
+                ),
+                CollectionInfo(
+                    image = R.drawable.area_collection_1,
+                    name = "취업"
+                ),
+                CollectionInfo(
+                    image = R.drawable.area_collection_1,
+                    name = "취업"
+                )
+            )
+        )
+    }
 }

@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">비움</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+  
+    <string name="menu_home">home</string>
+    <string name="menu_collection">collection</string>
+    <string name="menu_archive">archive</string>
+    <string name="menu_setting">setting</string>
+    
+    <!--Setting-->
     <string name="setting_header">설정</string>
     <string name="setting_delete_duration">삭제 휴지통 기간</string>
     <string name="setting_day">3일</string>
@@ -18,18 +24,16 @@
     <string name="setting_dialog_ok">확인</string>
     <string name="setting_dialog_explain">미화원이 휴지통을 비울 기간을 정해주세요</string>
 
-    <string name="menu_home">home</string>
-    <string name="menu_collection">collection</string>
-    <string name="menu_archive">archive</string>
-    <string name="menu_setting">setting</string>
-
-    <!--HOME-->
+    <!--Home-->
     <string name="home_writing_header">글쓰기</string>
     <string name="home_writing_title_hint">제목</string>
     <string name="home_writing_body_hint">당신의 고민을 적어주세요.</string>
     <string name="home_writing_total">/20</string>
     <string name="home_drop_delete_header">삭제 휴지통</string>
     <string name="home_drop_collection_header">분리수거함</string>
+    <string name="home_writing_empty">카테고리를 추가해주세요!</string>
+    <string name="home_writing_count">0</string>
+    <string name="home_title">스트레스를\n비워보세요</string>
 
     <!--Archive-->
     <string name="archive_header_writing">글</string>
@@ -37,8 +41,4 @@
     <string name="archive_header_bin">휴지통</string>
     <string name="archive_chip_allCategory">전체 카테고리</string>
     <string name="archive_chip_select">선택</string>
-  
-    <string name="home_writing_empty">카테고리를 추가해주세요!</string>
-    <string name="home_writing_count">0</string>
-  
 </resources>

@@ -18,8 +18,8 @@
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="10dp"
             android:src="@drawable/btn_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="12dp"
             android:layout_marginStart="24dp"
-            android:src="@drawable/btn_back"
+            android:src="@drawable/area_toast_img"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -99,6 +99,19 @@
             android:src="@mipmap/ic_launcher"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintTop_toBottomOf="@id/paper" />
+
+        <TextView
+            android:id="@+id/guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="175dp"
+            android:fontFamily="@font/nanum_square_extrabold"
+            android:text="@string/home_drop_guide"
+            android:textColor="@color/text_grey"
+            android:textSize="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

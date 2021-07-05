@@ -122,6 +122,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:checked="true"
+                android:thumb="@drawable/switch_thumb"
+                android:track="@drawable/switch_track_selector"
                 app:layout_constraintBottom_toBottomOf="@id/tv_push"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_push" />

@@ -65,6 +65,7 @@
             android:layout_height="48dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
+            android:background="@color/toast"
             app:cardCornerRadius="10dp"
             app:cardElevation="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -143,7 +144,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="33dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                tools:listitem="@layout/item_collection"/>
+                tools:listitem="@layout/item_collection" />
 
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

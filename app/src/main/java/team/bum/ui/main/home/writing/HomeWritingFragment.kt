@@ -30,10 +30,6 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         configureWritingNavigation()
         configureCategory()
         configureTitle()
-
-        if (paperIndex == 4) {
-            binding.root.setBackgroundColor(getColor(R.color.paper_4))
-        }
     }
 
     private fun configureWritingNavigation() {
@@ -45,8 +41,8 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         }
         binding.post.setOnClickListener {
             CommonDialog.newInstance(
-                "스트레스의 운명",
-                "작성한 스트레스는 삭제 휴지통\n또는 보관 분리수거로 보낼 수 있습니다.",
+                "삭제 또는 보관",
+                "삭제 시 설정 기한 이후 영구 삭제되고,\n보관시 분리수거함에 저장됩니다.",
                 "분리수거", true, "삭제", true
             ).show(childFragmentManager, null)
         }

@@ -44,6 +44,16 @@
     <string name="archive_header_bin">휴지통</string>
     <string name="archive_chip_allCategory">전체 카테고리</string>
     <string name="archive_chip_select">선택</string>
+    <string name="archive_chip_setting">설정</string>
+    <string name="archive_bin_category">인간관계</string>
+    <string name="archive_bin_title">글제목1</string>
+    <string name="archive_bin_content">글 내용 미리보기 미리보기 미리보기</string>
+    <string name="archive_bin_dday">D-1</string>
+    <string name="archive_mywriting_category">인간관계</string>
+    <string name="archive_mywriting_title">글제목1</string>
+    <string name="archive_mywriting_content">대충 글내용 미리보기\n어쩌고저쩌고</string>
+    <string name="archive_reward_date">2021.06.30 (수)</string>
+    <string name="archive_reward_content">버들가지는 약하나,\n다른 재목을 묶는다.\n\n-조지 허버트-</string>
 
     <!--collection-->
     <string name="collection_header">분리수거</string>

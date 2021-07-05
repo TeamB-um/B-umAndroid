@@ -8,17 +8,14 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.os.bundleOf
-import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import team.bum.R
 import team.bum.databinding.DialogCommonBinding
 import team.bum.ui.base.BaseDialogFragment
+import team.bum.util.setVisible
 import kotlin.math.roundToInt
 
 class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
-
-    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
-        DialogCommonBinding.inflate(inflater, container, false)
 
     private val title: String
         get() = arguments?.getString("title") ?: ""
@@ -35,6 +32,9 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
     private val clickListener: ClickListener?
         get() = if (parentFragment == null) (activity as? ClickListener) else (parentFragment as? ClickListener)
 
+    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
+        DialogCommonBinding.inflate(inflater, container, false)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         isCancelable = false
         binding.title.text = title
@@ -48,7 +48,7 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
             binding.btn.updateLayoutParams<ConstraintLayout.LayoutParams> {
                 leftMargin = (resources.displayMetrics.density * 8).roundToInt()
             }
-            binding.btnCancel.isVisible = true
+            binding.btnCancel.setVisible()
             binding.btnCancel.text = btnCancelText
             binding.btnCancel.setOnClickListener {
                 clickListener?.onClickCancel()
@@ -56,7 +56,7 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
             }
         }
         if (showClose) {
-            binding.close.isVisible = true
+            binding.close.setVisible()
             binding.close.setOnClickListener {
                 clickListener?.onClickClose()
                 dismiss()

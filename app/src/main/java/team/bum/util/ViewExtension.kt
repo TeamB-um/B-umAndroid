@@ -1,12 +1,9 @@
 package team.bum.util
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
 import com.google.android.material.chip.Chip
 import team.bum.R
 

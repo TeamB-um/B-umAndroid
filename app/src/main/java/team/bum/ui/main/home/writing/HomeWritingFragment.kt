@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
-import androidx.core.view.isVisible
+import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -14,18 +14,26 @@ import team.bum.databinding.FragmentHomeWritingBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity
+import team.bum.util.getColor
+import team.bum.util.setInvisible
+import team.bum.util.setVisible
 
 class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDialog.ClickListener {
+
+    private val paperIndex
+        get() = arguments?.getInt("paperIndex")
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentHomeWritingBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         configureWritingNavigation()
-        configureChips()
+        configureCategory()
         configureTitle()
+
+        if (paperIndex == 4) {
+            binding.root.setBackgroundColor(getColor(R.color.paper_4))
+        }
     }
 
     private fun configureWritingNavigation() {
@@ -44,14 +52,15 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         }
     }
 
-    private fun configureChips() {
+    private fun configureCategory() {
         val category = listOf("인간관계", "취업", "오늘하루", "우울", "건강", "웅앵웅")
-//        val category = emptyList<String>()
+        val emptyView = listOf(binding.arrow, binding.emptyText)
+
         category.forEach {
             binding.chipGroup.addView(createChip(it))
         }
-        if (category.isEmpty()) emptyText.forEach { it.isVisible = true }
-        else emptyText.forEach { it.isVisible = false }
+        if (category.isEmpty()) emptyView.forEach { it.setVisible() }
+        else emptyView.forEach { it.setInvisible() }
     }
 
     private fun createChip(text: String): Chip {
@@ -61,9 +70,6 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
                 ChipGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         }
     }
-
-    private val emptyText
-        get() = listOf(binding.arrow, binding.emptyText)
 
     private fun configureTitle() {
         binding.title.addTextChangedListener {
@@ -78,5 +84,11 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
 
     override fun onClickCancel() {
         (activity as MainActivity).navigateWritingToDropDelete()
+    }
+
+    companion object {
+        fun newInstance(paperIndex: Int) = HomeWritingFragment().apply {
+            arguments = bundleOf("paperIndex" to paperIndex)
+        }
     }
 }

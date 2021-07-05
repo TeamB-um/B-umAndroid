@@ -44,7 +44,12 @@
 
     <!--collection-->
     <string name="collection_header">분리수거</string>
-    <string name="collection_explain_first">당신이 보관한  </string>
+    <string name="collection_explain_first">당신이 보관한&#160;</string>
     <string name="collection_stress">스트레스</string>
     <string name="collection_explain_last">입니다.</string>
+    <string name="collection_card_category">인간관계</string>
+    <string name="collection_card_name">글제목1</string>
+    <string name="collection_card_context">글 내용 미리보기 미리보기 미리보기</string>
+    <string name="collection_list_header">분리수거함 이름</string>
+
 </resources>

@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_bin"
-        android:layout_gravity="center"
-        android:layout_width="328dp"
+        android:layout_width="0dp"
         android:layout_height="100dp"
-        card_view:cardCornerRadius="15dp"
-        card_view:cardElevation="15dp"
-        tools:ignore="MissingConstraints">
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_bin_category"
-            android:layout_width="51dp"
-            android:layout_height="21dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="67dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="261dp"
-            android:fontFamily="@font/nanum_square_regular"
-            android:textColor="@color/blue_2_main"
-            android:textSize="14sp"
-            android:text="인간관계"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_bin_title"
-            android:layout_width="54dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="39dp"
-            android:layout_marginBottom="37dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="258dp"
-            android:fontFamily="@font/nanum_square_extrabold"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:text="글제목1" />
+            <TextView
+                android:id="@+id/tv_bin_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/archive_bin_category"
+                android:textColor="@color/blue_2_main"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_bin_content"
-            android:layout_width="260dp"
-            android:layout_height="22dp"
-            android:layout_marginTop="63dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="52dp"
-            android:fontFamily="@font/nanum_square_regular"
-            android:textColor="#7b7b7b"
-            android:textSize="14sp"
-            android:text="글 내용 미리보기 미리보기 미리보기 미리보기" />
+            <TextView
+                android:id="@+id/tv_bin_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/nanum_square_extrabold"
+                android:text="@string/archive_bin_title"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/tv_bin_category"
+                app:layout_constraintTop_toBottomOf="@id/tv_bin_category" />
 
-        <TextView
-            android:id="@+id/tv_bin_dday"
-            android:layout_width="24dp"
-            android:layout_height="21dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="67dp"
-            android:layout_marginStart="287dp"
-            android:layout_marginEnd="17dp"
-            android:fontFamily="@font/nanum_square_regular"
-            android:textColor="@color/pink_2_main"
-            android:textSize="14sp"
-            android:text="D-1" />
+            <TextView
+                android:id="@+id/tv_archive_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/archive_bin_content"
+                app:layout_constraintStart_toStartOf="@id/tv_bin_category"
+                app:layout_constraintTop_toBottomOf="@id/tv_bin_name" />
+
+            <TextView
+                android:id="@+id/tv_archive_dday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="17dp"
+                android:text="@string/archive_bin_dday"
+                android:textColor="@color/pink_2_main"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 

@@ -100,6 +100,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:clipToPadding="false"
+            android:fillViewport="true"
             android:overScrollMode="never"
             android:paddingStart="10dp"
             android:paddingEnd="16dp"

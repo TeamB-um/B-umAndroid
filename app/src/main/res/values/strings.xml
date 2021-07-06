@@ -54,7 +54,8 @@
     <string name="archive_mywriting_title">글제목1</string>
     <string name="archive_mywriting_content">대충 글내용 미리보기\n어쩌고저쩌고</string>
     <string name="archive_reward_date">2021.06.30 (수)</string>
-    <string name="archive_reward_content">버들가지는 약하나,\n다른 재목을 묶는다.\n\n-조지 허버트-</string>
+    <string name="archive_reward_content">버들가지는 약하나,\n다른 재목을 묶는다.</string>
+    <string name="archive_reward_author">-조지 허버트-</string>
 
     <!--collection-->
     <string name="collection_header">분리수거</string>

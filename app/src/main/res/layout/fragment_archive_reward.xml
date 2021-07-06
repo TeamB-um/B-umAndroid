@@ -5,82 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    tools:context=".ui.main.archive.ArchiveFragment">
+    tools:context=".ui.main.archive.reward.ArchiveRewardFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorColor="@color/blue_2_main"
-        app:tabIndicatorFullWidth="false"
-        app:tabIndicatorHeight="3dp"
-        app:tabPaddingBottom="10dp"
-        app:tabPaddingTop="13dp"
-        app:tabSelectedTextColor="@color/blue_2_main"
-        app:tabTextAppearance="@style/TabTextStyle"
-        app:tabTextColor="@color/disable">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabItem_writing"
-            android:layout_width="19dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="42dp"
-            android:layout_marginEnd="34dp"
-            android:text="@string/archive_header_writing" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabItem_reward"
-            android:layout_width="54dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/archive_header_reward" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabItem_bin"
-            android:layout_width="54dp"
-            android:layout_height="30dp"
-            android:text="@string/archive_header_bin" />
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/bg"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <GridView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:numColumns="2"/>
-        </LinearLayout>
-
-        <ScrollView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_reward_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:fillViewport="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_reward_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_card_reward" />
-        </ScrollView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_card_reward" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

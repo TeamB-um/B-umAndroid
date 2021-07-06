@@ -20,7 +20,7 @@ class ArchiveBinFragment : BaseFragment<FragmentArchiveBinBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerBinList.layoutManager = GridLayoutManager(activity, 2)
+        binding.recyclerBinList.layoutManager = GridLayoutManager(activity, 1)
         binding.recyclerBinList.adapter = archiveBinAdapter
 
         addArchiveRewardInfo()

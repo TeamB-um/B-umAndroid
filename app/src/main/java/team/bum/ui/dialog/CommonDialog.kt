@@ -9,6 +9,7 @@ import android.view.WindowManager
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.os.bundleOf
 import androidx.core.view.updateLayoutParams
+import androidx.core.widget.addTextChangedListener
 import team.bum.R
 import team.bum.databinding.DialogCommonBinding
 import team.bum.ui.base.BaseDialogFragment
@@ -29,6 +30,8 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
         get() = arguments?.getString("btnCancelText") ?: ""
     private val showClose: Boolean
         get() = arguments?.getBoolean("showClose") ?: false
+    private val showEdit: Boolean
+        get() = arguments?.getBoolean("showEdit") ?: false
     private val clickListener: ClickListener?
         get() = if (parentFragment == null) (activity as? ClickListener) else (parentFragment as? ClickListener)
 
@@ -62,6 +65,25 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
                 dismiss()
             }
         }
+        if (showEdit) {
+            binding.body.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                topMargin = (resources.displayMetrics.density * 16).roundToInt()
+            }
+            binding.btn.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                topMargin = (resources.displayMetrics.density * 84).roundToInt()
+            }
+            binding.btn.setOnClickListener {
+                binding.enter.text.toString().let { clickListener?.onClickYes(it) }
+                dismiss()
+            }
+            binding.enter.apply {
+                setVisible()
+                addTextChangedListener {
+                    if (it?.length == 6) setBackgroundResource(R.drawable.bg_edit_border_error)
+                    else setBackgroundResource(R.drawable.bg_edit_border)
+                }
+            }
+        }
     }
 
     override fun onResume() {
@@ -83,6 +105,7 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
 
     interface ClickListener {
         fun onClickYes() {}
+        fun onClickYes(text: String) {}
         fun onClickCancel() {}
         fun onClickClose() {}
     }
@@ -94,7 +117,8 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
             btnText: String? = null,
             showCancel: Boolean = false,
             btnCancelText: String? = null,
-            showClose: Boolean = false
+            showClose: Boolean = false,
+            showEdit: Boolean = false,
         ) = CommonDialog().apply {
             arguments = bundleOf(
                 "title" to title,
@@ -102,7 +126,8 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
                 "btnText" to btnText,
                 "showCancel" to showCancel,
                 "btnCancelText" to btnCancelText,
-                "showClose" to showClose
+                "showClose" to showClose,
+                "showEdit" to showEdit,
             )
         }
     }

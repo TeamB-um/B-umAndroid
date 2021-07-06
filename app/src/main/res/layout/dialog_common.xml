@@ -46,19 +46,37 @@
             app:layout_constraintTop_toBottomOf="@id/title"
             tools:text="내용\n내용" />
 
+        <EditText
+            android:id="@+id/enter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="17dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_edit_border"
+            android:hint="@string/dialog_hint"
+            android:inputType="text"
+            android:maxLength="6"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:textColor="@color/header"
+            android:textColorHint="@color/text_grey"
+            android:textSize="14dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/body"
+            tools:visibility="visible" />
+
         <Button
             android:id="@+id/btn_cancel"
             style="@style/RoundButton.Cancel"
             android:layout_width="0dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginBottom="16dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/btn"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/btn"
-            app:layout_constraintTop_toBottomOf="@id/body"
-            tools:text="취소" />
+            app:layout_constraintTop_toTopOf="@id/btn"
+            tools:text="취소"
+            tools:visibility="visible" />
 
         <Button
             android:id="@+id/btn"

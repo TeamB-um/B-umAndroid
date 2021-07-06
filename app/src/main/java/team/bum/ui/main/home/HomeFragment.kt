@@ -36,7 +36,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun navigateToSelectPaper() {
         val selectView =
-            listOf(binding.paperLottie, binding.paper1, binding.paper2, binding.paper3, binding.paper4, binding.less, binding.lot)
+            listOf(binding.paper1, binding.paper2, binding.paper3, binding.paper4, binding.less, binding.lot)
         binding.title.text = getString(R.string.home_select_title)
         binding.arrow.setInvisible()
         selectView.forEach { it.setVisible() }

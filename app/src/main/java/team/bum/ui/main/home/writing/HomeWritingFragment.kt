@@ -69,16 +69,18 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         val category = listOf("인간관계", "취업", "오늘하루", "우울", "건강", "웅앵웅")
         val emptyView = listOf(binding.arrow, binding.emptyText)
 
-        category.forEach {
-            binding.chipGroup.addView(createChip(it))
+        category.forEachIndexed { i, text ->
+            if (i == 0) binding.chipGroup.addView(createChip(text, true))
+            else binding.chipGroup.addView(createChip(text))
         }
         if (category.isEmpty()) emptyView.forEach { it.setVisible() }
         else emptyView.forEach { it.setInvisible() }
     }
 
-    private fun createChip(text: String): Chip {
+    private fun createChip(text: String, isChecked: Boolean = false): Chip {
         return (layoutInflater.inflate(R.layout.view_chip, binding.chipGroup, false) as Chip).apply {
             this.text = text
+            this.isChecked = isChecked
             layoutParams =
                 ChipGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         }

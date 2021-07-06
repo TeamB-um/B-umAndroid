@@ -189,6 +189,7 @@
             android:gravity="top"
             android:hint="@string/home_writing_body_hint"
             android:inputType="textMultiLine"
+            android:lineSpacingExtra="11dp"
             android:paddingHorizontal="8dp"
             android:paddingVertical="16dp"
             android:textColor="@color/header"

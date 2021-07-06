@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.main.archive.ArchiveFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
@@ -24,7 +23,6 @@
         app:tabTextColor="@color/disable">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabItem_writing"
             android:layout_width="19dp"
             android:layout_height="30dp"
             android:layout_marginStart="42dp"
@@ -32,88 +30,23 @@
             android:text="@string/archive_header_writing" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabItem_reward"
             android:layout_width="54dp"
             android:layout_height="30dp"
             android:layout_marginEnd="16dp"
             android:text="@string/archive_header_reward" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabItem_bin"
             android:layout_width="54dp"
             android:layout_height="30dp"
             android:text="@string/archive_header_bin" />
 
     </com.google.android.material.tabs.TabLayout>
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
-
-        <com.google.android.material.chip.Chip
-            android:layout_width="137dp"
-            android:layout_height="52dp"
-            android:checkable="false"
-            android:textColor="@color/icon_grey"
-            android:textSize="14sp"
-            android:text="@string/archive_chip_allCategory"
-            app:chipBackgroundColor="@color/white"
-            app:chipIcon="@drawable/btn_check"
-            app:chipIconTint="@color/icon_grey"
-            app:chipStartPadding="8dp"
-            app:chipStrokeColor="@color/disable"
-            app:chipStrokeWidth="1dp"
-            app:rippleColor="@color/blue_2_main" />
-
-        <com.google.android.material.chip.Chip
-            android:layout_width="80dp"
-            android:layout_height="52dp"
-            android:checkable="false"
-            android:textColor="@color/icon_grey"
-            android:textSize="14sp"
-            android:text="@string/archive_chip_select"
-            app:chipBackgroundColor="@color/white"
-            app:chipIcon="@drawable/btn_check"
-            app:chipIconTint="@color/icon_grey"
-            app:chipStartPadding="8dp"
-            app:chipStrokeColor="@color/disable"
-            app:chipStrokeWidth="1dp"
-            app:rippleColor="@color/blue_2_main" />
-
-    </com.google.android.material.chip.ChipGroup>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/bg"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chipGroup">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:fillViewport="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_mywriting_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_card_mywriting" />
-
-        </ScrollView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

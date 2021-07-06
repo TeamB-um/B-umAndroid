@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_bin_name"
+                android:id="@+id/tv_bin_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -44,16 +44,16 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_bin_category" />
 
             <TextView
-                android:id="@+id/tv_archive_content"
+                android:id="@+id/tv_bin_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="@string/archive_bin_content"
                 app:layout_constraintStart_toStartOf="@id/tv_bin_category"
-                app:layout_constraintTop_toBottomOf="@id/tv_bin_name" />
+                app:layout_constraintTop_toBottomOf="@id/tv_bin_title" />
 
             <TextView
-                android:id="@+id/tv_archive_dday"
+                android:id="@+id/tv_bin_dday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"

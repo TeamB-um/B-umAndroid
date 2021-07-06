@@ -136,14 +136,19 @@
             android:layout_height="0dp"
             android:layout_marginTop="24dp"
             android:fillViewport="true"
+            android:overScrollMode="never"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_view">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_collection"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingHorizontal="14dp"
+                android:layout_height="0dp"
+                android:clipToPadding="false"
+                android:paddingHorizontal="15dp"
+                android:paddingBottom="86dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
                 tools:listitem="@layout/item_collection" />
 
         </ScrollView>

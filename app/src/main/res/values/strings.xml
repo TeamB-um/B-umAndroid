@@ -6,6 +6,7 @@
     <string name="menu_collection">collection</string>
     <string name="menu_archive">archive</string>
     <string name="menu_setting">setting</string>
+    <string name="dialog_hint">분리수거함 이름</string>
 
     <!--Setting-->
     <string name="setting_header">설정</string>

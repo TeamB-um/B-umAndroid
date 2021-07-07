@@ -32,6 +32,7 @@ class SheetFragment : BottomSheetDialogFragment() {
         setNumberPicker(binding.numberpicker, mValues)
         binding.btnCheck.setOnClickListener {
             Log.d("test", getEditTextInNumberPicker())
+            dismiss()
         }
     }
 
@@ -62,4 +63,3 @@ class SheetFragment : BottomSheetDialogFragment() {
         }
     }
 }
-

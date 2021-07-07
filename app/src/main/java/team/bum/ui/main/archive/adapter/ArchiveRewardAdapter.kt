@@ -38,7 +38,7 @@ class ArchiveRewardAdapter: RecyclerView.Adapter<ArchiveRewardAdapter.ArchiveRew
             binding.apply {
                 tvRewardDate.text = archiveInfo.rewardDate
                 tvRewardContent.text = archiveInfo.rewardContent
-                tvRewardAuthor.text = archiveInfo.rewardDate
+                tvRewardAuthor.text = archiveInfo.rewardAuthor
             }
         }
     }

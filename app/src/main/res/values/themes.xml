@@ -54,10 +54,10 @@
         <item name="android:fontFamily">@font/nanum_square_extrabold</item>
     </style>
   
-    <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="chipBackgroundColor">@color/chip_background_color</item>
-        <item name="android:textColor">@color/chip_text_color</item>
-        <item name="chipStrokeColor">@color/chip_stroke_color</item>
+    <style name="CustomChoiceChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/home_chip_background_color</item>
+        <item name="android:textColor">@color/home_chip_text_color</item>
+        <item name="chipStrokeColor">@color/home_chip_stroke_color</item>
         <item name="chipStrokeWidth">1dp</item>
         <item name="chipCornerRadius">20dp</item>
         <item name="rippleColor">@android:color/transparent</item>
@@ -66,8 +66,26 @@
         <item name="textEndPadding">8dp</item>
     </style>
 
+    <style name="CustomActionChipStyle" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="chipBackgroundColor">@color/archive_chip_background_color</item>
+        <item name="android:textColor">@color/archive_chip_text_color</item>
+        <item name="chipStrokeColor">@color/archive_chip_stroke_color</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipCornerRadius">20dp</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="chipMinHeight">32dp</item>
+        <item name="textStartPadding">5dp</item>
+        <item name="textEndPadding">15dp</item>
+        <item name="iconStartPadding">15dp</item>
+        <item name="chipIconSize">19dp</item>
+    </style>
+
     <style name="ChipText" parent="TextAppearance.MaterialComponents.Chip">
         <item name="android:textSize">16dp</item>
         <item name="android:fontFamily">@font/nanum_square_regular</item>
+    </style>
+
+    <style name="ChipText.14dp">
+        <item name="android:textSize">14dp</item>
     </style>
 </resources>

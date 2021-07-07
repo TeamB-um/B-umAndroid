@@ -35,9 +35,4 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
             (activity as MainActivity).navigateSettingToManagement()
         }
     }
-
-    //    override fun onClicked(text: String) {
-//        binding.tvDurationDay.text = text
-//    }
-
 }

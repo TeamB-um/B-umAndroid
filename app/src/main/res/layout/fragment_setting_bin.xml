@@ -91,12 +91,14 @@
             app:layout_constraintTop_toTopOf="@id/tv_explain" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_bin_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_explain"
-            tools:listitem="@layout/item_trash_name" />
+            tools:listitem="@layout/item_category" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

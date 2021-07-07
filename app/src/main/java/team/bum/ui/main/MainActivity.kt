@@ -11,6 +11,7 @@ import team.bum.ui.main.home.HomeFragment
 import team.bum.ui.main.home.drop.HomeDropFragment
 import team.bum.ui.main.home.writing.HomeWritingFragment
 import team.bum.ui.main.setting.SettingFragment
+import team.bum.ui.main.setting.bin.SettingBinFragment
 import team.bum.util.popFragment
 import team.bum.util.replaceFragment
 import team.bum.util.setInvisible
@@ -53,6 +54,10 @@ class MainActivity : AppCompatActivity() {
         slideUpBottomNav()
     }
 
+    fun navigateSettingToManagement(){
+        replaceFragment(binding.fragmentContainer, SettingBinFragment::class.java, true)
+    }
+
     fun popHomeWriting() {
         popFragment(HomeWritingFragment::class.java)
         slideUpBottomNav()
@@ -61,6 +66,10 @@ class MainActivity : AppCompatActivity() {
     fun popHomeDrop() {
         popFragment(HomeDropFragment::class.java)
         slideDownBottomNav()
+    }
+
+    fun popSetting() {
+        popFragment(SettingBinFragment::class.java)
     }
 
     private fun slideUpBottomNav() {

@@ -5,16 +5,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import team.bum.R
+import team.bum.databinding.FragmentSettingBinBinding
+import team.bum.ui.base.BaseFragment
+import team.bum.ui.main.MainActivity
 
-class SettingBinFragment : Fragment() {
+class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting_bin, container, false)
+    override fun initBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = FragmentSettingBinBinding.inflate(inflater, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        configureSettingNavigation()
     }
 
+    private fun configureSettingNavigation() {
+        binding.imageBack.setOnClickListener {
+            (activity as MainActivity).popSetting()
+        }
+        requireActivity().onBackPressedDispatcher.addCallback {
+            (activity as MainActivity).popSetting()
+        }
+    }
 }

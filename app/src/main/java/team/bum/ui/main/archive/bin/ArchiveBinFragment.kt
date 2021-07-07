@@ -20,10 +20,19 @@ class ArchiveBinFragment : BaseFragment<FragmentArchiveBinBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.recyclerBinList.layoutManager = LinearLayoutManager(activity)
         binding.recyclerBinList.adapter = archiveBinAdapter
 
+        bottomSheetDeleteEvent()
         addArchiveRewardInfo()
+    }
+
+    private fun bottomSheetDeleteEvent() {
+        binding.chipSetting.setOnClickListener {
+            val deleteFragment: ArchiveBinDeleteFragment = ArchiveBinDeleteFragment()
+            deleteFragment.show(requireActivity().supportFragmentManager, deleteFragment.tag)
+        }
     }
 
     private fun addArchiveRewardInfo() {

@@ -23,7 +23,7 @@
     <string name="setting_total_number">/9</string>
     <string name="setting_item_category">취업</string>
     <string name="setting_dialog_ok">확인</string>
-    <string name="setting_dialog_explain">미화원이 휴지통을 비울 기간을 정해주세요</string>
+    <string name="setting_dialog_explain">설정한 기간이 지나면 글이 영구 삭제됩니다.</string>
 
     <!--Home-->
     <string name="home_writing_header">글쓰기</string>

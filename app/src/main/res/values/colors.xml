@@ -24,8 +24,9 @@
     <color name="text_grey">#C2C2C2</color>
     <color name="icon_grey">#A1A1A1</color>
     <color name="bg">#fafafa</color>
-    <color name="chip_background">#b7e3cd</color>
-    <color name="chip_stroke">#8fd4b1</color>
+    <color name="home_chip_background">#b7e3cd</color>
+    <color name="home_chip_stroke">#8fd4b1</color>
+    <color name="archive_chip_stroke">#9fe8ff</color>
     <color name="toast">#faf9fb</color>
     <color name="picker_main">#232326</color>
     <color name="picker_line">#e6e4ea</color>

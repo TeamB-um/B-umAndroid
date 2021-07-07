@@ -3,6 +3,7 @@ package team.bum.util
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import com.google.android.material.chip.Chip
 import team.bum.R
@@ -25,4 +26,11 @@ fun View.setVisible() {
 
 fun View.setInvisible() {
     visibility = View.INVISIBLE
+}
+
+fun ImageView.enabled(enable: Boolean) {
+    if (isEnabled == enable) return
+
+    isEnabled = enable
+    this.setColorFilter(getColor(if (enable) R.color.header else R.color.disable))
 }

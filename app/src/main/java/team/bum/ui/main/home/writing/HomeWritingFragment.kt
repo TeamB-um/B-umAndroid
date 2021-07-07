@@ -15,6 +15,7 @@ import team.bum.ui.Paper
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity
+import team.bum.util.enabled
 import team.bum.util.getColor
 import team.bum.util.setInvisible
 import team.bum.util.setVisible
@@ -32,6 +33,7 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         configureWritingNavigation()
         configureCategory()
         configureTitle()
+        configurePostButton()
     }
 
     private fun configureWritingTheme() {
@@ -69,16 +71,18 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         val category = listOf("인간관계", "취업", "오늘하루", "우울", "건강", "웅앵웅")
         val emptyView = listOf(binding.arrow, binding.emptyText)
 
-        category.forEach {
-            binding.chipGroup.addView(createChip(it))
+        category.forEachIndexed { i, text ->
+            if (i == 0) binding.chipGroup.addView(createChip(text, true))
+            else binding.chipGroup.addView(createChip(text))
         }
         if (category.isEmpty()) emptyView.forEach { it.setVisible() }
         else emptyView.forEach { it.setInvisible() }
     }
 
-    private fun createChip(text: String): Chip {
+    private fun createChip(text: String, isChecked: Boolean = false): Chip {
         return (layoutInflater.inflate(R.layout.view_chip, binding.chipGroup, false) as Chip).apply {
             this.text = text
+            this.isChecked = isChecked
             layoutParams =
                 ChipGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         }
@@ -88,6 +92,13 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         binding.title.addTextChangedListener {
             if (!it.isNullOrBlank()) binding.count.text = it.length.toString()
             else binding.count.text = "0"
+        }
+    }
+
+    private fun configurePostButton() {
+        binding.post.enabled(false)
+        binding.body.addTextChangedListener {
+            binding.post.enabled(!it.isNullOrBlank())
         }
     }
 

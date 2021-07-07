@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import team.bum.databinding.FragmentArchiveBinBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.main.archive.adapter.ArchiveBinAdapter
@@ -20,7 +20,7 @@ class ArchiveBinFragment : BaseFragment<FragmentArchiveBinBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerBinList.layoutManager = GridLayoutManager(activity, 1)
+        binding.recyclerBinList.layoutManager = LinearLayoutManager(activity)
         binding.recyclerBinList.adapter = archiveBinAdapter
 
         addArchiveRewardInfo()

@@ -2,18 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="8dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,8 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/archive_bin_category"
+                android:layout_marginTop="14dp"
+                android:text="@string/collection_card_category"
                 android:textColor="@color/blue_2_main"
                 android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,9 +34,9 @@
                 android:id="@+id/tv_bin_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/nanum_square_extrabold"
-                android:text="@string/archive_bin_title"
+                android:text="@string/collection_card_name"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/tv_bin_category"
                 app:layout_constraintTop_toBottomOf="@id/tv_bin_category" />
@@ -47,9 +45,11 @@
                 android:id="@+id/tv_bin_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="15dp"
-                android:text="@string/archive_bin_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="17dp"
+                android:text="@string/collection_card_context"
+                android:textColor="@color/icon_grey"
+                android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tv_bin_category"
                 app:layout_constraintTop_toBottomOf="@id/tv_bin_title" />
@@ -58,7 +58,7 @@
                 android:id="@+id/tv_bin_dday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="14dp"
                 android:layout_marginEnd="17dp"
                 android:text="@string/archive_bin_dday"
                 android:textColor="@color/pink_2_main"

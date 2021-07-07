@@ -20,27 +20,7 @@
         app:tabPaddingTop="13dp"
         app:tabSelectedTextColor="@color/blue_2_main"
         app:tabTextAppearance="@style/TabTextStyle"
-        app:tabTextColor="@color/disable">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="19dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="42dp"
-            android:layout_marginEnd="34dp"
-            android:text="@string/archive_header_writing" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="54dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/archive_header_reward" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="54dp"
-            android:layout_height="30dp"
-            android:text="@string/archive_header_bin" />
-
-    </com.google.android.material.tabs.TabLayout>
+        app:tabTextColor="@color/disable" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp"

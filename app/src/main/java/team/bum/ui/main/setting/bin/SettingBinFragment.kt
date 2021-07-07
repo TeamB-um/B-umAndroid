@@ -5,16 +5,68 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
+import androidx.recyclerview.widget.LinearLayoutManager
 import team.bum.R
+import team.bum.databinding.FragmentSettingBinBinding
+import team.bum.ui.base.BaseFragment
+import team.bum.ui.main.MainActivity
+import team.bum.ui.main.setting.adapter.SettingBinListAdapter
+import team.bum.ui.main.setting.data.BinListInfo
 
-class SettingBinFragment : Fragment() {
+class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>() {
+    private val settingBinListAdapter = SettingBinListAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting_bin, container, false)
+    override fun initBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = FragmentSettingBinBinding.inflate(inflater, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.recyclerBinList.layoutManager = LinearLayoutManager(activity)
+        binding.recyclerBinList.adapter = settingBinListAdapter
+        addBinInfo()
+        totalNumberEvent()
+        configureSettingNavigation()
     }
 
+    private fun addBinInfo() {
+        settingBinListAdapter.setItems(
+            listOf<BinListInfo>(
+                BinListInfo(
+                    category = "취업"
+                ),
+                BinListInfo(
+                    category = "학업"
+                ),
+                BinListInfo(
+                    category = "인간관계"
+                ),
+                BinListInfo(
+                    category = "건강"
+                ),
+                BinListInfo(
+                    category = "금전"
+                ),
+                BinListInfo(
+                    category = "개인"
+                )
+            )
+        )
+    }
+
+    private fun totalNumberEvent() {
+        binding.tvNumber.text = settingBinListAdapter.itemCount.toString()
+    }
+
+    private fun configureSettingNavigation() {
+        binding.imageBack.setOnClickListener {
+            (activity as MainActivity).popSetting()
+        }
+        requireActivity().onBackPressedDispatcher.addCallback {
+            (activity as MainActivity).popSetting()
+        }
+    }
 }

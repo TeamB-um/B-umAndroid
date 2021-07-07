@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.tabs.TabLayoutMediator
 import team.bum.databinding.FragmentArchiveBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.main.archive.adapter.ArchivePagerAdapter
 
 class ArchiveFragment : BaseFragment<FragmentArchiveBinding>() {
-    // private val archiveAdapter = ArchiveAdapter()
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentArchiveBinding.inflate(inflater, container, false)
@@ -18,67 +18,19 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         setArchivePager()
-        // addArchiveInfo()
     }
 
     private fun setArchivePager() {
-        binding.vp.adapter = ArchivePagerAdapter(this@ArchiveFragment)
+        binding.vp.apply {
+            adapter = ArchivePagerAdapter(this@ArchiveFragment)
+        }
+        TabLayoutMediator(binding.tabLayout, binding.vp) { tab, position ->
+            when (position) {
+                0 -> { tab.text = "글"}
+                1 -> { tab.text = "리워드"}
+                2 -> { tab.text = "휴지통"}
+            }
+        }.attach()
     }
 
-//    private fun addArchiveInfo() {
-//        archiveAdapter.setItems(
-//            listOf<ArchiveInfo>(
-//                ArchiveInfo(
-//                    category = "인간관계",
-//                    title = "취업",
-//                    content = "어쩌고저쩌고"
-//                ),
-//                ArchiveInfo(
-//                    category = "인간관계",
-//                    title = "취업",
-//                    content = "어쩌고저쩌고"
-//                ),
-//                ArchiveInfo(
-//                    category = "인간관계",
-//                    title = "취업",
-//                    content = "어쩌고저쩌고"
-//                ),
-//                ArchiveInfo(
-//                    category = "인간관계",
-//                    title = "취업",
-//                    content = "어쩌고저쩌고"
-//                ),
-//                ArchiveInfo(
-//                    category = "인간관계",
-//                    title = "취업",
-//                    content = "어쩌고저쩌고"
-//                ),
-//                ArchiveInfo(
-//                    category = "인간관계",
-//                    title = "취업",
-//                    content = "어쩌고저쩌고"
-//                ),
-//                ArchiveInfo(
-//                    category = "인간관계",
-//                    title = "취업",
-//                    content = "어쩌고저쩌고"
-//                ),
-//                ArchiveInfo(
-//                    category = "인간관계",
-//                    title = "취업",
-//                    content = "어쩌고저쩌고"
-//                ),
-//                ArchiveInfo(
-//                    category = "인간관계",
-//                    title = "취업",
-//                    content = "어쩌고저쩌고"
-//                ),
-//                ArchiveInfo(
-//                    category = "인간관계",
-//                    title = "취업",
-//                    content = "어쩌고저쩌고"
-//                )
-//            )
-//        )
-//    }
 }

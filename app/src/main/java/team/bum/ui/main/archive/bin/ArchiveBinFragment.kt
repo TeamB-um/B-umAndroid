@@ -1,20 +1,95 @@
 package team.bum.ui.main.archive.bin
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import team.bum.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import team.bum.databinding.FragmentArchiveBinBinding
+import team.bum.ui.base.BaseFragment
+import team.bum.ui.main.archive.adapter.ArchiveBinAdapter
+import team.bum.ui.main.archive.data.ArchiveBinInfo
 
-class ArchiveBinFragment : Fragment() {
+class ArchiveBinFragment : BaseFragment<FragmentArchiveBinBinding>() {
+    private val archiveBinAdapter = ArchiveBinAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_archive_bin, container, false)
+    override fun initBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = FragmentArchiveBinBinding.inflate(inflater, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.recyclerBinList.layoutManager = LinearLayoutManager(activity)
+        binding.recyclerBinList.adapter = archiveBinAdapter
+
+        addArchiveRewardInfo()
     }
 
+    private fun addArchiveRewardInfo() {
+        archiveBinAdapter.setItems(
+            listOf<ArchiveBinInfo>(
+                ArchiveBinInfo(
+                    binCategory = "인간관계",
+                    binTitle = "글제목1",
+                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
+                    binDday = "D-1"
+                ),
+                ArchiveBinInfo(
+                    binCategory = "인간관계",
+                    binTitle = "글제목1",
+                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
+                    binDday = "D-1"
+                ),
+                ArchiveBinInfo(
+                    binCategory = "인간관계",
+                    binTitle = "글제목1",
+                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
+                    binDday = "D-1"
+                ),
+                ArchiveBinInfo(
+                    binCategory = "인간관계",
+                    binTitle = "글제목1",
+                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
+                    binDday = "D-1"
+                ),
+                ArchiveBinInfo(
+                    binCategory = "인간관계",
+                    binTitle = "글제목1",
+                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
+                    binDday = "D-1"
+                ),
+                ArchiveBinInfo(
+                    binCategory = "인간관계",
+                    binTitle = "글제목1",
+                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
+                    binDday = "D-1"
+                ),
+                ArchiveBinInfo(
+                    binCategory = "인간관계",
+                    binTitle = "글제목1",
+                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
+                    binDday = "D-1"
+                ),
+                ArchiveBinInfo(
+                    binCategory = "인간관계",
+                    binTitle = "글제목1",
+                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
+                    binDday = "D-1"
+                ),
+                ArchiveBinInfo(
+                    binCategory = "인간관계",
+                    binTitle = "글제목1",
+                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
+                    binDday = "D-1"
+                ),
+                ArchiveBinInfo(
+                    binCategory = "인간관계",
+                    binTitle = "글제목1",
+                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
+                    binDday = "D-1"
+                )
+            )
+        )
+    }
 }

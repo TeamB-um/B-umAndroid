@@ -23,7 +23,7 @@
     <color name="title">#141414</color>
     <color name="text_grey">#C2C2C2</color>
     <color name="icon_grey">#A1A1A1</color>
-    <color name="bg">#F9F9F9</color>
+    <color name="bg">#fafafa</color>
     <color name="chip_background">#b7e3cd</color>
     <color name="chip_stroke">#8fd4b1</color>
     <color name="toast">#faf9fb</color>

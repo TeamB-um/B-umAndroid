@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.updateLayoutParams
 import androidx.core.widget.addTextChangedListener
 import team.bum.R
 import team.bum.databinding.DialogCommonBinding
 import team.bum.ui.base.BaseDialogFragment
+import team.bum.util.getColor
 import team.bum.util.setVisible
 import kotlin.math.roundToInt
 
@@ -79,10 +81,19 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
             binding.enter.apply {
                 setVisible()
                 addTextChangedListener {
-                    if (it?.length == 6) setBackgroundResource(R.drawable.bg_edit_border_error)
-                    else setBackgroundResource(R.drawable.bg_edit_border)
+                    if (it?.length == 6) {setBackgroundResource(R.drawable.bg_edit_border_error)
+                    binding.number.setTextColor(getColor(R.color.error))
+                    binding.totalNumber.setTextColor(getColor(R.color.error)) }
+                    else {
+                        setBackgroundResource(R.drawable.bg_edit_border)
+                        binding.number.setTextColor(getColor(R.color.green_2_main))
+                        binding.totalNumber.setTextColor(getColor(R.color.green_2_main))                     }
+                    binding.number.text = it?.length.toString()
+
                 }
             }
+            binding.number.setVisible()
+            binding.totalNumber.setVisible()
         }
     }
 

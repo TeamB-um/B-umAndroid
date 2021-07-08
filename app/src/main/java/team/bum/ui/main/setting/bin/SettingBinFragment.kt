@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import team.bum.R
 import team.bum.databinding.FragmentSettingBinBinding
 import team.bum.ui.base.BaseFragment
+import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity
 import team.bum.ui.main.setting.adapter.SettingBinListAdapter
 import team.bum.ui.main.setting.data.BinListInfo
@@ -30,6 +31,14 @@ class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>() {
         addBinInfo()
         totalNumberEvent()
         configureSettingNavigation()
+
+        binding.imageCheck.setOnClickListener {
+            CommonDialog.newInstance(
+                "분리수거함 추가",
+                "분리수거함을 추가해 스트레스를 분류하세요.",
+                "확인", true, "취소", true, showEdit=true
+            ).show(childFragmentManager, null)
+        }
     }
 
     private fun addBinInfo() {

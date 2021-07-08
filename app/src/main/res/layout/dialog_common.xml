@@ -65,6 +65,33 @@
             app:layout_constraintTop_toBottomOf="@id/body"
             tools:visibility="visible" />
 
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/setting_dialog_number"
+            android:textColor="@color/green_2_main"
+            android:textSize="13dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/enter"
+            app:layout_constraintEnd_toStartOf="@id/total_number"
+            app:layout_constraintTop_toTopOf="@id/enter"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/total_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:text="@string/setting_dialog_total_number"
+            android:textColor="@color/green_2_main"
+            android:textSize="13dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/enter"
+            app:layout_constraintEnd_toEndOf="@id/enter"
+            app:layout_constraintTop_toTopOf="@id/enter"
+            tools:visibility="visible" />
+
         <Button
             android:id="@+id/btn_cancel"
             style="@style/RoundButton.Cancel"

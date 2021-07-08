@@ -24,6 +24,8 @@
     <string name="setting_item_category">취업</string>
     <string name="setting_dialog_ok">확인</string>
     <string name="setting_dialog_explain">설정한 기간이 지나면 글이 영구 삭제됩니다.</string>
+    <string name="setting_dialog_number">0</string>
+    <string name="setting_dialog_total_number">/6</string>
 
     <!--Home-->
     <string name="home_writing_header">글쓰기</string>
@@ -67,5 +69,6 @@
     <string name="collection_card_name">글제목1</string>
     <string name="collection_card_context">글 내용 미리보기 미리보기 미리보기</string>
     <string name="collection_list_header">분리수거함 이름</string>
+    <string name="archive_chip_remove">삭제</string>
 
 </resources>

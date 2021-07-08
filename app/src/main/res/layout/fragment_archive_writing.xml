@@ -11,8 +11,8 @@
         android:id="@+id/chipGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="10dp"
+        android:paddingHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,20 +22,34 @@
             style="@style/CustomActionChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checkable="false"
+            android:checkable="true"
             android:text="@string/archive_chip_allCategory"
             android:textAppearance="@style/ChipText.14dp"
-            app:chipIcon="@drawable/btn_filter" />
+            app:checkedIcon="@drawable/icon_filter_checked"
+            app:chipIcon="@drawable/icon_filter_unchecked" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_select"
             style="@style/CustomActionChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checkable="false"
+            android:checkable="true"
             android:text="@string/archive_chip_select"
             android:textAppearance="@style/ChipText.14dp"
-            app:chipIcon="@drawable/btn_filter_check" />
+            app:checkedIcon="@drawable/icon_cancel"
+            app:chipIcon="@drawable/icon_check" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_remove"
+            style="@style/CustomActionChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="@string/archive_chip_remove"
+            android:textAppearance="@style/ChipText.14dp"
+            android:visibility="invisible"
+            app:chipIcon="@drawable/icon_remove"
+            tools:visibility="visible" />
 
     </com.google.android.material.chip.ChipGroup>
 
@@ -50,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fillViewport="true"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">

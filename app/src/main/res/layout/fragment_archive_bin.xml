@@ -9,33 +9,13 @@
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroup"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_allCategory"
-            style="@style/CustomActionChipStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkable="false"
-            android:text="@string/archive_chip_allCategory"
-            android:textAppearance="@style/ChipText.14dp"
-            app:chipIcon="@drawable/icon_filter_unchecked" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_select"
-            style="@style/CustomActionChipStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkable="false"
-            android:text="@string/archive_chip_select"
-            android:textAppearance="@style/ChipText.14dp"
-            app:chipIcon="@drawable/icon_check" />
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_setting"
@@ -53,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/bg"
+        android:layout_marginTop="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chipGroup">
 

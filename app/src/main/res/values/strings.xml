@@ -24,6 +24,8 @@
     <string name="setting_item_category">취업</string>
     <string name="setting_dialog_ok">확인</string>
     <string name="setting_dialog_explain">설정한 기간이 지나면 글이 영구 삭제됩니다.</string>
+    <string name="setting_dialog_number">0</string>
+    <string name="setting_dialog_total_number">/6</string>
 
     <!--Home-->
     <string name="home_writing_header">글쓰기</string>

@@ -28,9 +28,12 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
     private fun configureChips() {
         binding.chipSelect.setOnClickListener {
             binding.chipSelect.apply {
-                text = if (this.isChecked) "취소" else "선택"
+                text = if (isChecked) "취소" else "선택"
+                archiveWritingAdapter.setViewMode(
+                    if (isChecked) ArchiveWritingAdapter.MODE_SELECT
+                    else ArchiveWritingAdapter.MODE_NORMAL
+                )
             }
-            binding.recyclerMywritingList.adapter.
         }
     }
 
@@ -40,7 +43,7 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
                 ArchiveWritingInfo(
                     writingCategory = "인간관계",
                     writingTitle =  "글제목1",
-                    writingContent = "어쩌고저쩌고"
+                    writingContent = "어쩌고저쩌고",
                 ),
                 ArchiveWritingInfo(
                     writingCategory = "인간관계",

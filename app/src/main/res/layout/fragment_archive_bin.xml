@@ -25,7 +25,7 @@
             android:checkable="false"
             android:text="@string/archive_chip_allCategory"
             android:textAppearance="@style/ChipText.14dp"
-            app:chipIcon="@drawable/btn_filter" />
+            app:chipIcon="@drawable/icon_filter_unchecked" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_select"
@@ -35,7 +35,7 @@
             android:checkable="false"
             android:text="@string/archive_chip_select"
             android:textAppearance="@style/ChipText.14dp"
-            app:chipIcon="@drawable/btn_filter_check" />
+            app:chipIcon="@drawable/icon_check" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_setting"

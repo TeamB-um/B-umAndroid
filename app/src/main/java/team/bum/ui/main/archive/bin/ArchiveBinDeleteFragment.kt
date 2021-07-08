@@ -24,7 +24,7 @@ class ArchiveBinDeleteFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mValues = arrayOf("즉시 삭제", "1일", "2일", "3일", "4일")
+        val mValues = arrayOf("즉시 삭제", "1일", "2일", "3일", "4일", "5일", "6일", "7일")
         setNumberPicker(binding.numberpicker, mValues)
         binding.btnCheck.setOnClickListener {
             Log.d("test", getEditTextInNumberPicker())
@@ -53,8 +53,17 @@ class ArchiveBinDeleteFragment : BottomSheetDialogFragment() {
             3 -> {
                 return "3일"
             }
-            else -> {
+            4 -> {
                 return "4일"
+            }
+            5 -> {
+                return "5일"
+            }
+            6 -> {
+                return "6일"
+            }
+            else -> {
+                return "7일"
             }
         }
     }

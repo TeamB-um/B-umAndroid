@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import team.bum.databinding.FragmentArchiveWritingBinding
 import team.bum.ui.base.BaseFragment
+import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_NORMAL
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_SELECT
@@ -23,24 +24,39 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.recyclerMywritingList.layoutManager = GridLayoutManager(activity, 2)
         binding.recyclerMywritingList.adapter = archiveWritingAdapter
+
+        configureChips()
         addArchiveWritingInfo()
-        configureWritingList()
     }
 
-    private fun configureWritingList() {
+    private fun configureChips() {
+        configureSelectChip()
+        configureDeleteChip()
+    }
+
+    private fun configureSelectChip() {
         binding.chipSelect.apply {
             setOnClickListener {
                 if (isChecked) {
                     text = "취소"
-                    binding.chipRemove.setVisible()
+                    binding.chipDelete.setVisible()
                     archiveWritingAdapter.setViewMode(MODE_SELECT)
                 } else {
                     text = "선택"
-                    binding.chipRemove.setInvisible()
+                    binding.chipDelete.setInvisible()
                     archiveWritingAdapter.setViewMode(MODE_NORMAL)
                     archiveWritingAdapter.clearSelectedItem()
                 }
             }
+        }
+    }
+
+    private fun configureDeleteChip() {
+        binding.chipDelete.setOnClickListener {
+            CommonDialog.newInstance(
+                "글 삭제", "글을 삭제하시겠습니까?",
+                "삭제", true, "취소"
+            ).show(childFragmentManager, null)
         }
     }
 

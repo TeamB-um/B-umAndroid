@@ -1,5 +1,6 @@
 package team.bum.ui.main.home.writing
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,10 +16,7 @@ import team.bum.ui.Paper
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity
-import team.bum.util.enabled
-import team.bum.util.getColor
-import team.bum.util.setInvisible
-import team.bum.util.setVisible
+import team.bum.util.*
 
 class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDialog.ClickListener {
 
@@ -49,6 +47,7 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
                 binding.setting.setImageResource(it.img)
             }
         }
+        StatusBarUtil.changeColor(context as Activity, getColor(R.color.white))
     }
 
     private fun configureWritingNavigation() {

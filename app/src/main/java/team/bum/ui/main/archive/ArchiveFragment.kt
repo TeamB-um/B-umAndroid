@@ -32,5 +32,4 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding>() {
             }
         }.attach()
     }
-
 }

@@ -40,11 +40,10 @@
             app:chipIcon="@drawable/icon_check" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip_remove"
+            android:id="@+id/chip_delete"
             style="@style/CustomActionChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checkable="true"
             android:text="@string/archive_chip_remove"
             android:textAppearance="@style/ChipText.14dp"
             android:visibility="invisible"

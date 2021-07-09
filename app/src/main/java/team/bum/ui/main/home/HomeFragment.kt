@@ -1,9 +1,6 @@
 package team.bum.ui.main.home
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.app.Activity
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,18 +29,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun configureHomeNavigation() {
-        binding.root.setOnClickListener {
+        binding.bin.setOnClickListener {
             navigateToSelectPaper()
         }
     }
 
     private fun navigateToSelectPaper() {
         val selectView =
-            listOf(binding.paper1, binding.paper2, binding.paper3, binding.paper4)
+            listOf(binding.paper1, binding.paper2, binding.paper3, binding.paper4, binding.less, binding.lot)
         binding.title.text = getString(R.string.home_select_title)
-        binding.background.setInvisible()
         binding.arrow.setInvisible()
-        binding.homeLottie.setVisible()
         selectView.forEach { it.setVisible() }
 
         configureSelectedPaperId()

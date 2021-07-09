@@ -23,6 +23,14 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
 
         addArchiveWritingInfo()
         configureChips()
+        filterBottomSheetEvent()
+    }
+
+    private fun filterBottomSheetEvent() {
+        binding.chipAllCategory.setOnClickListener {
+            val sheetFragment: FilterSheetFragment = FilterSheetFragment()
+            sheetFragment.show(requireActivity().supportFragmentManager, sheetFragment.tag)
+        }
     }
 
     private fun configureChips() {

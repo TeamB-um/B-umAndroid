@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="56dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <TextView
+        android:id="@+id/tv_header_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/nanum_square_extrabold"
+        android:letterSpacing="-0.02"
+        android:text="@string/archive_filter_duration"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <DatePicker
+        android:id="@+id/dataPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_header_duration" />
+
+    <TextView
+        android:id="@+id/tv_header_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/nanum_square_extrabold"
+        android:letterSpacing="-0.02"
+        android:text="@string/archive_filter_category"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dataPicker" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        app:chipSpacingHorizontal="8dp"
+        app:singleSelection="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_header_category"/>
+
+    <Button
+        android:id="@+id/btn_check"
+        style="@style/RoundButton.Blue"
+        android:layout_width="0dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/setting_dialog_ok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chip_group" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

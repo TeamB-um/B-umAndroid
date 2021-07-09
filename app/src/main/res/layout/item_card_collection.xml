@@ -19,38 +19,28 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tv_collection_category"
+                android:id="@+id/tv_collection_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="14dp"
-                android:text="@string/collection_card_category"
-                android:textColor="@color/blue_2_main"
-                android:textSize="14dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/nanum_square_extrabold"
+                android:text="@string/collection_card_name"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_collection_name"
+                android:id="@+id/tv_collection_context"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/nanum_square_extrabold"
-                android:text="@string/collection_card_name"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="@+id/tv_collection_category"
-                app:layout_constraintTop_toBottomOf="@id/tv_collection_category" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="17dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
                 android:text="@string/collection_card_context"
                 android:textColor="@color/icon_grey"
                 android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@id/tv_collection_category"
+                app:layout_constraintStart_toStartOf="@id/tv_collection_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_collection_name" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,7 +39,7 @@ class SheetFragment : BottomSheetDialogFragment() {
     private fun setNumberPicker(numberPicker: NumberPicker, numbers: Array<String>) {
         numberPicker.maxValue = numbers.size - 1
         numberPicker.minValue = 0
-        numberPicker.wrapSelectorWheel = true
+        numberPicker.wrapSelectorWheel = false
         numberPicker.displayedValues = numbers
     }
 

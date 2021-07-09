@@ -7,6 +7,8 @@ import team.bum.R
 import team.bum.databinding.ActivityMainBinding
 import team.bum.ui.main.archive.ArchiveFragment
 import team.bum.ui.main.collection.CollectionFragment
+import team.bum.ui.main.collection.adapter.CollectionListAdapter
+import team.bum.ui.main.collection.list.CollectionListFragment
 import team.bum.ui.main.home.HomeFragment
 import team.bum.ui.main.home.drop.HomeDropFragment
 import team.bum.ui.main.home.writing.HomeWritingFragment
@@ -58,6 +60,10 @@ class MainActivity : AppCompatActivity() {
         replaceFragment(binding.fragmentContainer, SettingBinFragment::class.java, true)
     }
 
+    fun navigateCollectionList() {
+        replaceFragment(binding.fragmentContainer, CollectionListFragment::class.java, true)
+    }
+
     fun popHomeWriting() {
         popFragment(HomeWritingFragment::class.java)
         slideUpBottomNav()
@@ -70,6 +76,10 @@ class MainActivity : AppCompatActivity() {
 
     fun popSetting() {
         popFragment(SettingBinFragment::class.java)
+    }
+
+    fun popCollection() {
+        popFragment(CollectionListFragment::class.java)
     }
 
     private fun slideUpBottomNav() {

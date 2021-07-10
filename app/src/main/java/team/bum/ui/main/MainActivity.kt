@@ -7,17 +7,13 @@ import team.bum.R
 import team.bum.databinding.ActivityMainBinding
 import team.bum.ui.main.archive.ArchiveFragment
 import team.bum.ui.main.collection.CollectionFragment
-import team.bum.ui.main.collection.adapter.CollectionListAdapter
 import team.bum.ui.main.collection.list.CollectionListFragment
 import team.bum.ui.main.home.HomeFragment
 import team.bum.ui.main.home.drop.HomeDropFragment
 import team.bum.ui.main.home.writing.HomeWritingFragment
 import team.bum.ui.main.setting.SettingFragment
 import team.bum.ui.main.setting.bin.SettingBinFragment
-import team.bum.util.popFragment
-import team.bum.util.replaceFragment
-import team.bum.util.setInvisible
-import team.bum.util.setVisible
+import team.bum.util.*
 
 class MainActivity : AppCompatActivity() {
 

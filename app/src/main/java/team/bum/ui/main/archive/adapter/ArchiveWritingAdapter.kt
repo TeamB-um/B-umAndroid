@@ -28,8 +28,8 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
                 tvMywritingContent.text = archiveInfo.writingContent
                 if (itemViewMode == MODE_SELECT) {
                     itemView.setOnClickListener {
-                        val mposition = adapterPosition
-                        toggleItemSelected(mposition)
+                        val adapterPosition = adapterPosition
+                        toggleItemSelected(adapterPosition)
                     }
                     if (selectedStatus.get(position, false)) {
                         binding.checkCircle.setImageResource(R.drawable.btn_circle_checked)
@@ -38,7 +38,7 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
                     }
                 } else {
                     itemView.setOnClickListener {
-                        itemClickListener.onClick(it, position)
+                        itemClickListener.onClick(archiveWritingInfo[position])
                     }
                 }
             }
@@ -93,18 +93,12 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
         selectedStatus.clear()
     }
 
-    fun ItemCardMywritingBinding.changeMode(isSelectMode: Boolean = false) {
-        this.checkCircle.apply {
-            if (isSelectMode) setVisible() else setInvisible()
-        }
-    }
-
     fun setItemClickListener(itemClickListener: ItemClickListener) {
         this.itemClickListener = itemClickListener
     }
 
     interface ItemClickListener {
-        fun onClick(view: View, position: Int)
+        fun onClick(archiveInfo: ArchiveWritingInfo)
     }
 
     companion object {

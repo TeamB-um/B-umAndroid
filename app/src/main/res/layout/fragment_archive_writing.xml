@@ -52,17 +52,26 @@
 
     </com.google.android.material.chip.ChipGroup>
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/paper_1"
+        app:layout_constraintTop_toBottomOf="@id/chipGroup" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chipGroup">
+        app:layout_constraintTop_toBottomOf="@id/divider">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:clipToPadding="false"
             android:fillViewport="true"
+            android:paddingTop="4dp"
             android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

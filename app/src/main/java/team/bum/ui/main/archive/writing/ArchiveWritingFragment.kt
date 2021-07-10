@@ -25,7 +25,6 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
         binding.recyclerMywritingList.layoutManager = GridLayoutManager(activity, 2)
         binding.recyclerMywritingList.adapter = archiveWritingAdapter
 
-
         filterBottomSheetEvent()
         configureChips()
         addArchiveWritingInfo()

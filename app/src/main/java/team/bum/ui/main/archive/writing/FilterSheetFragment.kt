@@ -31,7 +31,6 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
         binding.btnCheck.setOnClickListener {
             dismiss()
         }
-
         configureCategory()
     }
 

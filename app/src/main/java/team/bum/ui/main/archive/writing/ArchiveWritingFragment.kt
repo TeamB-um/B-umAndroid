@@ -1,6 +1,7 @@
 package team.bum.ui.main.archive.writing
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,7 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
     private fun configureChips() {
         configureSelectChip()
         configureDeleteChip()
+        configureClickEvent()
     }
 
     private fun configureSelectChip() {
@@ -58,6 +60,14 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
                 "삭제", true, "취소"
             ).show(childFragmentManager, null)
         }
+    }
+
+    private fun configureClickEvent() {
+        archiveWritingAdapter.setItemClickListener(object : ArchiveWritingAdapter.ItemClickListener {
+            override fun onClick(view: View, position: Int) {
+                Log.d("뜨냐", "개박치네")
+            }
+        })
     }
 
     private fun addArchiveWritingInfo() {

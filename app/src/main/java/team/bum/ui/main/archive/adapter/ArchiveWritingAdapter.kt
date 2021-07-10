@@ -2,6 +2,7 @@ package team.bum.ui.main.archive.adapter
 
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import team.bum.R
@@ -15,6 +16,7 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
     private val archiveWritingInfo = mutableListOf<ArchiveWritingInfo>()
     private var itemViewMode = MODE_NORMAL
     private var selectedStatus = SparseBooleanArray(0)
+    private lateinit var itemClickListener: ItemClickListener
 
     inner class ArchiveWritingViewHolder(
         private val binding: ItemCardMywritingBinding
@@ -24,14 +26,20 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
                 tvMywritingCategory.text = archiveInfo.writingCategory
                 tvMywritingTitle.text = archiveInfo.writingTitle
                 tvMywritingContent.text = archiveInfo.writingContent
-                itemView.setOnClickListener {
-                    val mposition = adapterPosition
-                    toggleItemSelected(mposition)
-                }
-                if (selectedStatus.get(position, false)) {
-                    binding.checkCircle.setImageResource(R.drawable.btn_circle_checked)
+                if (itemViewMode == MODE_SELECT) {
+                    itemView.setOnClickListener {
+                        val mposition = adapterPosition
+                        toggleItemSelected(mposition)
+                    }
+                    if (selectedStatus.get(position, false)) {
+                        binding.checkCircle.setImageResource(R.drawable.btn_circle_checked)
+                    } else {
+                        binding.checkCircle.setImageResource(R.drawable.btn_circle_unchecked)
+                    }
                 } else {
-                    binding.checkCircle.setImageResource(R.drawable.btn_circle_unchecked)
+                    itemView.setOnClickListener {
+                        itemClickListener.onClick(it, position)
+                    }
                 }
             }
         }
@@ -89,6 +97,14 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
         this.checkCircle.apply {
             if (isSelectMode) setVisible() else setInvisible()
         }
+    }
+
+    fun setItemClickListener(itemClickListener: ItemClickListener) {
+        this.itemClickListener = itemClickListener
+    }
+
+    interface ItemClickListener {
+        fun onClick(view: View, position: Int)
     }
 
     companion object {

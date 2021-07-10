@@ -30,4 +30,5 @@
     <color name="toast">#faf9fb</color>
     <color name="picker_main">#232326</color>
     <color name="picker_line">#e6e4ea</color>
+    <color name="toast_bg">#99000000</color>
 </resources>

@@ -10,7 +10,6 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import team.bum.R
 import team.bum.databinding.FragmentFilterSheetBinding
-import java.util.*
 
 class FilterSheetFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentFilterSheetBinding

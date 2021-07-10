@@ -1,6 +1,7 @@
 package team.bum.ui.main.archive.writing
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import team.bum.databinding.FragmentArchiveWritingBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
+import team.bum.ui.dialog.WritingDialog
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_NORMAL
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_SELECT
@@ -40,6 +42,7 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
     private fun configureChips() {
         configureSelectChip()
         configureDeleteChip()
+        configureClickEvent()
     }
 
     private fun configureSelectChip() {
@@ -68,23 +71,41 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
         }
     }
 
+    private fun configureClickEvent() {
+        archiveWritingAdapter.setItemClickListener(object : ArchiveWritingAdapter.ItemClickListener {
+            override fun onClick(archiveWritingInfo: ArchiveWritingInfo) {
+                category = archiveWritingInfo.writingCategory
+                title = archiveWritingInfo.writingTitle
+                date = "2021년 07월 10일 (토)"
+                content = archiveWritingInfo.writingContent
+                showDialog()
+            }
+        })
+    }
+
+    private fun showDialog() {
+        val dialog = WritingDialog.CustomDialogBuilder().create()
+        dialog.isCancelable = false
+        dialog.show(parentFragmentManager, "dialog")
+    }
+
     private fun addArchiveWritingInfo() {
         archiveWritingAdapter.setItems(
             listOf<ArchiveWritingInfo>(
                 ArchiveWritingInfo(
                     writingCategory = "인간관계",
-                    writingTitle = "글제목1",
+                    writingTitle = "글제목2",
                     writingContent = "어쩌고저쩌고",
                 ),
                 ArchiveWritingInfo(
                     writingCategory = "인간관계",
-                    writingTitle = "글제목1",
+                    writingTitle = "글제목2",
                     writingContent = "어쩌고저쩌고"
                 ),
                 ArchiveWritingInfo(
-                    writingCategory = "인간관계",
-                    writingTitle = "글제목1",
-                    writingContent = "어쩌고저쩌고"
+                    writingCategory = "이강민",
+                    writingTitle = "이강민아",
+                    writingContent = "스트레스 안받아?"
                 ),
                 ArchiveWritingInfo(
                     writingCategory = "인간관계",
@@ -123,5 +144,12 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
                 )
             )
         )
+    }
+
+    companion object {
+        var category = ""
+        var title = ""
+        var date = ""
+        var content = ""
     }
 }

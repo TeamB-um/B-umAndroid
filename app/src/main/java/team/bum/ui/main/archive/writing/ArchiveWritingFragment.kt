@@ -25,8 +25,16 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
         binding.recyclerMywritingList.layoutManager = GridLayoutManager(activity, 2)
         binding.recyclerMywritingList.adapter = archiveWritingAdapter
 
+        filterBottomSheetEvent()
         configureChips()
         addArchiveWritingInfo()
+    }
+
+    private fun filterBottomSheetEvent() {
+        binding.chipAllCategory.setOnClickListener {
+            val sheetFragment: FilterSheetFragment = FilterSheetFragment()
+            sheetFragment.show(requireActivity().supportFragmentManager, sheetFragment.tag)
+        }
     }
 
     private fun configureChips() {

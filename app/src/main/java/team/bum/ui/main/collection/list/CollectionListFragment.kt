@@ -8,10 +8,14 @@ import androidx.activity.addCallback
 import team.bum.R
 import team.bum.databinding.FragmentCollectionListBinding
 import team.bum.ui.base.BaseFragment
+import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity
+import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter
 import team.bum.ui.main.collection.adapter.CollectionListAdapter
 import team.bum.ui.main.collection.data.CollectionInfo
 import team.bum.ui.main.collection.data.CollectionListInfo
+import team.bum.util.setInvisible
+import team.bum.util.setVisible
 
 class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>() {
     private val collectionListAdapter = CollectionListAdapter()
@@ -27,6 +31,8 @@ class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>() {
 
         addCollectionListInfo()
         configureCollectionNavigation()
+        configureSelectChip()
+        configureDeleteChip()
     }
 
     private fun addCollectionListInfo() {
@@ -66,6 +72,32 @@ class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>() {
         }
         requireActivity().onBackPressedDispatcher.addCallback {
             (activity as MainActivity).popCollection()
+        }
+    }
+
+    private fun configureSelectChip() {
+        binding.chipSelect.apply {
+            setOnClickListener {
+                if (isChecked) {
+                    text = "취소"
+                    binding.chipDelete.setVisible()
+                    collectionListAdapter.setViewMode(ArchiveWritingAdapter.MODE_SELECT)
+                } else {
+                    text = "선택"
+                    binding.chipDelete.setInvisible()
+                    collectionListAdapter.setViewMode(ArchiveWritingAdapter.MODE_NORMAL)
+                    collectionListAdapter.clearSelectedItem()
+                }
+            }
+        }
+    }
+
+    private fun configureDeleteChip() {
+        binding.chipDelete.setOnClickListener {
+            CommonDialog.newInstance(
+                "글 삭제", "글을 삭제하시겠습니까?",
+                "삭제", true, "취소"
+            ).show(childFragmentManager, null)
         }
     }
 }

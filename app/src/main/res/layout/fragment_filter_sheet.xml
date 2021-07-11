@@ -40,74 +40,95 @@
         app:layout_constraintTop_toTopOf="@id/tv_header_duration"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-    <TextView
-        android:id="@+id/tv_start"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="29dp"
-        android:text="@string/filter_start"
-        android:textColor="@color/filter_green"
-        android:textSize="14dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_header_duration" />
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_header_duration">
 
-    <TextView
-        android:id="@+id/start_date"
+        <TextView
+            android:id="@+id/tv_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_start"
+            android:textColor="@color/filter_green"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="@id/start_date"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:lineSpacingExtra="7dp"
+            android:textColor="@color/icon_grey"
+            android:textSize="15dp"
+            app:layout_constraintLeft_toLeftOf="@id/start_divider"
+            app:layout_constraintTop_toBottomOf="@id/tv_start"
+            tools:text="2021.07.11 (토)" />
+
+        <View
+            android:id="@+id/start_divider"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/filter_green"
+            app:layout_constraintDimensionRatio="150:2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/start_date"
+            app:layout_constraintWidth_percent="0.42" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:lineSpacingExtra="7dp"
-        android:textColor="@color/icon_grey"
-        android:textSize="15dp"
-        app:layout_constraintLeft_toLeftOf="@id/tv_start"
-        app:layout_constraintTop_toBottomOf="@id/tv_start"
-        tools:text="2021.07.11 (토)" />
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_header_duration">
 
-    <View
-        android:id="@+id/start_divider"
-        android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/filter_green"
-        app:layout_constraintDimensionRatio="150:2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/start_date"
-        app:layout_constraintWidth_percent="0.42" />
+        <TextView
+            android:id="@+id/tv_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="끝"
+            android:textColor="@color/icon_grey"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="@id/end_date"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="끝"
-        android:textColor="@color/icon_grey"
-        android:textSize="14dp"
-        app:layout_constraintLeft_toLeftOf="@id/end_date"
-        app:layout_constraintTop_toTopOf="@id/tv_start" />
+        <TextView
+            android:id="@+id/end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:lineSpacingExtra="7dp"
+            android:textColor="@color/icon_grey"
+            android:textSize="15dp"
+            app:layout_constraintLeft_toLeftOf="@id/end_divider"
+            app:layout_constraintTop_toBottomOf="@id/tv_end"
+            tools:text="2021.07.11 (토)" />
 
-    <TextView
-        android:id="@+id/end_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:lineSpacingExtra="7dp"
-        android:textColor="@color/icon_grey"
-        android:textSize="15dp"
-        app:layout_constraintLeft_toLeftOf="@id/end_divider"
-        app:layout_constraintTop_toBottomOf="@id/tv_end"
-        tools:text="2021.07.11 (토)" />
+        <View
+            android:id="@+id/end_divider"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/disable"
+            app:layout_constraintDimensionRatio="150:2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/end_date"
+            app:layout_constraintWidth_percent="0.42" />
 
-    <View
-        android:id="@+id/end_divider"
-        android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/disable"
-        app:layout_constraintDimensionRatio="150:2"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/end_date"
-        app:layout_constraintWidth_percent="0.42" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/divider1"
@@ -137,7 +158,7 @@
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/start_divider" />
+        app:layout_constraintTop_toBottomOf="@id/start" />
 
     <DatePicker
         android:id="@+id/end_picker"
@@ -151,7 +172,7 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/start_divider" />
+        app:layout_constraintTop_toBottomOf="@id/end" />
 
     <TextView
         android:id="@+id/tv_header_category"
@@ -170,6 +191,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginTop="22dp"
+        android:layout_marginBottom="96dp"
         app:chipSpacingHorizontal="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

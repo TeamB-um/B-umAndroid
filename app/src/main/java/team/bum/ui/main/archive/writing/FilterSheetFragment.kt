@@ -68,7 +68,7 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
     }
 
     private fun configureDatePicker() {
-        binding.startDate.setOnClickListener {
+        binding.start.setOnClickListener {
             binding.tvStart.setTextColor(getColor(R.color.filter_green))
             binding.startDivider.setBackgroundColor(getColor(R.color.filter_green))
             binding.tvEnd.setTextColor(getColor(R.color.icon_grey))
@@ -78,7 +78,7 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
             setDatePicker(binding.startPicker, binding.startDate)
             isStart = true
         }
-        binding.endDate.setOnClickListener {
+        binding.end.setOnClickListener {
             binding.tvEnd.setTextColor(getColor(R.color.filter_green))
             binding.endDivider.setBackgroundColor(getColor(R.color.filter_green))
             binding.tvStart.setTextColor(getColor(R.color.icon_grey))

@@ -1,17 +1,13 @@
 package team.bum.ui.main.setting
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.NumberPicker
-import androidx.annotation.RequiresApi
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import team.bum.databinding.FragmentDialogSheetBinding
-import team.bum.util.dpToPixel
 
 class SheetFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentDialogSheetBinding
@@ -20,7 +16,7 @@ class SheetFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         binding = FragmentDialogSheetBinding.inflate(inflater, container, false)
         return binding.root
     }

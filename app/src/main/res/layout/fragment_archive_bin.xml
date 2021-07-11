@@ -62,7 +62,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_card_bin" />
 
-        </ScrollView>s
+        </ScrollView>
 
         <ImageView
             android:layout_width="match_parent"

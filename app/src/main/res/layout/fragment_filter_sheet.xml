@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingHorizontal="16dp"
@@ -8,55 +9,172 @@
     app:behavior_peekHeight="56dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/btn_close"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_header_duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/nanum_square_extrabold"
-        android:letterSpacing="-0.02"
         android:text="@string/archive_filter_duration"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="20dp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <DatePicker
-        android:id="@+id/dataPicker"
+    <Switch
+        android:id="@+id/switch_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:datePickerMode="spinner"
-        android:calendarViewShown="false"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:checked="true"
+        app:layout_constraintBottom_toBottomOf="@id/tv_header_duration"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_header_duration"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <TextView
+        android:id="@+id/tv_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="29dp"
+        android:text="@string/filter_start"
+        android:textColor="@color/filter_green"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_header_duration" />
+
+    <TextView
+        android:id="@+id/start_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="7dp"
+        android:textColor="@color/icon_grey"
+        android:textSize="15dp"
+        app:layout_constraintLeft_toLeftOf="@id/tv_start"
+        app:layout_constraintTop_toBottomOf="@id/tv_start"
+        tools:text="2021.07.11 (토)" />
+
+    <View
+        android:id="@+id/start_divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/filter_green"
+        app:layout_constraintDimensionRatio="150:2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/start_date"
+        app:layout_constraintWidth_percent="0.42" />
+
+    <TextView
+        android:id="@+id/tv_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="끝"
+        android:textColor="@color/icon_grey"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toLeftOf="@id/finish_date"
+        app:layout_constraintTop_toTopOf="@id/tv_start" />
+
+    <TextView
+        android:id="@+id/finish_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="7dp"
+        android:textColor="@color/icon_grey"
+        android:textSize="15dp"
+        app:layout_constraintLeft_toLeftOf="@id/finish_divider"
+        app:layout_constraintTop_toBottomOf="@id/tv_finish"
+        tools:text="2021.07.11 (토)" />
+
+    <View
+        android:id="@+id/finish_divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/disable"
+        app:layout_constraintDimensionRatio="150:2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/finish_date"
+        app:layout_constraintWidth_percent="0.42" />
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/picker_line"
+        app:layout_constraintTop_toTopOf="@id/start_picker" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="50dp"
+        android:background="@color/picker_line"
+        app:layout_constraintBottom_toBottomOf="@id/start_picker" />
+
+    <DatePicker
+        android:id="@+id/start_picker"
+        android:layout_width="0dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="31dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:descendantFocusability="blocksDescendants"
+        android:theme="@style/DatePicker"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/start_divider" />
+
+    <DatePicker
+        android:id="@+id/finish_picker"
+        android:layout_width="0dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="31dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:descendantFocusability="blocksDescendants"
+        android:theme="@style/DatePicker"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/start_divider" />
 
     <TextView
         android:id="@+id/tv_header_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/nanum_square_extrabold"
-        android:letterSpacing="-0.02"
         android:text="@string/archive_filter_category"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="20dp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dataPicker" />
+        app:layout_constraintTop_toBottomOf="@id/start_picker" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chip_group"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="22dp"
         app:chipSpacingHorizontal="8dp"
-        app:singleSelection="true"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_header_category"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_header_category"
+        app:singleSelection="true" />
 
     <Button
         android:id="@+id/btn_check"

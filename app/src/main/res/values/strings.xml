@@ -84,5 +84,6 @@
     <string name="collection_card_context">글 내용 미리보기 미리보기 미리보기</string>
     <string name="collection_list_header">분리수거함 이름</string>
     <string name="archive_chip_remove">삭제</string>
+    <string name="filter_start">시작</string>
 
 </resources>

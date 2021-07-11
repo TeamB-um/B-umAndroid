@@ -30,4 +30,10 @@
             tools:listitem="@layout/item_card_reward" />
     </ScrollView>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@drawable/img_gradient_reward"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

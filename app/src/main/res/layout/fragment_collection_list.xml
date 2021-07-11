@@ -109,4 +109,10 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@drawable/img_gradient_mywriting"
+        app:layout_constraintBottom_toBottomOf="parent" />
+    
 </androidx.constraintlayout.widget.ConstraintLayout>

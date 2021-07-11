@@ -48,6 +48,12 @@
         <item name="colorControlNormal">@android:color/transparent</item>
     </style>
 
+    <style name="DatePicker">
+        <item name="android:textSize">23dp</item>
+        <item name="android:textColorPrimary">@color/picker_main</item>
+        <item name="colorControlNormal">@android:color/transparent</item>
+    </style>
+
     <style name="TabTextStyle">
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">20dp</item>

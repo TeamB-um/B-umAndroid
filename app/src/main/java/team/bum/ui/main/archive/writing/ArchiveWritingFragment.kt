@@ -13,12 +13,15 @@ import team.bum.ui.dialog.WritingDialog
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_NORMAL
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_SELECT
+import team.bum.ui.main.archive.data.ArchiveWritingFilterInfo
 import team.bum.ui.main.archive.data.ArchiveWritingInfo
 import team.bum.util.setInvisible
 import team.bum.util.setVisible
 
 class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
+
     private val archiveWritingAdapter = ArchiveWritingAdapter()
+    private val sheetFragment: FilterSheetFragment = FilterSheetFragment()
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentArchiveWritingBinding.inflate(inflater, container, false)
@@ -27,22 +30,26 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
         binding.recyclerMywritingList.layoutManager = GridLayoutManager(activity, 2)
         binding.recyclerMywritingList.adapter = archiveWritingAdapter
 
-        filterBottomSheetEvent()
         configureChips()
         addArchiveWritingInfo()
     }
 
-    private fun filterBottomSheetEvent() {
-        binding.chipAllCategory.setOnClickListener {
-            val sheetFragment: FilterSheetFragment = FilterSheetFragment()
-            sheetFragment.show(requireActivity().supportFragmentManager, sheetFragment.tag)
-        }
-    }
-
     private fun configureChips() {
+        configureAllCategoryChip()
         configureSelectChip()
         configureDeleteChip()
         configureClickEvent()
+    }
+
+    private fun configureAllCategoryChip() {
+        binding.chipAllCategory.setOnClickListener {
+            sheetFragment.show(requireActivity().supportFragmentManager, sheetFragment.tag)
+        }
+        sheetFragment.setClickYesListener(object : FilterSheetFragment.ClickListener {
+            override fun onClickYes(filterData: ArchiveWritingFilterInfo) {
+                Log.d("filterData", "$filterData")
+            }
+        })
     }
 
     private fun configureSelectChip() {

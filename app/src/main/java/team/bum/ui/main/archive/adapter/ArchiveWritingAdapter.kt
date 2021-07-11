@@ -2,7 +2,6 @@ package team.bum.ui.main.archive.adapter
 
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import team.bum.R

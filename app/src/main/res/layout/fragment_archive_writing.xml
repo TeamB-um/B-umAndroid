@@ -22,7 +22,6 @@
             style="@style/CustomActionChipStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checkable="true"
             android:text="@string/archive_chip_allCategory"
             android:textAppearance="@style/ChipText.14dp"
             app:checkedIcon="@drawable/icon_filter_checked"

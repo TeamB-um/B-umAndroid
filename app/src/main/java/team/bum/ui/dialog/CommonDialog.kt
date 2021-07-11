@@ -62,10 +62,7 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
         }
         if (showClose) {
             binding.close.setVisible()
-            binding.close.setOnClickListener {
-                clickListener?.onClickClose()
-                dismiss()
-            }
+            binding.close.setOnClickListener { dismiss() }
         }
         if (showEdit) {
             binding.body.updateLayoutParams<ConstraintLayout.LayoutParams> {
@@ -118,7 +115,6 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
         fun onClickYes() {}
         fun onClickYes(text: String) {}
         fun onClickCancel() {}
-        fun onClickClose() {}
     }
 
     companion object {

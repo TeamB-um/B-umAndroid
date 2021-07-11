@@ -6,18 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.TextView
+import androidx.core.view.get
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import team.bum.R
 import team.bum.databinding.FragmentFilterSheetBinding
+import team.bum.ui.main.archive.data.ArchiveWritingFilterInfo
 import team.bum.util.*
 import java.time.LocalDateTime
 
 class FilterSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentFilterSheetBinding
+    private lateinit var clickListener: ClickListener
     private var isStart = true
+    private var selectedId = -1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +49,11 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
 
     private fun configureButton() {
         binding.btnCheck.setOnClickListener {
+            val selectedChip = binding.chipGroup[getSelectedChip()] as Chip
+            val filterInfo = ArchiveWritingFilterInfo(
+                "${binding.startDate.text}", "${binding.endDate.text}", "${selectedChip.text}"
+            )
+            clickListener.onClickYes(filterInfo)
             dismiss()
         }
         binding.close.setOnClickListener { dismiss() }
@@ -95,17 +104,20 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
                     binding.startPicker.setInvisible()
                     binding.endPicker.setVisible()
                 }
+                initFilter()
                 switchViews.forEach { it.setVisible() }
             } else {
                 binding.startPicker.setGone()
                 binding.endPicker.setGone()
+                binding.startDate.text = ""
+                binding.endDate.text = ""
                 switchViews.forEach { it.setGone() }
             }
         }
     }
 
     private fun configureCategory() {
-        val category = listOf("인간관계", "인간관계", "인간관계", "인간관계", "인간관계", "인간관계", "인간관계")
+        val category = listOf("인간관계", "취업", "오늘하루", "우울", "건강", "웅앵웅")
 
         category.forEachIndexed { i, text ->
             if (i == 0) binding.chipGroup.addView(createChip(text, true))
@@ -120,5 +132,21 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
             layoutParams =
                 ChipGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         }
+    }
+
+    private fun getSelectedChip(): Int {
+        for (i in 0 until binding.chipGroup.childCount) {
+            val chip = binding.chipGroup.getChildAt(i) as Chip
+            if (chip.isChecked) selectedId = i
+        }
+        return selectedId
+    }
+
+    fun setClickYesListener(clickListener: ClickListener) {
+        this.clickListener = clickListener
+    }
+
+    interface ClickListener {
+        fun onClickYes(filterData: ArchiveWritingFilterInfo)
     }
 }

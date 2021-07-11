@@ -10,7 +10,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import team.bum.databinding.FragmentDialogSheetBinding
 
 class SheetFragment : BottomSheetDialogFragment() {
+
     private lateinit var binding: FragmentDialogSheetBinding
+    private lateinit var clickListener: ClickListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,14 +24,9 @@ class SheetFragment : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         val mValues = arrayOf("즉시 삭제", "1일", "2일", "3일", "4일", "5일", "6일", "7일")
         setNumberPicker(binding.numberpicker, mValues)
-        binding.btnCheck.setOnClickListener {
-            Log.d("test", getEditTextInNumberPicker())
-            dismiss()
-        }
+        configureButton()
     }
 
     private fun setNumberPicker(numberPicker: NumberPicker, numbers: Array<String>) {
@@ -37,6 +34,15 @@ class SheetFragment : BottomSheetDialogFragment() {
         numberPicker.minValue = 0
         numberPicker.wrapSelectorWheel = false
         numberPicker.displayedValues = numbers
+    }
+
+    private fun configureButton() {
+        binding.btnCheck.setOnClickListener {
+            val date = getEditTextInNumberPicker()
+            Log.d("야.", date)
+            clickListener.onClickYes(date)
+            dismiss()
+        }
     }
 
     private fun getEditTextInNumberPicker(): String {
@@ -66,5 +72,13 @@ class SheetFragment : BottomSheetDialogFragment() {
                 return "7일"
             }
         }
+    }
+
+    fun setClickYesListener(clickListener: ClickListener) {
+        this.clickListener = clickListener
+    }
+
+    interface ClickListener {
+        fun onClickYes(date: String)
     }
 }

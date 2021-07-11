@@ -1,17 +1,14 @@
 package team.bum.ui.main.collection
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import team.bum.R
 import team.bum.databinding.FragmentCollectionBinding
-import team.bum.databinding.FragmentSettingBinding
 import team.bum.ui.base.BaseFragment
+import team.bum.ui.dialog.StatsDialog
 import team.bum.ui.main.MainActivity
 import team.bum.ui.main.collection.adapter.CollectionAdapter
 import team.bum.ui.main.collection.data.CollectionInfo
@@ -31,6 +28,7 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
 
         addCollectionInfo()
         recyclerViewClickEvent()
+        statsClickEvent()
 
     }
 
@@ -79,6 +77,17 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
                 (activity as MainActivity).navigateCollectionList()
             }
         })
+    }
 
+    private fun statsClickEvent() {
+        binding.imageStats.setOnClickListener {
+            showDialog()
+        }
+    }
+
+    private fun showDialog() {
+        val dialog = StatsDialog.CustomDialogBuilder().create()
+        dialog.isCancelable = false
+        dialog.show(parentFragmentManager, "dialog")
     }
 }

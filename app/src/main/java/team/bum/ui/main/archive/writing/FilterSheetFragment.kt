@@ -10,6 +10,9 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import team.bum.R
 import team.bum.databinding.FragmentFilterSheetBinding
+import team.bum.util.setGone
+import team.bum.util.setInvisible
+import team.bum.util.setVisible
 
 class FilterSheetFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentFilterSheetBinding
@@ -18,7 +21,7 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         binding = FragmentFilterSheetBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -27,15 +30,30 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val mValues = System.currentTimeMillis()
-        setDatePicker(binding.dataPicker, mValues)
+        setDatePicker(binding.startPicker, mValues)
         binding.btnCheck.setOnClickListener {
             dismiss()
         }
+        setSwitch()
         configureCategory()
     }
 
     private fun setDatePicker(datePicker: DatePicker, date: Long) {
         datePicker.maxDate = System.currentTimeMillis()
+    }
+
+    private fun setSwitch() {
+        binding.switchFilter.setOnCheckedChangeListener { _, onSwitch ->
+            val switchViews = listOf(
+                binding.tvStart, binding.tvFinish, binding.startDate, binding.finishDate, binding.startDivider,
+                binding.finishDivider, binding.startPicker, binding.finishPicker, binding.divider1, binding.divider2
+            )
+            if (onSwitch) {
+                switchViews.forEach { it.setVisible() }
+            } else {
+                switchViews.forEach { it.setGone() }
+            }
+        }
     }
 
     private fun configureCategory() {

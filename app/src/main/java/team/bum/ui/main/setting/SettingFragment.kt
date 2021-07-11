@@ -1,16 +1,17 @@
 package team.bum.ui.main.setting
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import team.bum.R
 import team.bum.databinding.FragmentSettingBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.main.MainActivity
 
 class SettingFragment : BaseFragment<FragmentSettingBinding>() {
+
+    private val sheetFragment: SheetFragment = SheetFragment()
 
     override fun initBinding(
         inflater: LayoutInflater,
@@ -18,14 +19,13 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
     ) = FragmentSettingBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         bottomSheetEvent()
         configureSettingBinNavigation()
+        setDuration()
     }
 
     private fun bottomSheetEvent() {
         binding.layoutDeleteDuration.setOnClickListener {
-            val sheetFragment: SheetFragment = SheetFragment()
             sheetFragment.show(requireActivity().supportFragmentManager, sheetFragment.tag)
         }
     }
@@ -34,5 +34,14 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
         binding.layoutTrashManagement.setOnClickListener {
             (activity as MainActivity).navigateSettingToManagement()
         }
+    }
+
+    private fun setDuration() {
+        sheetFragment.setClickYesListener(object : SheetFragment.ClickListener {
+            override fun onClickYes(date: String) {
+                Log.d("야", date)
+                binding.tvDurationDay.text = date
+            }
+        })
     }
 }

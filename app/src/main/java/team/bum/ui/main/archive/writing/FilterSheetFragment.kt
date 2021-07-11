@@ -5,17 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import team.bum.R
 import team.bum.databinding.FragmentFilterSheetBinding
-import team.bum.util.setGone
-import team.bum.util.setInvisible
-import team.bum.util.setVisible
+import team.bum.util.*
+import java.time.LocalDateTime
 
 class FilterSheetFragment : BottomSheetDialogFragment() {
+
     private lateinit var binding: FragmentFilterSheetBinding
+    private var isStart = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,30 +29,76 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val mValues = System.currentTimeMillis()
-        setDatePicker(binding.startPicker, mValues)
-        binding.btnCheck.setOnClickListener {
-            dismiss()
-        }
+        initFilter()
+        configureButton()
+        configureDatePicker()
+        setDatePicker(binding.startPicker, binding.startDate)
         setSwitch()
         configureCategory()
     }
 
-    private fun setDatePicker(datePicker: DatePicker, date: Long) {
+    private fun initFilter() {
+        val dateString = LocalDateTime.now().dateString
+        binding.startDate.text = dateString
+        binding.endDate.text = dateString
+    }
+
+    private fun configureButton() {
+        binding.btnCheck.setOnClickListener {
+            dismiss()
+        }
+        binding.close.setOnClickListener { dismiss() }
+    }
+
+    private fun setDatePicker(datePicker: DatePicker, date: TextView) {
         datePicker.maxDate = System.currentTimeMillis()
+        datePicker.setOnDateChangedListener { _, year, monthOfYear, dayOfMonth ->
+            val strDate = "$year.${(monthOfYear + 1).padZero()}.${dayOfMonth.padZero()}"
+            date.text = strDate
+        }
+    }
+
+    private fun configureDatePicker() {
+        binding.startDate.setOnClickListener {
+            binding.tvStart.setTextColor(getColor(R.color.filter_green))
+            binding.startDivider.setBackgroundColor(getColor(R.color.filter_green))
+            binding.tvEnd.setTextColor(getColor(R.color.icon_grey))
+            binding.endDivider.setBackgroundColor(getColor(R.color.disable))
+            binding.endPicker.setInvisible()
+            binding.startPicker.setVisible()
+            setDatePicker(binding.startPicker, binding.startDate)
+            isStart = true
+        }
+        binding.endDate.setOnClickListener {
+            binding.tvEnd.setTextColor(getColor(R.color.filter_green))
+            binding.endDivider.setBackgroundColor(getColor(R.color.filter_green))
+            binding.tvStart.setTextColor(getColor(R.color.icon_grey))
+            binding.startDivider.setBackgroundColor(getColor(R.color.disable))
+            binding.startPicker.setInvisible()
+            binding.endPicker.setVisible()
+            setDatePicker(binding.endPicker, binding.endDate)
+            isStart = false
+        }
     }
 
     private fun setSwitch() {
         binding.switchFilter.setOnCheckedChangeListener { _, onSwitch ->
             val switchViews = listOf(
-                binding.tvStart, binding.tvFinish, binding.startDate, binding.finishDate, binding.startDivider,
-                binding.finishDivider, binding.startPicker, binding.finishPicker, binding.divider1, binding.divider2
+                binding.tvStart, binding.tvEnd, binding.startDate, binding.endDate,
+                binding.startDivider, binding.endDivider, binding.divider1, binding.divider2
             )
             if (onSwitch) {
+                if (isStart) {
+                    binding.startPicker.setVisible()
+                    binding.endPicker.setInvisible()
+                } else {
+                    binding.startPicker.setInvisible()
+                    binding.endPicker.setVisible()
+                }
                 switchViews.forEach { it.setVisible() }
             } else {
+                binding.startPicker.setGone()
+                binding.endPicker.setGone()
                 switchViews.forEach { it.setGone() }
             }
         }

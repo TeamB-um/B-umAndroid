@@ -76,17 +76,17 @@
         app:layout_constraintWidth_percent="0.42" />
 
     <TextView
-        android:id="@+id/tv_finish"
+        android:id="@+id/tv_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="끝"
         android:textColor="@color/icon_grey"
         android:textSize="14dp"
-        app:layout_constraintLeft_toLeftOf="@id/finish_date"
+        app:layout_constraintLeft_toLeftOf="@id/end_date"
         app:layout_constraintTop_toTopOf="@id/tv_start" />
 
     <TextView
-        android:id="@+id/finish_date"
+        android:id="@+id/end_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -94,19 +94,19 @@
         android:lineSpacingExtra="7dp"
         android:textColor="@color/icon_grey"
         android:textSize="15dp"
-        app:layout_constraintLeft_toLeftOf="@id/finish_divider"
-        app:layout_constraintTop_toBottomOf="@id/tv_finish"
+        app:layout_constraintLeft_toLeftOf="@id/end_divider"
+        app:layout_constraintTop_toBottomOf="@id/tv_end"
         tools:text="2021.07.11 (토)" />
 
     <View
-        android:id="@+id/finish_divider"
+        android:id="@+id/end_divider"
         android:layout_width="0dp"
         android:layout_height="2dp"
         android:layout_marginTop="5dp"
         android:background="@color/disable"
         app:layout_constraintDimensionRatio="150:2"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/finish_date"
+        app:layout_constraintTop_toBottomOf="@id/end_date"
         app:layout_constraintWidth_percent="0.42" />
 
     <View
@@ -140,7 +140,7 @@
         app:layout_constraintTop_toBottomOf="@id/start_divider" />
 
     <DatePicker
-        android:id="@+id/finish_picker"
+        android:id="@+id/end_picker"
         android:layout_width="0dp"
         android:layout_height="140dp"
         android:layout_marginTop="31dp"

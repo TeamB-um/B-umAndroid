@@ -28,7 +28,6 @@ class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
         binding.recyclerRewardList.adapter = archiveRewardAdapter
 
         addArchiveRewardInfo()
-        showDialog()
         configureClickEvent()
     }
 
@@ -61,7 +60,7 @@ class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
                 ),
                 ArchiveRewardInfo(
                     rewardDate = "hello",
-                    rewardContent = "버들가지 약하나,\n" + "다른 재목을 묶는다.",
+                    rewardContent = "ㅁㄴㅇㄹㅁㄴㅇㄹ",
                     rewardAuthor = "-조지 허버트-"
                 ),
                 ArchiveRewardInfo(

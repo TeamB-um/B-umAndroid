@@ -56,5 +56,3 @@ class ArchiveRewardAdapter : RecyclerView.Adapter<ArchiveRewardAdapter.ArchiveRe
         this.itemClickListener = itemClickListener
     }
 }
-
-

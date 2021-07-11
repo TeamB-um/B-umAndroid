@@ -85,4 +85,13 @@
     <string name="collection_list_header">분리수거함 이름</string>
     <string name="archive_chip_remove">삭제</string>
 
+    <!--stats-->
+    <string name="stats_header">통계</string>
+    <string name="stats_month_header">월간 통계</string>
+    <string name="stats_month_context">한 달 내 카테고리별 스트레스 비율입니다</string>
+    <string name="stats_total_header">전체 통계</string>
+    <string name="stats_total_context">전체 사용 기간 동안의 스트레스 비율입니다</string>
+    <string name="stats_item_category">인간관계</string>
+    <string name="stats_item_percent">35%</string>
+
 </resources>

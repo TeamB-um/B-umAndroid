@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import com.google.android.material.tabs.TabLayoutMediator
 import team.bum.databinding.FragmentArchiveBinding
 import team.bum.ui.base.BaseFragment
+import team.bum.ui.main.MainActivity
 import team.bum.ui.main.archive.adapter.ArchivePagerAdapter
 
 class ArchiveFragment : BaseFragment<FragmentArchiveBinding>() {
@@ -15,9 +17,8 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding>() {
         FragmentArchiveBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         setArchivePager()
+        setBackButtonEvent()
     }
 
     private fun setArchivePager() {
@@ -33,4 +34,9 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding>() {
         }.attach()
     }
 
+    private fun setBackButtonEvent() {
+        requireActivity().onBackPressedDispatcher.addCallback {
+            (activity as MainActivity).showFinishToast()
+        }
+    }
 }

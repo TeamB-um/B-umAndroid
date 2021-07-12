@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import team.bum.databinding.FragmentSettingBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.main.MainActivity
@@ -33,6 +34,9 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
     private fun configureSettingBinNavigation() {
         binding.layoutTrashManagement.setOnClickListener {
             (activity as MainActivity).navigateSettingToManagement()
+        }
+        requireActivity().onBackPressedDispatcher.addCallback {
+            (activity as MainActivity).showFinishToast()
         }
     }
 

@@ -16,10 +16,14 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setLottieListener()
+    }
 
+    private fun setLottieListener() {
         binding.lottie.addAnimatorListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator?) {
                 navigateMain()
+                finish()
             }
         })
     }

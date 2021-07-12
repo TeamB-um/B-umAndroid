@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.recyclerview.widget.GridLayoutManager
 import team.bum.R
 import team.bum.databinding.FragmentCollectionBinding
@@ -29,7 +30,7 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
         addCollectionInfo()
         recyclerViewClickEvent()
         statsClickEvent()
-
+        setBackButtonEvent()
     }
 
     private fun addCollectionInfo() {
@@ -89,5 +90,11 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
         val dialog = StatsDialog.CustomDialogBuilder().create()
         dialog.isCancelable = false
         dialog.show(parentFragmentManager, "dialog")
+    }
+
+    private fun setBackButtonEvent() {
+        requireActivity().onBackPressedDispatcher.addCallback {
+            (activity as MainActivity).showFinishToast()
+        }
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import team.bum.R
 import team.bum.databinding.FragmentHomeBinding
 import team.bum.ui.base.BaseFragment
@@ -31,6 +32,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun configureHomeNavigation() {
         binding.root.setOnClickListener {
             navigateToSelectPaper()
+        }
+        requireActivity().onBackPressedDispatcher.addCallback {
+            (activity as MainActivity).showFinishToast()
         }
     }
 

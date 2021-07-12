@@ -18,6 +18,7 @@ import team.bum.util.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private var backPressedTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,5 +93,14 @@ class MainActivity : AppCompatActivity() {
             startAnimation(slideDown)
             setInvisible()
         }
+    }
+
+    fun showFinishToast() {
+        if (System.currentTimeMillis() - backPressedTime < 2000) {
+            finish()
+            return
+        }
+        shortToast("'뒤로' 버튼을 한번 더 누르시면 앱이 종료됩니다.")
+        backPressedTime = System.currentTimeMillis()
     }
 }

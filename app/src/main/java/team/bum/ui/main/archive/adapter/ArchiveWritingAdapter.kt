@@ -30,7 +30,7 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
                         val adapterPosition = adapterPosition
                         toggleItemSelected(adapterPosition)
                     }
-                    if (selectedStatus.get(position, false)) {
+                    if (isItemSelected(position)) {
                         binding.checkCircle.setImageResource(R.drawable.btn_circle_checked)
                     } else {
                         binding.checkCircle.setImageResource(R.drawable.btn_circle_unchecked)
@@ -82,9 +82,11 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
         }
     }
 
+    private fun isItemSelected(position: Int) : Boolean = selectedStatus.get(position, false)
+
     fun clearSelectedItem() {
         var position: Int
-        for (i: Int in 0..selectedStatus.size() step(1)) {
+        for (i: Int in 0 until selectedStatus.size() step(1)) {
             position = selectedStatus.keyAt(i)
             selectedStatus.put(position, false)
             notifyItemChanged(position)

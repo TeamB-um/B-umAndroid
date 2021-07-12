@@ -39,7 +39,7 @@ class RewardDialog : BaseDialogFragment<DialogRewardBinding>() {
                 (deviceWidth - dialogHorizontalMargin).toInt(),
                 WindowManager.LayoutParams.WRAP_CONTENT
             )
-            setBackgroundDrawableResource(R.drawable.bg_dialog_common)
+            setBackgroundDrawableResource(R.drawable.bg_dialog_reward)
         }
     }
 

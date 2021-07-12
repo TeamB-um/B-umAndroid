@@ -1,29 +1,50 @@
 package team.bum.ui.main.collection.adapter
 
-import android.content.Context
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import team.bum.R
 import team.bum.databinding.ItemCardCollectionBinding
-import team.bum.ui.main.collection.data.CollectionListInfo
+import team.bum.ui.main.archive.data.ArchiveWritingInfo
 import team.bum.util.setInvisible
 import team.bum.util.setVisible
 
-class CollectionListAdapter :
-    RecyclerView.Adapter<CollectionListAdapter.CollectionListViewHolder>() {
+class CollectionListAdapter : RecyclerView.Adapter<CollectionListAdapter.CollectionListViewHolder>() {
 
-    private val collectionListInfo = mutableListOf<CollectionListInfo>()
+    private val archiveWritingInfo = mutableListOf<ArchiveWritingInfo>()
     private var itemViewMode = MODE_NORMAL
     private var selectedStatus = SparseBooleanArray(0)
+    private lateinit var itemClickListener: ItemClickListener
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): CollectionListAdapter.CollectionListViewHolder {
-        val binding =
-            ItemCardCollectionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    inner class CollectionListViewHolder(
+        private val binding: ItemCardCollectionBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun onBind(archiveInfo: ArchiveWritingInfo, position: Int) {
+            binding.apply {
+                tvCollectionName.text = archiveInfo.title
+                tvCollectionContext.text = archiveInfo.content
+                if (itemViewMode == MODE_SELECT) {
+                    itemView.setOnClickListener {
+                        val adapterPosition = adapterPosition
+                        toggleItemSelected(adapterPosition)
+                    }
+                    if (isItemSelected(position)) {
+                        binding.checkCircle.setImageResource(R.drawable.btn_circle_checked)
+                    } else {
+                        binding.checkCircle.setImageResource(R.drawable.btn_circle_unchecked)
+                    }
+                } else {
+                    itemView.setOnClickListener {
+                        itemClickListener.onClick(archiveWritingInfo[position])
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionListViewHolder {
+        val binding = ItemCardCollectionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         binding.checkCircle.apply {
             if (viewType == MODE_NORMAL) setInvisible()
             if (viewType == MODE_SELECT) setVisible()
@@ -31,22 +52,17 @@ class CollectionListAdapter :
         return CollectionListViewHolder(binding)
     }
 
-    override fun onBindViewHolder(
-        holder: CollectionListAdapter.CollectionListViewHolder,
-        position: Int
-    ) {
-        holder.onBind(collectionListInfo[position], holder.itemView.context)
-
+    override fun onBindViewHolder(holder: CollectionListViewHolder, position: Int) {
+        holder.onBind(archiveWritingInfo[position], position)
     }
 
-    override fun getItemCount(): Int = collectionListInfo.size
+    override fun getItemCount(): Int = archiveWritingInfo.size
 
     override fun getItemViewType(position: Int): Int = itemViewMode
 
-
-    fun setItems(newItems: List<CollectionListInfo>) {
-        collectionListInfo.clear()
-        collectionListInfo.addAll(newItems)
+    fun setItems(newItems: List<ArchiveWritingInfo>) {
+        archiveWritingInfo.clear()
+        archiveWritingInfo.addAll(newItems)
         notifyDataSetChanged()
     }
 
@@ -60,6 +76,8 @@ class CollectionListAdapter :
         }
     }
 
+    private fun isItemSelected(position: Int) : Boolean = selectedStatus.get(position, false)
+
     fun setViewMode(mode: Int) {
         itemViewMode = mode
         notifyDataSetChanged()
@@ -67,7 +85,7 @@ class CollectionListAdapter :
 
     fun clearSelectedItem() {
         var position: Int
-        for (i: Int in 0..selectedStatus.size() step (1)) {
+        for (i: Int in 0 until selectedStatus.size() step (1)) {
             position = selectedStatus.keyAt(i)
             selectedStatus.put(position, false)
             notifyItemChanged(position)
@@ -75,24 +93,12 @@ class CollectionListAdapter :
         selectedStatus.clear()
     }
 
-    inner class CollectionListViewHolder(
-        private val binding: ItemCardCollectionBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(collectionListInfo: CollectionListInfo, context: Context) {
-            binding.apply {
-                tvCollectionName.text = collectionListInfo.title
-                tvCollectionContext.text = collectionListInfo.context
-                itemView.setOnClickListener {
-                    val mposition = adapterPosition
-                    toggleItemSelected(mposition)
-                }
-                if (selectedStatus.get(position, false)) {
-                    binding.checkCircle.setImageResource(R.drawable.btn_circle_checked)
-                } else {
-                    binding.checkCircle.setImageResource(R.drawable.btn_circle_unchecked)
-                }
-            }
-        }
+    fun setItemClickListener(itemClickListener: ItemClickListener) {
+        this.itemClickListener = itemClickListener
+    }
+
+    interface ItemClickListener {
+        fun onClick(archiveInfo: ArchiveWritingInfo)
     }
 
     companion object {

@@ -86,10 +86,10 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
     private fun configureClickEvent() {
         archiveWritingAdapter.setItemClickListener(object : ArchiveWritingAdapter.ItemClickListener {
             override fun onClick(archiveWritingInfo: ArchiveWritingInfo) {
-                category = archiveWritingInfo.writingCategory
-                title = archiveWritingInfo.writingTitle
+                category = archiveWritingInfo.category
+                title = archiveWritingInfo.title
                 date = "2021년 07월 10일 (토)"
-                content = archiveWritingInfo.writingContent
+                content = archiveWritingInfo.content
                 showDialog()
             }
         })
@@ -105,54 +105,54 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
         archiveWritingAdapter.setItems(
             listOf<ArchiveWritingInfo>(
                 ArchiveWritingInfo(
-                    writingCategory = "인간관계",
-                    writingTitle = "글제목2",
-                    writingContent = "어쩌고저쩌고",
+                    category = "인간관계",
+                    title = "글제목2",
+                    content = "어쩌고저쩌고",
                 ),
                 ArchiveWritingInfo(
-                    writingCategory = "인간관계",
-                    writingTitle = "글제목2",
-                    writingContent = "어쩌고저쩌고"
+                    category = "인간관계",
+                    title = "글제목2",
+                    content = "어쩌고저쩌고"
                 ),
                 ArchiveWritingInfo(
-                    writingCategory = "이강민",
-                    writingTitle = "이강민아",
-                    writingContent = "스트레스 안받아?"
+                    category = "이강민",
+                    title = "이강민아",
+                    content = "스트레스 안받아?"
                 ),
                 ArchiveWritingInfo(
-                    writingCategory = "인간관계",
-                    writingTitle = "글제목1",
-                    writingContent = "어쩌고저쩌고"
+                    category = "인간관계",
+                    title = "글제목1",
+                    content = "어쩌고저쩌고"
                 ),
                 ArchiveWritingInfo(
-                    writingCategory = "인간관계",
-                    writingTitle = "글제목1",
-                    writingContent = "어쩌고저쩌고"
+                    category = "인간관계",
+                    title = "글제목1",
+                    content = "어쩌고저쩌고"
                 ),
                 ArchiveWritingInfo(
-                    writingCategory = "인간관계",
-                    writingTitle = "글제목1",
-                    writingContent = "어쩌고저쩌고"
+                    category = "인간관계",
+                    title = "글제목1",
+                    content = "어쩌고저쩌고"
                 ),
                 ArchiveWritingInfo(
-                    writingCategory = "인간관계",
-                    writingTitle = "글제목1",
-                    writingContent = "어쩌고저쩌고"
+                    category = "인간관계",
+                    title = "글제목1",
+                    content = "어쩌고저쩌고"
                 ),
                 ArchiveWritingInfo(
-                    writingCategory = "인간관계",
-                    writingTitle = "글제목1",
-                    writingContent = "어쩌고저쩌고"
+                    category = "인간관계",
+                    title = "글제목1",
+                    content = "어쩌고저쩌고"
                 ),
                 ArchiveWritingInfo(
-                    writingCategory = "인간관계",
-                    writingTitle = "글제목1",
-                    writingContent = "어쩌고저쩌고"
+                    category = "인간관계",
+                    title = "글제목1",
+                    content = "어쩌고저쩌고"
                 ),
                 ArchiveWritingInfo(
-                    writingCategory = "인간관계",
-                    writingTitle = "글제목1",
-                    writingContent = "어쩌고저쩌고"
+                    category = "인간관계",
+                    title = "글제목1",
+                    content = "어쩌고저쩌고"
                 )
             )
         )

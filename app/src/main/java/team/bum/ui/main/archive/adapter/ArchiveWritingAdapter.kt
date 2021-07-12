@@ -22,9 +22,9 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(archiveInfo: ArchiveWritingInfo, position: Int) {
             binding.apply {
-                tvMywritingCategory.text = archiveInfo.writingCategory
-                tvMywritingTitle.text = archiveInfo.writingTitle
-                tvMywritingContent.text = archiveInfo.writingContent
+                tvMywritingCategory.text = archiveInfo.category
+                tvMywritingTitle.text = archiveInfo.title
+                tvMywritingContent.text = archiveInfo.content
                 if (itemViewMode == MODE_SELECT) {
                     itemView.setOnClickListener {
                         val adapterPosition = adapterPosition

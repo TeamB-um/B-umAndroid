@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import team.bum.api.service.BiumService
 
 object ServiceCreator {
-    private const val BASE_URL = "http://"
+    private const val BASE_URL = "http://3.34.253.79:5000/"
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)

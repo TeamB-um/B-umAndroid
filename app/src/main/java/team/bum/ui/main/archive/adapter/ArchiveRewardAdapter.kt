@@ -3,12 +3,15 @@ package team.bum.ui.main.archive.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import team.bum.api.data.ResponseRewards
+import team.bum.api.data.Reward
 import team.bum.databinding.ItemCardRewardBinding
 import team.bum.ui.main.archive.data.ArchiveRewardInfo
+import kotlin.time.days
 
 class ArchiveRewardAdapter : RecyclerView.Adapter<ArchiveRewardAdapter.ArchiveRewardViewHolder>() {
 
-    private val archiveRewardInfo = mutableListOf<ArchiveRewardInfo>()
+    private val archiveRewardInfo = mutableListOf<Reward>()
     private lateinit var itemClickListener: ItemClickListener
 
     override fun onCreateViewHolder(
@@ -23,11 +26,11 @@ class ArchiveRewardAdapter : RecyclerView.Adapter<ArchiveRewardAdapter.ArchiveRe
     inner class ArchiveRewardViewHolder(
         private val binding: ItemCardRewardBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(archiveInfo: ArchiveRewardInfo, position: Int) {
+        fun onBind(archiveInfo: Reward, position: Int) {
             binding.apply {
-                tvRewardDate.text = archiveInfo.rewardDate
-                tvRewardContent.text = archiveInfo.rewardContent
-                tvRewardAuthor.text = archiveInfo.rewardAuthor
+                tvRewardDate.text = archiveInfo.created_date
+                tvRewardContent.text = archiveInfo.context
+                tvRewardAuthor.text = archiveInfo.author
 
                 itemView.setOnClickListener {
                     itemClickListener.onClick(archiveRewardInfo[position])
@@ -42,14 +45,14 @@ class ArchiveRewardAdapter : RecyclerView.Adapter<ArchiveRewardAdapter.ArchiveRe
         holder.onBind(archiveRewardInfo[position], position)
     }
 
-    fun setItems(newItems: List<ArchiveRewardInfo>) {
+    fun setItems(newItems: List<Reward>) {
         archiveRewardInfo.clear()
         archiveRewardInfo.addAll(newItems)
         notifyDataSetChanged()
     }
 
     interface ItemClickListener {
-        fun onClick(archiveInfo: ArchiveRewardInfo)
+        fun onClick(archiveInfo: Reward)
     }
 
     fun setItemClickListener(itemClickListener: ItemClickListener) {

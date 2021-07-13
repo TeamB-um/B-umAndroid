@@ -1,8 +1,8 @@
 package team.bum.api.service
 
-import retrofit2.Call
 import retrofit2.http.*
 import team.bum.api.data.*
+import retrofit2.Call
 
 interface BumService {
     @POST("users")
@@ -32,5 +32,17 @@ interface BumService {
     @GET("categories")
     fun getCategoryInfo(
         @Header("x-auth-token") token: String
+    ): Call<ResponseCategory>
+
+    @POST("categories")
+    fun setCategoryInfo(
+        @Header("x-auth-token") token: String,
+        @Body body: RequestCategory
+    ): Call<ResponseCategory>
+
+    @DELETE("categories/{category_id}")
+    fun deleteCategoryInfo(
+        @Header("x-auth-token") token: String,
+        @Body body: RequestDeleteCategory
     ): Call<ResponseCategory>
 }

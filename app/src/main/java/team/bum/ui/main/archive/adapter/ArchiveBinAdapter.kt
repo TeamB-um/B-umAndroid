@@ -4,12 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import team.bum.api.data.Trashcan
 import team.bum.databinding.ItemCardBinBinding
 import team.bum.ui.main.archive.data.ArchiveBinInfo
 
 class ArchiveBinAdapter: RecyclerView.Adapter<ArchiveBinAdapter.ArchiveBinViewHolder>() {
 
-    private val archiveBinInfo = mutableListOf<ArchiveBinInfo>()
+    private val archiveBinInfo = mutableListOf<Trashcan>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -25,7 +26,7 @@ class ArchiveBinAdapter: RecyclerView.Adapter<ArchiveBinAdapter.ArchiveBinViewHo
 
     override fun getItemCount(): Int = archiveBinInfo.size
 
-    fun setItems(newItems: List<ArchiveBinInfo>) {
+    fun setItems(newItems: List<Trashcan>) {
         archiveBinInfo.clear()
         archiveBinInfo.addAll(newItems)
         notifyDataSetChanged()
@@ -34,12 +35,12 @@ class ArchiveBinAdapter: RecyclerView.Adapter<ArchiveBinAdapter.ArchiveBinViewHo
     class ArchiveBinViewHolder(
         private val binding: ItemCardBinBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(archiveInfo: ArchiveBinInfo, context: Context) {
+        fun onBind(archiveInfo: Trashcan, context: Context) {
             binding.apply {
-                tvBinCategory.text = archiveInfo.binCategory
-                tvBinTitle.text = archiveInfo.binTitle
-                tvBinContent.text = archiveInfo.binContent
-                tvBinDday.text = archiveInfo.binDday
+                tvBinCategory.text = archiveInfo.category.name
+                tvBinTitle.text = archiveInfo.title
+                tvBinContent.text = archiveInfo.text
+                tvBinDday.text = archiveInfo.d_day.toString()
             }
         }
     }

@@ -5,13 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import retrofit2.Call
+import team.bum.api.data.ResponseCategory
+import team.bum.api.data.ResponseTrashCans
+import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentArchiveBinBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.main.archive.adapter.ArchiveBinAdapter
 import team.bum.ui.main.archive.data.ArchiveBinInfo
+import team.bum.util.MyApplication
+import team.bum.util.enqueueUtil
 
 class ArchiveBinFragment : BaseFragment<FragmentArchiveBinBinding>() {
     private val archiveBinAdapter = ArchiveBinAdapter()
+    private val sharedPreferences = MyApplication.mySharedPreferences
+
 
     override fun initBinding(
         inflater: LayoutInflater,
@@ -36,69 +44,12 @@ class ArchiveBinFragment : BaseFragment<FragmentArchiveBinBinding>() {
     }
 
     private fun addArchiveRewardInfo() {
-        archiveBinAdapter.setItems(
-            listOf<ArchiveBinInfo>(
-                ArchiveBinInfo(
-                    binCategory = "인간관계",
-                    binTitle = "글제목1",
-                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
-                    binDday = "D-1"
-                ),
-                ArchiveBinInfo(
-                    binCategory = "인간관계",
-                    binTitle = "글제목1",
-                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
-                    binDday = "D-1"
-                ),
-                ArchiveBinInfo(
-                    binCategory = "인간관계",
-                    binTitle = "글제목1",
-                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
-                    binDday = "D-1"
-                ),
-                ArchiveBinInfo(
-                    binCategory = "인간관계",
-                    binTitle = "글제목1",
-                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
-                    binDday = "D-1"
-                ),
-                ArchiveBinInfo(
-                    binCategory = "인간관계",
-                    binTitle = "글제목1",
-                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
-                    binDday = "D-1"
-                ),
-                ArchiveBinInfo(
-                    binCategory = "인간관계",
-                    binTitle = "글제목1",
-                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
-                    binDday = "D-1"
-                ),
-                ArchiveBinInfo(
-                    binCategory = "인간관계",
-                    binTitle = "글제목1",
-                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
-                    binDday = "D-1"
-                ),
-                ArchiveBinInfo(
-                    binCategory = "인간관계",
-                    binTitle = "글제목1",
-                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
-                    binDday = "D-1"
-                ),
-                ArchiveBinInfo(
-                    binCategory = "인간관계",
-                    binTitle = "글제목1",
-                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
-                    binDday = "D-1"
-                ),
-                ArchiveBinInfo(
-                    binCategory = "인간관계",
-                    binTitle = "글제목1",
-                    binContent = "글 내용 미리보기 미리보기 미리보기 미리보기",
-                    binDday = "D-1"
-                )
-            )
+        val call: Call<ResponseTrashCans> = ServiceCreator.bumService.getTrashCans(
+            sharedPreferences.getValue("token", ""))
+        call.enqueueUtil(
+            onSuccess = {
+                archiveBinAdapter.setItems(it.data)
+            }
         )
     }
 }

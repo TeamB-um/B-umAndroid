@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
         slideDownBottomNav()
     }
 
-    fun navigateWritingToDrop(isDelete: Boolean) {
-        replaceFragment(binding.fragmentContainer, HomeDropFragment.newInstance(isDelete), true)
+    fun navigateWritingToDrop(isWriting: Boolean) {
+        replaceFragment(binding.fragmentContainer, HomeDropFragment.newInstance(isWriting), true)
         slideUpBottomNav()
     }
 

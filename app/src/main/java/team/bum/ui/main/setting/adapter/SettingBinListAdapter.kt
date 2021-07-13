@@ -4,13 +4,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import team.bum.api.data.CategoryInfo
 import team.bum.databinding.ItemCategoryBinding
 import team.bum.ui.main.setting.data.BinListInfo
 
 class SettingBinListAdapter :
     RecyclerView.Adapter<SettingBinListAdapter.SettingBinListViewHolder>() {
 
-    private val binListInfo = mutableListOf<BinListInfo>()
+    private val categoryInfo = mutableListOf<CategoryInfo>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -25,23 +26,23 @@ class SettingBinListAdapter :
         holder: SettingBinListAdapter.SettingBinListViewHolder,
         position: Int
     ) {
-        holder.onBind(binListInfo[position], holder.itemView.context)
+        holder.onBind(categoryInfo[position], holder.itemView.context)
     }
 
-    fun setItems(newItems: List<BinListInfo>) {
-        binListInfo.clear()
-        binListInfo.addAll(newItems)
+    fun setItems(newItems: List<CategoryInfo>) {
+        categoryInfo.clear()
+        categoryInfo.addAll(newItems)
         notifyDataSetChanged()
     }
 
-    override fun getItemCount(): Int = binListInfo.size
+    override fun getItemCount(): Int = categoryInfo.size
 
     class SettingBinListViewHolder(
         private val binding: ItemCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(binListInfo: BinListInfo, context: Context) {
+        fun onBind(categoryInfo: CategoryInfo, context: Context) {
             binding.apply {
-                tvCategory.text = binListInfo.category
+                tvCategory.text = categoryInfo.name
             }
         }
     }

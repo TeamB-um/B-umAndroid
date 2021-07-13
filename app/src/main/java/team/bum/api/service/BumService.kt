@@ -14,13 +14,23 @@ interface BumService {
     ): Call<ResponseUserInfo>
 
     @GET("trashcans")
-    fun getTrashCans(): Call<ResponseTrashCans>
+    fun getTrashCans(
+        @Header("x-auth-token") token: String
+    ): Call<ResponseTrashCans>
 
     @GET("rewards")
-    fun getRewards(): Call<ResponseRewards>
+    fun getRewards(
+        @Header("x-auth-token") token: String
+    ): Call<ResponseRewards>
 
-    @GET("categories/{categoryId}/rewards}")
+    @GET("categories/{category_Id}/rewards}")
     fun getCategoryRewards(
-        @Path("categoryId") categoryId: String
+        @Header("x-auth-token") token: String,
+        @Path("category_Id") categoryId: String
     ): Call<ResponseCategoryReward>
+
+    @GET("categories")
+    fun getCategoryInfo(
+        @Header("x-auth-token") token: String
+    ): Call<ResponseCategory>
 }

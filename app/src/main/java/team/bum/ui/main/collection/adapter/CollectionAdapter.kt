@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import team.bum.api.data.CategoryInfo
 import team.bum.databinding.ItemCollectionBinding
-import team.bum.ui.main.collection.data.CollectionInfo
 
 class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewHolder>() {
 
-    private val collectionInfo = mutableListOf<CollectionInfo>()
+    private val categoryInfo = mutableListOf<CategoryInfo>()
 
     interface ItemClickListener {
         fun onClick(view: View, position: Int)
@@ -32,28 +33,28 @@ class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewH
     }
 
     override fun onBindViewHolder(holder: CollectionAdapter.CollectionViewHolder, position: Int) {
-        holder.onBind(collectionInfo[position], holder.itemView.context)
+        holder.onBind(categoryInfo[position], holder.itemView.context)
 
         holder.itemView.setOnClickListener {
             itemClickListener.onClick(it, position)
         }
     }
 
-    override fun getItemCount(): Int = collectionInfo.size
+    override fun getItemCount(): Int = categoryInfo.size
 
-    fun setItems(newItems: List<CollectionInfo>) {
-        collectionInfo.clear()
-        collectionInfo.addAll(newItems)
+    fun setItems(newItems: List<CategoryInfo>) {
+        categoryInfo.clear()
+        categoryInfo.addAll(newItems)
         notifyDataSetChanged()
     }
 
     class CollectionViewHolder(
         private val binding: ItemCollectionBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(collectionInfo: CollectionInfo, context: Context) {
+        fun onBind(categoryInfoInfo: CategoryInfo, context: Context) {
+            Glide.with(context).load(categoryInfoInfo.img).into(binding.imageCollection)
             binding.apply {
-                imageCollection.setImageResource(collectionInfo.image)
-                tvCategory.text = collectionInfo.name
+                tvCategory.text = categoryInfoInfo.name
             }
         }
     }

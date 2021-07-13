@@ -5,8 +5,16 @@ import android.animation.AnimatorListenerAdapter
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import retrofit2.Call
+import team.bum.api.data.RequestSignIn
+import team.bum.api.data.ResponseToken
+import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.ActivitySplashBinding
 import team.bum.ui.main.MainActivity
+import team.bum.util.MyApplication
+import team.bum.util.enqueueUtil
+import java.util.*
 
 class SplashActivity : AppCompatActivity() {
 
@@ -16,16 +24,34 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         setLottieListener()
     }
 
     private fun setLottieListener() {
         binding.lottie.addAnimatorListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator?) {
-                navigateMain()
-                finish()
+                val uuid = MyApplication.mySharedPreferences.getValue("uuid", "")
+                if (uuid == "") {
+                    MyApplication.mySharedPreferences.setValue("uuid", UUID.randomUUID().toString())
+                } else {
+                    Log.d("tag-uuid", uuid)
+                    signIn(uuid)
+                }
             }
         })
+    }
+
+    private fun signIn(uuid: String) {
+        val body = RequestSignIn(uuid)
+        val call: Call<ResponseToken> = ServiceCreator.biumService.getToken(body)
+        call.enqueueUtil(
+            onSuccess = {
+                Log.d("tag-token", it.token)
+                MyApplication.mySharedPreferences.setValue("token", it.token)
+                navigateMain()
+                finish()
+            })
     }
 
     private fun navigateMain() = startActivity(Intent(this, MainActivity::class.java))

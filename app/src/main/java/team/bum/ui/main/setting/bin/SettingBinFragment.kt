@@ -1,14 +1,14 @@
 package team.bum.ui.main.setting.bin
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import retrofit2.Call
-import team.bum.R
+import team.bum.api.data.RequestCategory
 import team.bum.api.data.ResponseCategory
 import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentSettingBinBinding
@@ -16,11 +16,10 @@ import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity
 import team.bum.ui.main.setting.adapter.SettingBinListAdapter
-import team.bum.ui.main.setting.data.BinListInfo
 import team.bum.util.MyApplication
 import team.bum.util.enqueueUtil
 
-class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>() {
+class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>(), CommonDialog.ClickListener {
     private val settingBinListAdapter = SettingBinListAdapter()
     private val sharedPreferences = MyApplication.mySharedPreferences
 
@@ -53,7 +52,7 @@ class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>() {
         )
         call.enqueueUtil(
             onSuccess = {
-                settingBinListAdapter.setItems(it.data)
+                settingBinListAdapter.setItems(it.data.categories)
                 binding.tvNumber.text = settingBinListAdapter.itemCount.toString()
             }
         )
@@ -70,5 +69,18 @@ class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>() {
         requireActivity().onBackPressedDispatcher.addCallback {
             (activity as MainActivity).popSetting()
         }
+    }
+
+    override fun onClickYes(text: String) {
+        val requestCategory = RequestCategory(
+            name = text
+        )
+        val call: Call<ResponseCategory> = ServiceCreator.bumService.setCategoryInfo(
+            sharedPreferences.getValue("token", ""), requestCategory)
+        call.enqueueUtil(
+            onSuccess = {
+                Log.d("test", it.success.toString())
+            }
+        )
     }
 }

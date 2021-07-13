@@ -47,8 +47,8 @@ class SplashActivity : AppCompatActivity() {
         val call: Call<ResponseToken> = ServiceCreator.bumService.getToken(body)
         call.enqueueUtil(
             onSuccess = {
-                Log.d("tag-token", it.token)
-                MyApplication.mySharedPreferences.setValue("token", it.token)
+                Log.d("tag-token", it.data.token)
+                MyApplication.mySharedPreferences.setValue("token", it.data.token)
                 navigateMain()
                 finish()
             })

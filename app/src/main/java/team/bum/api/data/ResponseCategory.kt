@@ -1,7 +1,11 @@
 package team.bum.api.data
 
 data class ResponseCategory(
-    val data: List<CategoryInfo>,
+    val data: Data,
     val status: Int,
     val success: Boolean
-)
+) {
+    data class Data(
+        val categories: List<CategoryInfo>
+    )
+}

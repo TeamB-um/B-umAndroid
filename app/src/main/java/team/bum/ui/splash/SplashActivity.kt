@@ -44,7 +44,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun signIn(uuid: String) {
         val body = RequestSignIn(uuid)
-        val call: Call<ResponseToken> = ServiceCreator.biumService.getToken(body)
+        val call: Call<ResponseToken> = ServiceCreator.bumService.getToken(body)
         call.enqueueUtil(
             onSuccess = {
                 Log.d("tag-token", it.token)

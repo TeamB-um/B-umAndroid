@@ -1,15 +1,17 @@
 package team.bum.api.service
 
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 import team.bum.api.data.*
 
-interface BiumService {
+interface BumService {
     @POST("users")
     fun getToken(@Body body: RequestSignIn): Call<ResponseToken>
+
+    @GET("users")
+    fun getUserInfo(
+        @Header("x-auth-token") token: String
+    ): Call<ResponseUserInfo>
 
     @GET("trashcans")
     fun getTrashCans(): Call<ResponseTrashCans>

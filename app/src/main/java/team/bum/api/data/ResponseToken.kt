@@ -3,5 +3,9 @@ package team.bum.api.data
 data class ResponseToken(
     val status: Int,
     val success: Boolean,
-    val token: String
-)
+    val data: Data
+) {
+    data class Data(
+        val token: String
+    )
+}

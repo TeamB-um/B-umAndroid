@@ -7,16 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.recyclerview.widget.LinearLayoutManager
+import retrofit2.Call
 import team.bum.R
+import team.bum.api.data.ResponseCategory
+import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentSettingBinBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity
 import team.bum.ui.main.setting.adapter.SettingBinListAdapter
 import team.bum.ui.main.setting.data.BinListInfo
+import team.bum.util.MyApplication
+import team.bum.util.enqueueUtil
 
 class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>() {
     private val settingBinListAdapter = SettingBinListAdapter()
+    private val sharedPreferences = MyApplication.mySharedPreferences
 
     override fun initBinding(
         inflater: LayoutInflater,
@@ -28,41 +34,28 @@ class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>() {
 
         binding.recyclerBinList.layoutManager = LinearLayoutManager(activity)
         binding.recyclerBinList.adapter = settingBinListAdapter
-        addBinInfo()
+        getCategoryListInfo()
         totalNumberEvent()
         configureSettingNavigation()
 
-        binding.imageCheck.setOnClickListener {
+        binding.imagePlus.setOnClickListener {
             CommonDialog.newInstance(
                 "분리수거함 추가",
                 "분리수거함을 추가해 스트레스를 분류하세요.",
-                "확인", true, "취소", true, showEdit=true
+                "확인", true, "취소", true, showEdit = true
             ).show(childFragmentManager, null)
         }
     }
 
-    private fun addBinInfo() {
-        settingBinListAdapter.setItems(
-            listOf<BinListInfo>(
-                BinListInfo(
-                    category = "취업"
-                ),
-                BinListInfo(
-                    category = "학업"
-                ),
-                BinListInfo(
-                    category = "인간관계"
-                ),
-                BinListInfo(
-                    category = "건강"
-                ),
-                BinListInfo(
-                    category = "금전"
-                ),
-                BinListInfo(
-                    category = "개인"
-                )
-            )
+    private fun getCategoryListInfo() {
+        val call: Call<ResponseCategory> = ServiceCreator.bumService.getCategoryInfo(
+            sharedPreferences.getValue("token", "")
+        )
+        call.enqueueUtil(
+            onSuccess = {
+                settingBinListAdapter.setItems(it.data)
+                binding.tvNumber.text = settingBinListAdapter.itemCount.toString()
+            }
         )
     }
 

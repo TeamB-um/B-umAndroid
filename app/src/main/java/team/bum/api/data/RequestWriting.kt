@@ -3,7 +3,8 @@ package team.bum.api.data
 import com.google.gson.annotations.SerializedName
 
 data class RequestWriting(
-    @SerializedName("category_id") val categoryId: String,
+    val category_id: String,
+    val title: String,
     val text: String,
-    val title: String
+    val iswriting: Boolean
 )

@@ -2,28 +2,33 @@ package team.bum.ui.main.home.writing
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.core.os.bundleOf
+import androidx.core.view.forEach
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import retrofit2.Call
 import team.bum.R
-import team.bum.api.data.ResponseCategory
+import team.bum.api.data.*
 import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentHomeWritingBinding
 import team.bum.ui.Paper
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity
+import team.bum.ui.main.home.drop.HomeDropFragment.Companion.IS_COLLECTION
+import team.bum.ui.main.home.drop.HomeDropFragment.Companion.IS_DELETE
 import team.bum.util.*
 
 class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDialog.ClickListener {
 
     private val sharedPreferences = MyApplication.mySharedPreferences
+    private val category = mutableMapOf<String, String>()
     private val paperId
         get() = arguments?.getInt("paperId")
 
@@ -41,11 +46,11 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
     private fun configureWritingTheme() {
         Paper.values().forEach {
             if (paperId == it.id) {
-                val text = listOf(binding.title, binding.body, binding.count, binding.countTotal)
+                val text = listOf(binding.title, binding.content, binding.count, binding.countTotal)
                 binding.root.setBackgroundColor(getColor(it.backgroundColor))
                 text.forEach { view -> view.setTextColor(getColor(it.textColor)) }
                 binding.title.setHintTextColor(getColor(it.hintColor))
-                binding.body.setHintTextColor(getColor(it.hintColor))
+                binding.content.setHintTextColor(getColor(it.hintColor))
                 binding.divider1.setBackgroundColor(getColor(it.dividerColor))
                 binding.divider2.setBackgroundColor(getColor(it.dividerColor))
                 binding.setting.setImageResource(it.img)
@@ -76,9 +81,8 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         )
         call.enqueueUtil(
             onSuccess = { response ->
-                val category = mutableMapOf<String, String>()
-                response.data.forEach {
-                    category[it._id] = it.name
+                response.data.categories.forEach {
+                    category[it.name] = it._id
                 }
                 configureCategory(category)
             }
@@ -87,7 +91,7 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
 
     private fun configureCategory(category: MutableMap<String, String>) {
         val categoryName = mutableListOf<String>()
-        category.forEach { categoryName.add(it.value) }
+        category.forEach { categoryName.add(it.key) }
         val emptyView = listOf(binding.arrow, binding.emptyText)
 
         categoryName.forEachIndexed { i, text ->
@@ -116,17 +120,40 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
 
     private fun configurePostButton() {
         binding.post.enabled(false)
-        binding.body.addTextChangedListener {
+        binding.content.addTextChangedListener {
             binding.post.enabled(!it.isNullOrBlank())
         }
     }
 
+    private fun submit(isWriting: Boolean) {
+        val categoryId = category[getSelectedCategory()].toString()
+        val title = binding.title.text.toString()
+        val content = binding.content.text.toString()
+        val body = RequestWriting(categoryId, title, content, isWriting)
+        val call: Call<ResponseWriting> = ServiceCreator.bumService.postWriting(
+            sharedPreferences.getValue("token", ""), body
+        )
+        call.enqueueUtil(
+            onSuccess = {
+
+            })
+        (activity as MainActivity).navigateWritingToDrop(isWriting)
+    }
+
+    private fun getSelectedCategory(): String {
+        var selectedCategory = ""
+        binding.chipGroup.forEach {
+            if ((it as Chip).isChecked) selectedCategory = it.text.toString()
+        }
+        return selectedCategory
+    }
+
     override fun onClickYes() {
-        (activity as MainActivity).navigateWritingToDrop(isDelete = false)
+        submit(IS_COLLECTION)
     }
 
     override fun onClickCancel() {
-        (activity as MainActivity).navigateWritingToDrop(isDelete = true)
+        submit(IS_DELETE)
     }
 
     companion object {

@@ -49,7 +49,7 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
         )
         call.enqueueUtil(
             onSuccess = {
-                collectionAdapter.setItems(it.data)
+                collectionAdapter.setItems(it.data.categories)
             }
         )
 //        collectionAdapter.setItems(

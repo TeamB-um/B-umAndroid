@@ -52,7 +52,7 @@ class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>(), CommonDial
         )
         call.enqueueUtil(
             onSuccess = {
-                settingBinListAdapter.setItems(it.data)
+                settingBinListAdapter.setItems(it.data.categories)
                 binding.tvNumber.text = settingBinListAdapter.itemCount.toString()
             }
         )

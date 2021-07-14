@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import retrofit2.Call
-import team.bum.api.data.ResponseReward
+import team.bum.api.data.ResponseRewards
 import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentArchiveRewardBinding
 import team.bum.ui.base.BaseFragment
@@ -51,13 +51,13 @@ class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
 //    }
 
     private fun getArchiveRewardInfo() {
-        val call: Call<ResponseReward> = ServiceCreator.bumService.getReward(
+        val call: Call<ResponseRewards> = ServiceCreator.bumService.getReward(
             sharedPreferences.getValue("token", "")
         )
         call.enqueueUtil(
             onSuccess = {
-                Log.d("test", it.message)
-                archiveRewardAdapter.setItems(it.data)
+                Log.d("test", it.success.toString())
+                archiveRewardAdapter.setItems(it.data.rewards)
             }
         )
     }

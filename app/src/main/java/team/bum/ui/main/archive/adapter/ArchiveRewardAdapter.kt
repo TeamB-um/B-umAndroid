@@ -25,8 +25,9 @@ class ArchiveRewardAdapter : RecyclerView.Adapter<ArchiveRewardAdapter.ArchiveRe
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(reward: RewardInfo, position: Int) {
             binding.apply {
+
                 tvRewardDate.text = reward.created_date
-                tvRewardContent.text = reward.context
+                tvRewardContent.text = reward.sentence
                 tvRewardAuthor.text = reward.author
 
                 itemView.setOnClickListener {

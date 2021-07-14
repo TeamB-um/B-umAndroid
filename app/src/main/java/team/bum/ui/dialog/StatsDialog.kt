@@ -6,15 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import retrofit2.Call
 import team.bum.R
+import team.bum.api.data.ResponseCategory
+import team.bum.api.data.ResponseStats
+import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.DialogStatsBinding
 import team.bum.ui.base.BaseDialogFragment
 import team.bum.ui.dialog.adapter.StatsDialogAdapter
 import team.bum.ui.dialog.data.StatsMonthInfo
 import team.bum.ui.dialog.data.StatsTotalInfo
+import team.bum.util.MyApplication
+import team.bum.util.enqueueUtil
 
 class StatsDialog : BaseDialogFragment<DialogStatsBinding>() {
     private val statsDialogAdapter = StatsDialogAdapter()
+    private val sharedPreferences = MyApplication.mySharedPreferences
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         DialogStatsBinding.inflate(inflater, container, false)
@@ -25,8 +32,7 @@ class StatsDialog : BaseDialogFragment<DialogStatsBinding>() {
         binding.imageClose.setOnClickListener { dismiss() }
         binding.recyclerMonthStats.adapter = statsDialogAdapter
         binding.recyclerTotalStats.adapter = statsDialogAdapter
-        addStatsMonthInfo()
-        addStatsTotalInfo()
+        getStatsInfo()
     }
 
     private fun setupDialogBackground() {
@@ -41,49 +47,15 @@ class StatsDialog : BaseDialogFragment<DialogStatsBinding>() {
         }
     }
 
-    private fun addStatsMonthInfo() {
-        statsDialogAdapter.setMonthItems(
-            listOf<StatsMonthInfo>(
-                StatsMonthInfo(
-                    category = "인간관계",
-                    percent = "35%"
-                ),
-                StatsMonthInfo(
-                    category = "인간",
-                    percent = "20%"
-                ),
-                StatsMonthInfo(
-                    category = "관계",
-                    percent = "10%"
-                ),
-                StatsMonthInfo(
-                    category = "기타",
-                    percent = "35%"
-                )
-            )
+    private fun getStatsInfo() {
+        val call: Call<ResponseStats> = ServiceCreator.bumService.getStats(
+            sharedPreferences.getValue("token", "")
         )
-    }
-
-    private fun addStatsTotalInfo() {
-        statsDialogAdapter.setTotalItems(
-            listOf<StatsTotalInfo>(
-                StatsTotalInfo(
-                    category = "인간관계",
-                    percent = "35%"
-                ),
-                StatsTotalInfo(
-                    category = "인간",
-                    percent = "20%"
-                ),
-                StatsTotalInfo(
-                    category = "관계",
-                    percent = "10%"
-                ),
-                StatsTotalInfo(
-                    category = "기타",
-                    percent = "35%"
-                )
-            )
+        call.enqueueUtil(
+            onSuccess = {
+                statsDialogAdapter.setMonthItems(it.data.monthStat)
+                statsDialogAdapter.setTotalItems(it.data.allStat)
+            }
         )
     }
 

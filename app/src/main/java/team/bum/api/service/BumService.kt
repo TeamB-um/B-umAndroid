@@ -45,6 +45,11 @@ interface BumService {
         @Header("x-auth-token") token: String
     ): Call<ResponseCategory>
 
+    @GET("writings/stat/graph")
+    fun getStats(
+        @Header("x-auth-token") token: String
+    ): Call<ResponseStats>
+
     @POST("categories")
     fun setCategoryInfo(
         @Header("x-auth-token") token: String,

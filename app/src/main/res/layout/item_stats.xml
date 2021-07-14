@@ -43,6 +43,17 @@
                 app:layout_constraintTop_toTopOf="@id/image_circle" />
 
             <TextView
+                android:id="@+id/tv_stats_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/tv_stats_percent"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:text="35"
+                android:textColor="@color/paper_4"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
                 android:id="@+id/tv_stats_percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

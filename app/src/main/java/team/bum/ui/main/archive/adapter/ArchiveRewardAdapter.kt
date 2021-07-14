@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import team.bum.databinding.ItemCardRewardBinding
 import team.bum.ui.main.archive.data.RewardInfo
+import team.bum.util.dateString
+import java.time.LocalDateTime
 
 class ArchiveRewardAdapter : RecyclerView.Adapter<ArchiveRewardAdapter.ArchiveRewardViewHolder>() {
 
@@ -25,8 +27,8 @@ class ArchiveRewardAdapter : RecyclerView.Adapter<ArchiveRewardAdapter.ArchiveRe
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(reward: RewardInfo, position: Int) {
             binding.apply {
-
-                tvRewardDate.text = reward.created_date
+                val createdTime = LocalDateTime.parse(reward.created_date.split(".")[0])
+                tvRewardDate.text = createdTime.dateString
                 tvRewardContent.text = reward.sentence
                 tvRewardAuthor.text = reward.author
 

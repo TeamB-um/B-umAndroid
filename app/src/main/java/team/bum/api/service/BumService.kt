@@ -19,6 +19,11 @@ interface BumService {
         @Body body: RequestWriting
     ): Call<ResponseWriting>
 
+    @GET("writings")
+    fun getWriting(
+        @Header("x-auth-token") token: String,
+    ): Call<ResponseMyWriting>
+
     @GET("trashcans")
     fun getTrashCans(
         @Header("x-auth-token") token: String

@@ -11,7 +11,9 @@ import team.bum.api.data.ResponseRewards
 import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentArchiveRewardBinding
 import team.bum.ui.base.BaseFragment
+import team.bum.ui.dialog.RewardDialog
 import team.bum.ui.main.archive.adapter.ArchiveRewardAdapter
+import team.bum.ui.main.archive.data.RewardInfo
 import team.bum.util.MyApplication
 import team.bum.util.enqueueUtil
 
@@ -33,17 +35,17 @@ class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
 
 //    private fun configureClickEvent() {
 //        archiveRewardAdapter.setItemClickListener(object : ArchiveRewardAdapter.ItemClickListener {
-//            override fun onClick(archiveRewardInfo: ArchiveRewardInfo) {
+//            override fun onClick(rewardInfo: RewardInfo) {
 //                header = "hi"
 //                date = "2021년 07월 10일 (토)"
-//                content = archiveRewardInfo.rewardContent
-//                author = archiveRewardInfo.rewardAuthor
+//                content = rewardInfo.sentence
+//                author = rewardInfo.author
 //                comment = "hello"
 //                showDialog()
 //            }
 //        })
 //    }
-
+//
 //    private fun showDialog() {
 //        val dialog = RewardDialog.CustomDialogBuilder().create()
 //        dialog.isCancelable = false
@@ -56,7 +58,7 @@ class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
         )
         call.enqueueUtil(
             onSuccess = {
-                Log.d("test", it.success.toString())
+                Log.d("test", it.success.toString() + "rewards")
                 archiveRewardAdapter.setItems(it.data.rewards)
             }
         )

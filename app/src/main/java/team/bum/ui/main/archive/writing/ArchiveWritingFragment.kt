@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import retrofit2.Call
+import team.bum.api.data.ResponseMyWriting
+import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentArchiveWritingBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
@@ -14,7 +17,9 @@ import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_NORMAL
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_SELECT
 import team.bum.ui.main.archive.data.ArchiveWritingFilterInfo
-import team.bum.ui.main.archive.data.ArchiveWritingInfo
+import team.bum.ui.main.archive.data.WritingInfo
+import team.bum.util.MyApplication
+import team.bum.util.enqueueUtil
 import team.bum.util.setInvisible
 import team.bum.util.setVisible
 
@@ -22,6 +27,8 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
 
     private val archiveWritingAdapter = ArchiveWritingAdapter()
     private val sheetFragment: FilterSheetFragment = FilterSheetFragment()
+    private val sharedPreferences = MyApplication.mySharedPreferences
+
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentArchiveWritingBinding.inflate(inflater, container, false)
@@ -31,7 +38,8 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
         binding.recyclerMywritingList.adapter = archiveWritingAdapter
 
         configureChips()
-        addArchiveWritingInfo()
+        getWritingInfo()
+//        addArchiveWritingInfo()
     }
 
     private fun configureChips() {
@@ -85,11 +93,11 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
 
     private fun configureClickEvent() {
         archiveWritingAdapter.setItemClickListener(object : ArchiveWritingAdapter.ItemClickListener {
-            override fun onClick(archiveWritingInfo: ArchiveWritingInfo) {
-                category = archiveWritingInfo.category
-                title = archiveWritingInfo.title
-                date = "2021년 07월 10일 (토)"
-                content = archiveWritingInfo.content
+            override fun onClick(writingInfo: WritingInfo) {
+                category = writingInfo.category.name
+                title = writingInfo.title
+                date = writingInfo.created_date
+                content = writingInfo.text
                 showDialog()
             }
         })
@@ -101,62 +109,17 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
         dialog.show(parentFragmentManager, "dialog")
     }
 
-    private fun addArchiveWritingInfo() {
-        archiveWritingAdapter.setItems(
-            listOf<ArchiveWritingInfo>(
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목2",
-                    content = "어쩌고저쩌고",
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목2",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "이강민",
-                    title = "이강민아",
-                    content = "스트레스 안받아?"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                )
-            )
+    private fun getWritingInfo() {
+        val call: Call<ResponseMyWriting> = ServiceCreator.bumService.getWriting(
+            sharedPreferences.getValue("token", "")
         )
+        call.enqueueUtil(
+            onSuccess = {
+                Log.d("test", it.success.toString())
+                archiveWritingAdapter.setItems(it.data.writings)
+            })
     }
+
 
     companion object {
         var category = ""

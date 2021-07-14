@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -13,7 +14,7 @@
             android:id="@+id/tv_popup_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/nanum_square_extrabold"
             android:text="@string/popup_header"
             android:textColor="@color/white"
@@ -26,22 +27,22 @@
             android:id="@+id/tv_popup_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="14dp"
             android:fontFamily="@font/sf_pro_display_regular"
-            android:text="@string/popup_date"
             android:textColor="@color/white"
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_popup_header" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_popup_header"
+            tools:text="2021.06.30 (수)" />
 
         <TextView
             android:id="@+id/tv_popup_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="144dp"
             android:fontFamily="@font/nanum_square_extrabold"
-            android:lineSpacingExtra="8dp"
+            android:lineSpacingExtra="12dp"
             android:text="@string/popup_content"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -54,9 +55,8 @@
             android:id="@+id/tv_popup_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="36dp"
             android:fontFamily="@font/nanum_square_extrabold"
-            android:lineSpacingExtra="5dp"
             android:text="@string/popup_author"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -69,16 +69,17 @@
             android:id="@+id/tv_popup_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="89dp"
+            android:layout_marginTop="93dp"
+            android:paddingHorizontal="40dp"
             android:fontFamily="@font/nanum_square_regular"
             android:lineSpacingExtra="5dp"
-            android:text="@string/popup_comment"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_popup_author" />
+            app:layout_constraintTop_toBottomOf="@id/tv_popup_author"
+            tools:text="나약해지거나 흔들리는 자신에게 너무 실망하지 마세요! 한 발 나아가기 위한 작은 휘어짐입니다." />
 
         <ImageView
             android:id="@+id/iv_close"
@@ -94,7 +95,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="54dp"
             android:layout_marginBottom="20dp"
             android:src="@drawable/logo"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -38,7 +38,6 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
 
         configureChips()
         getWritingInfo()
-//        addArchiveWritingInfo()
     }
 
     private fun configureChips() {
@@ -54,7 +53,6 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
         }
         sheetFragment.setClickYesListener(object : FilterSheetFragment.ClickListener {
             override fun onClickYes(filterData: ArchiveWritingFilterInfo) {
-                Log.d("filterData", "$filterData")
                 binding.chipAllCategory.apply {
                     isCheckable = true
                     isChecked = true

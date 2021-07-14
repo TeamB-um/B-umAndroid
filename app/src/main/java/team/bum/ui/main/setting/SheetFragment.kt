@@ -1,7 +1,6 @@
 package team.bum.ui.main.setting
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +38,6 @@ class SheetFragment : BottomSheetDialogFragment() {
     private fun configureButton() {
         binding.btnCheck.setOnClickListener {
             val date = getEditTextInNumberPicker()
-            Log.d("야.", date)
             clickListener.onClickYes(date)
             dismiss()
         }

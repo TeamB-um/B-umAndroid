@@ -18,10 +18,9 @@ import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_NOR
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_SELECT
 import team.bum.ui.main.archive.data.ArchiveWritingFilterInfo
 import team.bum.ui.main.archive.data.WritingInfo
-import team.bum.util.MyApplication
-import team.bum.util.enqueueUtil
-import team.bum.util.setInvisible
-import team.bum.util.setVisible
+import team.bum.util.*
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
 
@@ -94,9 +93,10 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
     private fun configureClickEvent() {
         archiveWritingAdapter.setItemClickListener(object : ArchiveWritingAdapter.ItemClickListener {
             override fun onClick(writingInfo: WritingInfo) {
+                val createdTime = LocalDateTime.parse(writingInfo.created_date.split(".")[0])
                 category = writingInfo.category.name
                 title = writingInfo.title
-                date = writingInfo.created_date
+                date = createdTime.koFormat
                 content = writingInfo.text
                 showDialog()
             }

@@ -57,8 +57,15 @@ interface BumService {
     ): Call<ResponseAddCategory>
 
     @DELETE("categories/{category_id}")
-    fun deleteCategoryInfo(
+    fun deleteCategory(
         @Header("x-auth-token") token: String,
-        @Body body: RequestDeleteCategory
+        @Path("category_id") category_id: String
     ): Call<ResponseCategory>
+
+    @PATCH("categories/{category_id}")
+    fun editCategory(
+        @Header("x-auth-token") token: String,
+        @Path("category_id") category_id: String,
+        @Body body: RequestCategory
+    ): Call<ResponseAddCategory>
 }

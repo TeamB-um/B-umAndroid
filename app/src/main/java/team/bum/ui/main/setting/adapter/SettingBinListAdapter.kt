@@ -1,16 +1,15 @@
 package team.bum.ui.main.setting.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import team.bum.ui.main.collection.data.CategoryInfo
 import team.bum.databinding.ItemCategoryBinding
 
-class SettingBinListAdapter :
-    RecyclerView.Adapter<SettingBinListAdapter.SettingBinListViewHolder>() {
+class SettingBinListAdapter : RecyclerView.Adapter<SettingBinListAdapter.SettingBinListViewHolder>() {
 
     private val categoryInfo = mutableListOf<CategoryInfo>()
+    private lateinit var clickListener: CliCkListener
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -21,11 +20,8 @@ class SettingBinListAdapter :
         return SettingBinListViewHolder(binding)
     }
 
-    override fun onBindViewHolder(
-        holder: SettingBinListViewHolder,
-        position: Int
-    ) {
-        holder.onBind(categoryInfo[position], holder.itemView.context)
+    override fun onBindViewHolder(holder: SettingBinListViewHolder, position: Int) {
+        holder.onBind(categoryInfo[position], position)
     }
 
     fun setItems(newItems: List<CategoryInfo>) {
@@ -36,14 +32,29 @@ class SettingBinListAdapter :
 
     override fun getItemCount(): Int = categoryInfo.size
 
-    class SettingBinListViewHolder(
+    inner class SettingBinListViewHolder(
         private val binding: ItemCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(categoryInfo: CategoryInfo, context: Context) {
+        fun onBind(category: CategoryInfo, position: Int) {
             binding.apply {
-                tvCategory.text = categoryInfo.name
+                tvCategory.text = category.name
+                tvCategory.setOnClickListener {
+                    clickListener.onClickText(categoryInfo[position])
+                }
+                imageDelete.setOnClickListener {
+                    clickListener.onClickDelete(categoryInfo[position])
+                }
             }
         }
+    }
+
+    interface CliCkListener {
+        fun onClickDelete(categoryInfo: CategoryInfo)
+        fun onClickText(categoryInfo: CategoryInfo)
+    }
+
+    fun setClickListener(clickListener: CliCkListener) {
+        this.clickListener = clickListener
     }
 }
 

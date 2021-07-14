@@ -34,6 +34,7 @@ class SplashActivity : AppCompatActivity() {
                 val uuid = MyApplication.mySharedPreferences.getValue("uuid", "")
                 if (uuid == "") {
                     MyApplication.mySharedPreferences.setValue("uuid", UUID.randomUUID().toString())
+                    signIn(uuid)
                 } else {
                     Log.d("tag", "UUID : $uuid")
                     signIn(uuid)

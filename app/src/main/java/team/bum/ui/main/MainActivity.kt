@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
         slideDownBottomNav()
     }
 
-    fun navigateWritingToDrop(dropTo: Boolean) {
-        replaceFragment(binding.fragmentContainer, HomeDropFragment.newInstance(dropTo), true)
+    fun navigateWritingToDrop(categoryId: String, title: String, content: String, dropTo: Boolean) {
+        replaceFragment(binding.fragmentContainer, HomeDropFragment.newInstance(categoryId, title, content, dropTo), true)
         slideUpBottomNav()
     }
 
@@ -93,6 +93,10 @@ class MainActivity : AppCompatActivity() {
             startAnimation(slideDown)
             setInvisible()
         }
+    }
+
+    fun deleteBottomNav() {
+        binding.bottomNavi.setInvisible()
     }
 
     fun showFinishToast() {

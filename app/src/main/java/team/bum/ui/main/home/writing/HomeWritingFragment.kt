@@ -2,7 +2,6 @@ package team.bum.ui.main.home.writing
 
 import android.app.Activity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +20,7 @@ import team.bum.ui.Paper
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity
+import team.bum.ui.main.home.drop.HomeDropFragment
 import team.bum.ui.main.home.drop.HomeDropFragment.Companion.COLLECTION
 import team.bum.ui.main.home.drop.HomeDropFragment.Companion.DELETE
 import team.bum.util.*
@@ -125,21 +125,6 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         }
     }
 
-    private fun submit(dropTo: Boolean) {
-        val categoryId = category[getSelectedCategory()].toString()
-        val title = binding.title.text.toString()
-        val content = binding.content.text.toString()
-        val body = RequestWriting(categoryId, title, content, dropTo)
-        val call: Call<ResponseWriting> = ServiceCreator.bumService.postWriting(
-            sharedPreferences.getValue("token", ""), body
-        )
-        call.enqueueUtil(
-            onSuccess = {
-                Log.d("tag", "ResponseWriting : success")
-            })
-        (activity as MainActivity).navigateWritingToDrop(dropTo)
-    }
-
     private fun getSelectedCategory(): String {
         var selectedCategory = ""
         binding.chipGroup.forEach {
@@ -148,12 +133,20 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         return selectedCategory
     }
 
+    private fun sendWritingData(dropTo: Boolean) {
+        val categoryId = category[getSelectedCategory()].toString()
+        val title = binding.title.text.toString()
+        val content = binding.content.text.toString()
+        HomeDropFragment.newInstance(categoryId, title, content, dropTo)
+        (activity as MainActivity).navigateWritingToDrop(categoryId, title, content, dropTo)
+    }
+
     override fun onClickYes() {
-        submit(COLLECTION)
+        sendWritingData(COLLECTION)
     }
 
     override fun onClickCancel() {
-        submit(DELETE)
+        sendWritingData(DELETE)
     }
 
     companion object {

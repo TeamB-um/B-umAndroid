@@ -15,7 +15,9 @@ import team.bum.ui.dialog.RewardDialog
 import team.bum.ui.main.archive.adapter.ArchiveRewardAdapter
 import team.bum.ui.main.archive.data.RewardInfo
 import team.bum.util.MyApplication
+import team.bum.util.dateFormat
 import team.bum.util.enqueueUtil
+import java.time.LocalDateTime
 
 class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
 
@@ -30,27 +32,27 @@ class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
         binding.recyclerRewardList.adapter = archiveRewardAdapter
 
         getArchiveRewardInfo()
-//        configureClickEvent()
+        configureClickEvent()
     }
 
-//    private fun configureClickEvent() {
-//        archiveRewardAdapter.setItemClickListener(object : ArchiveRewardAdapter.ItemClickListener {
-//            override fun onClick(rewardInfo: RewardInfo) {
-//                header = "hi"
-//                date = "2021년 07월 10일 (토)"
-//                content = rewardInfo.sentence
-//                author = rewardInfo.author
-//                comment = "hello"
-//                showDialog()
-//            }
-//        })
-//    }
-//
-//    private fun showDialog() {
-//        val dialog = RewardDialog.CustomDialogBuilder().create()
-//        dialog.isCancelable = false
-//        dialog.show(parentFragmentManager, "dialog")
-//    }
+    private fun configureClickEvent() {
+        archiveRewardAdapter.setItemClickListener(object : ArchiveRewardAdapter.ItemClickListener {
+            override fun onClick(rewardInfo: RewardInfo) {
+                val createdTime = LocalDateTime.parse(rewardInfo.created_date.split(".")[0])
+                date = createdTime.dateFormat
+                sentence = rewardInfo.sentence
+                author = rewardInfo.author
+                content = rewardInfo.context
+                showDialog()
+            }
+        })
+    }
+
+    private fun showDialog() {
+        val dialog = RewardDialog.CustomDialogBuilder().create()
+        dialog.isCancelable = false
+        dialog.show(parentFragmentManager, "dialog")
+    }
 
     private fun getArchiveRewardInfo() {
         val call: Call<ResponseRewards> = ServiceCreator.bumService.getReward(
@@ -65,10 +67,9 @@ class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
     }
 
     companion object {
-        var header = ""
         var date = ""
-        var content = ""
+        var sentence = ""
         var author = ""
-        var comment = ""
+        var content = ""
     }
 }

@@ -10,10 +10,9 @@ import team.bum.R
 import team.bum.databinding.DialogRewardBinding
 import team.bum.ui.base.BaseDialogFragment
 import team.bum.ui.main.archive.reward.ArchiveRewardFragment.Companion.author
-import team.bum.ui.main.archive.reward.ArchiveRewardFragment.Companion.comment
 import team.bum.ui.main.archive.reward.ArchiveRewardFragment.Companion.content
 import team.bum.ui.main.archive.reward.ArchiveRewardFragment.Companion.date
-import team.bum.ui.main.archive.reward.ArchiveRewardFragment.Companion.header
+import team.bum.ui.main.archive.reward.ArchiveRewardFragment.Companion.sentence
 
 class RewardDialog : BaseDialogFragment<DialogRewardBinding>() {
 
@@ -23,11 +22,10 @@ class RewardDialog : BaseDialogFragment<DialogRewardBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupDialogBackground()
 
-        binding.tvPopupHeader.text = header
         binding.tvPopupDate.text = date
-        binding.tvPopupContent.text = content
+        binding.tvPopupContent.text = sentence
         binding.tvPopupAuthor.text = author
-        binding.tvPopupComment.text = comment
+        binding.tvPopupComment.text = content
         binding.ivClose.setOnClickListener { dismiss() }
     }
 

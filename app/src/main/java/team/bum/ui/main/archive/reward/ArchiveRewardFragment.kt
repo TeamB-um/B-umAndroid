@@ -66,7 +66,7 @@ class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
         call.enqueueUtil(
             onSuccess = {
                 Log.d("test", it.message)
-                archiveRewardAdapter.setItems(it.data)
+                archiveRewardAdapter.setItems(it.data.rewards)
             }
         )
     }

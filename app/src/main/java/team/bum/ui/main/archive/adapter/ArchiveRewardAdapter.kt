@@ -29,7 +29,7 @@ class ArchiveRewardAdapter : RecyclerView.Adapter<ArchiveRewardAdapter.ArchiveRe
         fun onBind(archiveInfo: Reward, position: Int) {
             binding.apply {
                 tvRewardDate.text = archiveInfo.created_date
-                tvRewardContent.text = archiveInfo.context
+                tvRewardContent.text = archiveInfo.sentence
                 tvRewardAuthor.text = archiveInfo.author
 
                 itemView.setOnClickListener {

@@ -66,6 +66,9 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         requireActivity().onBackPressedDispatcher.addCallback {
             (activity as MainActivity).popHomeWriting()
         }
+        binding.setting.setOnClickListener {
+            (activity as MainActivity).navigateSettingToManagement()
+        }
         binding.post.setOnClickListener {
             CommonDialog.newInstance(
                 "삭제 또는 보관",

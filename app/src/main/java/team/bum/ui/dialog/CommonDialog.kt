@@ -14,6 +14,7 @@ import androidx.core.widget.addTextChangedListener
 import team.bum.R
 import team.bum.databinding.DialogCommonBinding
 import team.bum.ui.base.BaseDialogFragment
+import team.bum.ui.main.setting.bin.SettingBinFragment.Companion.ADD
 import team.bum.util.getColor
 import team.bum.util.setVisible
 import kotlin.math.roundToInt
@@ -72,7 +73,7 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
                 topMargin = (resources.displayMetrics.density * 84).roundToInt()
             }
             binding.btn.setOnClickListener {
-                binding.enter.text.toString().let { clickListener?.onClickYes(it) }
+                binding.enter.text.toString().let { clickListener?.onClickYes(it, ADD) }
                 dismiss()
             }
             binding.enter.apply {
@@ -113,7 +114,7 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
 
     interface ClickListener {
         fun onClickYes() {}
-        fun onClickYes(text: String) {}
+        fun onClickYes(text: String, from: Boolean) {}
         fun onClickCancel() {}
     }
 

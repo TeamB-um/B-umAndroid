@@ -22,7 +22,6 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
 
     private val collectionAdapter = CollectionAdapter()
     private val sharedPreferences = MyApplication.mySharedPreferences
-    val categoryInfo = mutableListOf<CategoryInfo>()
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentCollectionBinding.inflate(inflater, container, false)

@@ -54,7 +54,7 @@ interface BumService {
     fun setCategoryInfo(
         @Header("x-auth-token") token: String,
         @Body body: RequestCategory
-    ): Call<ResponseCategory>
+    ): Call<ResponseAddCategory>
 
     @DELETE("categories/{category_id}")
     fun deleteCategoryInfo(

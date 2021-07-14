@@ -50,11 +50,13 @@
                 android:layout_marginBottom="43dp"
                 android:lineSpacingExtra="7dp"
                 android:lines="2"
+                android:paddingStart="16dp"
+                android:paddingEnd="18dp"
                 android:text="@string/archive_mywriting_content"
                 android:textColor="@color/icon_grey"
                 android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@id/tv_mywriting_category"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_mywriting_title" />
 
             <ImageView

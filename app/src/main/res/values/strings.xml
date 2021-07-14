@@ -94,6 +94,7 @@
     <string name="stats_total_header">전체 통계</string>
     <string name="stats_total_context">전체 사용 기간 동안의 스트레스 비율입니다</string>
     <string name="stats_item_category">인간관계</string>
-    <string name="stats_item_percent">35%</string>
+    <string name="stats_item_percent">%</string>
+    <string name="stats_item_number">35</string>
 
 </resources>

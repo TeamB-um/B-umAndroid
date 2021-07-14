@@ -5,5 +5,6 @@ data class CategoryInfo(
     val created_date: String,
     val img: String,
     val name: String,
+    val count: Int,
     val index: Int
 )

@@ -9,6 +9,7 @@ import androidx.activity.addCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import retrofit2.Call
 import team.bum.api.data.RequestCategory
+import team.bum.api.data.ResponseAddCategory
 import team.bum.api.data.ResponseCategory
 import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentSettingBinBinding
@@ -75,7 +76,7 @@ class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>(), CommonDial
         val requestCategory = RequestCategory(
             name = text
         )
-        val call: Call<ResponseCategory> = ServiceCreator.bumService.setCategoryInfo(
+        val call: Call<ResponseAddCategory> = ServiceCreator.bumService.setCategoryInfo(
             sharedPreferences.getValue("token", ""), requestCategory)
         call.enqueueUtil(
             onSuccess = {

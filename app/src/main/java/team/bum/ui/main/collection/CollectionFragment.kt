@@ -14,6 +14,7 @@ import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.StatsDialog
 import team.bum.ui.main.MainActivity
 import team.bum.ui.main.collection.adapter.CollectionAdapter
+import team.bum.ui.main.collection.data.CategoryInfo
 import team.bum.util.MyApplication
 import team.bum.util.enqueueUtil
 
@@ -21,6 +22,7 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
 
     private val collectionAdapter = CollectionAdapter()
     private val sharedPreferences = MyApplication.mySharedPreferences
+    val categoryInfo = mutableListOf<CategoryInfo>()
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentCollectionBinding.inflate(inflater, container, false)
@@ -42,6 +44,18 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
         call.enqueueUtil(
             onSuccess = {
                 collectionAdapter.setItems(it.data.categories)
+                collectionAdapter.addItems(
+                    listOf<CategoryInfo>(
+                        CategoryInfo(
+                            img = "https://soptseminar5test.s3.ap-northeast-2.amazonaws.com/8_0.png",
+                            name = "추가하기",
+                            created_date = "123456789",
+                            _id = "8",
+                            count = 0,
+                            index = 8
+                        )
+                    )
+                )
             }
         )
     }
@@ -49,7 +63,12 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
     private fun recyclerViewClickEvent() {
         collectionAdapter.setItemClickListener(object : CollectionAdapter.ItemClickListener {
             override fun onClick(view: View, position: Int) {
-                (activity as MainActivity).navigateCollectionList()
+                if (position == collectionAdapter.itemCount-1) {
+                    (activity as MainActivity).navigateSettingToManagement()
+                } else {
+                    (activity as MainActivity).navigateCollectionList()
+                }
+
             }
         })
     }

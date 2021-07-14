@@ -80,6 +80,7 @@ class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>(), CommonDial
         call.enqueueUtil(
             onSuccess = {
                 Log.d("test", it.success.toString())
+                getCategoryListInfo()
             }
         )
     }

@@ -13,7 +13,11 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.os.bundleOf
 import androidx.core.text.buildSpannedString
 import androidx.core.text.color
+import retrofit2.Call
 import team.bum.R
+import team.bum.api.data.RequestWriting
+import team.bum.api.data.ResponseWriting
+import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentHomeDropBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.main.MainActivity
@@ -21,8 +25,14 @@ import team.bum.util.*
 
 class HomeDropFragment : BaseFragment<FragmentHomeDropBinding>() {
 
-    private val isDelete
-        get() = arguments?.getBoolean("isDelete") ?: false
+    private val categoryId: String
+        get() = arguments?.getString("categoryId") ?: ""
+    private val title: String
+        get() = arguments?.getString("title") ?: ""
+    private val content: String
+        get() = arguments?.getString("content") ?: ""
+    private val dropTo: Boolean
+        get() = arguments?.getBoolean("dropTo") ?: DELETE
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentHomeDropBinding.inflate(inflater, container, false)
@@ -34,7 +44,7 @@ class HomeDropFragment : BaseFragment<FragmentHomeDropBinding>() {
     }
 
     private fun initDrop() {
-        if (isDelete) {
+        if (dropTo == DELETE) {
             binding.root.setBackgroundResource(R.drawable.bg_home_delete)
             binding.headerTitle.text = "삭제 휴지통"
             binding.toastText.text = buildSpannedString {
@@ -114,8 +124,7 @@ class HomeDropFragment : BaseFragment<FragmentHomeDropBinding>() {
                 owner.removeView(v)
                 destination.addView(v)
                 v.setInvisible()
-                binding.complete.setVisible()
-                binding.guide.setInvisible()
+                submit()
                 true
             }
             DragEvent.ACTION_DRAG_ENDED -> {
@@ -126,12 +135,35 @@ class HomeDropFragment : BaseFragment<FragmentHomeDropBinding>() {
         }
     }
 
+    private fun submit() {
+        val body = RequestWriting(categoryId, title, content, dropTo)
+        val call: Call<ResponseWriting> = ServiceCreator.bumService.postWriting(
+            MyApplication.mySharedPreferences.getValue("token", ""), body
+        )
+        call.enqueueUtil(
+            onSuccess = {
+                binding.complete.setVisible()
+                binding.guide.setInvisible()
+                (activity as MainActivity).deleteBottomNav()
+            })
+    }
+
     companion object {
         const val COLLECTION = true
         const val DELETE = false
 
-        fun newInstance(dropTo: Boolean) = HomeDropFragment().apply {
-            arguments = bundleOf("dropTo" to dropTo)
+        fun newInstance(
+            categoryId: String? = null,
+            title: String? = null,
+            content: String? = null,
+            dropTo: Boolean = DELETE
+        ) = HomeDropFragment().apply {
+            arguments = bundleOf(
+                "categoryId" to categoryId,
+                "title" to title,
+                "content" to content,
+                "dropTo" to dropTo
+            )
         }
     }
 }

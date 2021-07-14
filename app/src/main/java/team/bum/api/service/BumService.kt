@@ -22,7 +22,7 @@ interface BumService {
     @GET("writings")
     fun getWriting(
         @Header("x-auth-token") token: String,
-    ): Call<ResponseMyWriting>
+    ): Call<ResponseWriting>
 
     @GET("trashcans")
     fun getTrashCans(

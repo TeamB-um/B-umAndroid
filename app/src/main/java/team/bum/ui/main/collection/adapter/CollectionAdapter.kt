@@ -63,7 +63,7 @@ class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewH
             Glide.with(context).load(categoryInfo.img).into(binding.imageCollection)
             binding.apply {
                 tvCategory.text = categoryInfo.name
-               when (categoryInfo.index) {
+                when (categoryInfo.index) {
                    0 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_2_main))
                    1 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.green_3))
                    2 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.pink_3))

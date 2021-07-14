@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.recyclerview.widget.GridLayoutManager
 import retrofit2.Call
+import team.bum.api.data.Category
 import team.bum.api.data.ResponseCategory
 import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentCollectionBinding
@@ -42,10 +43,10 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
         )
         call.enqueueUtil(
             onSuccess = {
-                collectionAdapter.setItems(it.data.categories)
+                collectionAdapter.setItems(it.data.category)
                 collectionAdapter.addItems(
-                    listOf<CategoryInfo>(
-                        CategoryInfo(
+                    listOf<Category>(
+                        Category(
                             img = "https://soptseminar5test.s3.ap-northeast-2.amazonaws.com/8_0.png",
                             name = "추가하기",
                             created_date = "123456789",

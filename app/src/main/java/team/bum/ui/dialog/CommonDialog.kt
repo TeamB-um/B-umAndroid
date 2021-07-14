@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.updateLayoutParams
 import androidx.core.widget.addTextChangedListener
@@ -15,6 +14,7 @@ import team.bum.R
 import team.bum.databinding.DialogCommonBinding
 import team.bum.ui.base.BaseDialogFragment
 import team.bum.ui.main.setting.bin.SettingBinFragment.Companion.ADD
+import team.bum.ui.main.setting.bin.SettingBinFragment.Companion.EDIT
 import team.bum.util.getColor
 import team.bum.util.setVisible
 import kotlin.math.roundToInt
@@ -73,7 +73,8 @@ class CommonDialog : BaseDialogFragment<DialogCommonBinding>() {
                 topMargin = (resources.displayMetrics.density * 84).roundToInt()
             }
             binding.btn.setOnClickListener {
-                binding.enter.text.toString().let { clickListener?.onClickYes(it, ADD) }
+                if (title == "분리수거함 추가") binding.enter.text.toString().let { clickListener?.onClickYes(it, ADD) }
+                else binding.enter.text.toString().let { clickListener?.onClickYes(it, EDIT) }
                 dismiss()
             }
             binding.enter.apply {

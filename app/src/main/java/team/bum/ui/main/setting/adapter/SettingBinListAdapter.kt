@@ -3,12 +3,12 @@ package team.bum.ui.main.setting.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import team.bum.ui.main.collection.data.CategoryInfo
+import team.bum.api.data.Category
 import team.bum.databinding.ItemCategoryBinding
 
 class SettingBinListAdapter : RecyclerView.Adapter<SettingBinListAdapter.SettingBinListViewHolder>() {
 
-    private val categoryInfo = mutableListOf<CategoryInfo>()
+    private val categoryInfo = mutableListOf<Category>()
     private lateinit var clickListener: CliCkListener
 
     override fun onCreateViewHolder(
@@ -24,7 +24,7 @@ class SettingBinListAdapter : RecyclerView.Adapter<SettingBinListAdapter.Setting
         holder.onBind(categoryInfo[position], position)
     }
 
-    fun setItems(newItems: List<CategoryInfo>) {
+    fun setItems(newItems: List<Category>) {
         categoryInfo.clear()
         categoryInfo.addAll(newItems)
         notifyDataSetChanged()
@@ -35,7 +35,7 @@ class SettingBinListAdapter : RecyclerView.Adapter<SettingBinListAdapter.Setting
     inner class SettingBinListViewHolder(
         private val binding: ItemCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(category: CategoryInfo, position: Int) {
+        fun onBind(category: Category, position: Int) {
             binding.apply {
                 tvCategory.text = category.name
                 tvCategory.setOnClickListener {
@@ -49,8 +49,8 @@ class SettingBinListAdapter : RecyclerView.Adapter<SettingBinListAdapter.Setting
     }
 
     interface CliCkListener {
-        fun onClickDelete(categoryInfo: CategoryInfo)
-        fun onClickText(categoryInfo: CategoryInfo)
+        fun onClickDelete(categoryInfo: Category)
+        fun onClickText(categoryInfo: Category)
     }
 
     fun setClickListener(clickListener: CliCkListener) {

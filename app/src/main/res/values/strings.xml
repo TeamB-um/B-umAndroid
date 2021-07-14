@@ -52,7 +52,8 @@
     <string name="archive_bin_category">인간관계</string>
     <string name="archive_bin_title">글제목1</string>
     <string name="archive_bin_content">글 내용 미리보기 미리보기 미리보기</string>
-    <string name="archive_bin_dday">D-1</string>
+    <string name="archive_bin_dday">D-</string>
+    <string name="archive_bin_day">1</string>
     <string name="archive_mywriting_category">인간관계</string>
     <string name="archive_mywriting_title">글제목1</string>
     <string name="archive_mywriting_content">대충 글내용 미리보기\n어쩌고저쩌고</string>

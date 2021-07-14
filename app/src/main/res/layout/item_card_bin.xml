@@ -55,12 +55,22 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_bin_title" />
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/tv_bin_dday"
+                android:text="@string/archive_bin_dday"
+                android:textColor="@color/pink_2_main"
+                android:textSize="14dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="14dp" />
+
+            <TextView
                 android:id="@+id/tv_bin_dday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:layout_marginEnd="17dp"
-                android:text="@string/archive_bin_dday"
+                android:text="@string/archive_bin_day"
                 android:textColor="@color/pink_2_main"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"

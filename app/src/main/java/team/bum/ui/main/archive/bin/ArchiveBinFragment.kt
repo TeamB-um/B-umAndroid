@@ -49,7 +49,6 @@ class ArchiveBinFragment : BaseFragment<FragmentArchiveBinBinding>() {
             sharedPreferences.getValue("token", ""))
         call.enqueueUtil(
             onSuccess = {
-                Log.d("test", it.message)
                 archiveBinAdapter.setItems(it.data.trashResult)
             }
         )

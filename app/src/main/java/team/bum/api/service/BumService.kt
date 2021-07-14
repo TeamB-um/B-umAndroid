@@ -40,21 +40,21 @@ interface BumService {
         @Path("category_Id") categoryId: String
     ): Call<ResponseCategoryReward>
 
-    @GET("categories")
-    fun getCategory(
-        @Header("x-auth-token") token: String
-    ): Call<ResponseCategory>
-
     @GET("writings/stat/graph")
     fun getStats(
         @Header("x-auth-token") token: String
     ): Call<ResponseStats>
 
+    @GET("categories")
+    fun getCategory(
+        @Header("x-auth-token") token: String
+    ): Call<ResponseCategory>
+
     @POST("categories")
-    fun setCategoryInfo(
+    fun addCategory(
         @Header("x-auth-token") token: String,
         @Body body: RequestCategory
-    ): Call<ResponseAddCategory>
+    ): Call<ResponseCategory>
 
     @DELETE("categories/{category_id}")
     fun deleteCategory(
@@ -67,5 +67,5 @@ interface BumService {
         @Header("x-auth-token") token: String,
         @Path("category_id") category_id: String,
         @Body body: RequestCategory
-    ): Call<ResponseAddCategory>
+    ): Call<ResponseCategory>
 }

@@ -25,9 +25,9 @@ interface BumService {
     ): Call<ResponseTrashCans>
 
     @GET("rewards")
-    fun getRewards(
+    fun getReward(
         @Header("x-auth-token") token: String
-    ): Call<ResponseRewards>
+    ): Call<ResponseReward>
 
     @GET("categories/{category_Id}/rewards")
     fun getCategoryRewards(

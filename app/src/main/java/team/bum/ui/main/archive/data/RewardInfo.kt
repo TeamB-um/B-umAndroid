@@ -1,6 +1,6 @@
-package team.bum.api.data
+package team.bum.ui.main.archive.data
 
-data class Reward(
+data class RewardInfo(
     val _id: String,
     val author: String,
     val context: String,

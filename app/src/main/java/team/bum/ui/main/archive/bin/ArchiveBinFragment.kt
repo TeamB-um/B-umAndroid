@@ -1,6 +1,7 @@
 package team.bum.ui.main.archive.bin
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,6 +49,7 @@ class ArchiveBinFragment : BaseFragment<FragmentArchiveBinBinding>() {
             sharedPreferences.getValue("token", ""))
         call.enqueueUtil(
             onSuccess = {
+                Log.d("test", it.message)
                 archiveBinAdapter.setItems(it.data.trashResult)
             }
         )

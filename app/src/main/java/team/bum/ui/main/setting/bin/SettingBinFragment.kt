@@ -47,7 +47,7 @@ class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>(), CommonDial
     }
 
     private fun getCategoryListInfo() {
-        val call: Call<ResponseCategory> = ServiceCreator.bumService.getCategoryInfo(
+        val call: Call<ResponseCategory> = ServiceCreator.bumService.getCategory(
             sharedPreferences.getValue("token", "")
         )
         call.enqueueUtil(

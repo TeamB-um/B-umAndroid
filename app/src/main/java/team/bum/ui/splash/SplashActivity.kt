@@ -35,7 +35,7 @@ class SplashActivity : AppCompatActivity() {
                 if (uuid == "") {
                     MyApplication.mySharedPreferences.setValue("uuid", UUID.randomUUID().toString())
                 } else {
-                    Log.d("tag-uuid", uuid)
+                    Log.d("tag", "UUID : $uuid")
                     signIn(uuid)
                 }
             }
@@ -47,7 +47,7 @@ class SplashActivity : AppCompatActivity() {
         val call: Call<ResponseToken> = ServiceCreator.bumService.getToken(body)
         call.enqueueUtil(
             onSuccess = {
-                Log.d("tag-token", it.data.token)
+                Log.d("tag", "token : ${it.data.token}")
                 MyApplication.mySharedPreferences.setValue("token", it.data.token)
                 navigateMain()
                 finish()

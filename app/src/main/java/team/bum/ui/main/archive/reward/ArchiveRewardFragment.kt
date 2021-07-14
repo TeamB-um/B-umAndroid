@@ -8,31 +8,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import retrofit2.Call
 import team.bum.api.data.ResponseRewards
-import team.bum.api.data.ResponseUserInfo
 import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentArchiveRewardBinding
 import team.bum.ui.base.BaseFragment
-import team.bum.ui.dialog.RewardDialog
 import team.bum.ui.main.archive.adapter.ArchiveRewardAdapter
-import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter
-import team.bum.ui.main.archive.data.ArchiveRewardInfo
-import team.bum.ui.main.archive.data.ArchiveWritingInfo
-import team.bum.ui.main.archive.writing.ArchiveWritingFragment
 import team.bum.util.MyApplication
 import team.bum.util.enqueueUtil
 
 class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
+
     private val archiveRewardAdapter = ArchiveRewardAdapter()
     private val sharedPreferences = MyApplication.mySharedPreferences
 
-
-    override fun initBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ) = FragmentArchiveRewardBinding.inflate(inflater, container, false)
+    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
+        FragmentArchiveRewardBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         binding.recyclerRewardList.layoutManager = GridLayoutManager(activity, 2)
         binding.recyclerRewardList.adapter = archiveRewardAdapter
 
@@ -60,12 +51,12 @@ class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
 //    }
 
     private fun getArchiveRewardInfo() {
-        val call: Call<ResponseRewards> = ServiceCreator.bumService.getRewards(
+        val call: Call<ResponseRewards> = ServiceCreator.bumService.getReward(
             sharedPreferences.getValue("token", "")
         )
         call.enqueueUtil(
             onSuccess = {
-                Log.d("test", it.message)
+                Log.d("test", it.success.toString())
                 archiveRewardAdapter.setItems(it.data.rewards)
             }
         )

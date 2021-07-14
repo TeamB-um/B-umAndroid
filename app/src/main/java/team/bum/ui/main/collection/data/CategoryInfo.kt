@@ -1,4 +1,4 @@
-package team.bum.api.data
+package team.bum.ui.main.collection.data
 
 data class CategoryInfo(
     val _id: String,

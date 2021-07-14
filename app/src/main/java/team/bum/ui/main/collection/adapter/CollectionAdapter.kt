@@ -48,6 +48,11 @@ class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewH
         notifyDataSetChanged()
     }
 
+    fun addItems(newItems: List<CategoryInfo>) {
+        categoryInfo.addAll(newItems)
+        notifyDataSetChanged()
+    }
+
     class CollectionViewHolder(
         private val binding: ItemCollectionBinding
     ) : RecyclerView.ViewHolder(binding.root) {

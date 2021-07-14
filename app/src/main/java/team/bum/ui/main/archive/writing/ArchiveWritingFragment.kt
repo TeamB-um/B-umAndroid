@@ -1,13 +1,13 @@
 package team.bum.ui.main.archive.writing
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import retrofit2.Call
-import team.bum.api.data.ResponseMyWriting
+import team.bum.api.data.ResponseWriting
+import team.bum.api.data.Writing
 import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentArchiveWritingBinding
 import team.bum.ui.base.BaseFragment
@@ -17,9 +17,7 @@ import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_NORMAL
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_SELECT
 import team.bum.ui.main.archive.data.ArchiveWritingFilterInfo
-import team.bum.ui.main.archive.data.WritingInfo
 import team.bum.util.*
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
@@ -90,7 +88,7 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
 
     private fun configureClickEvent() {
         archiveWritingAdapter.setItemClickListener(object : ArchiveWritingAdapter.ItemClickListener {
-            override fun onClick(writingInfo: WritingInfo) {
+            override fun onClick(writingInfo: Writing) {
                 val createdTime = LocalDateTime.parse(writingInfo.created_date.split(".")[0])
                 category = writingInfo.category.name
                 title = writingInfo.title
@@ -108,16 +106,14 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
     }
 
     private fun getWritingInfo() {
-        val call: Call<ResponseMyWriting> = ServiceCreator.bumService.getWriting(
+        val call: Call<ResponseWriting> = ServiceCreator.bumService.getWriting(
             sharedPreferences.getValue("token", "")
         )
         call.enqueueUtil(
             onSuccess = {
-                Log.d("test", it.success.toString())
-                archiveWritingAdapter.setItems(it.data.writings)
+                archiveWritingAdapter.setItems(it.data.writing)
             })
     }
-
 
     companion object {
         var category = ""

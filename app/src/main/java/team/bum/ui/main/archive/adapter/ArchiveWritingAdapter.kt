@@ -1,19 +1,20 @@
 package team.bum.ui.main.archive.adapter
 
+import android.content.Context
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import team.bum.R
+import team.bum.api.data.Writing
 import team.bum.databinding.ItemCardMywritingBinding
-import team.bum.ui.main.archive.data.ArchiveWritingInfo
-import team.bum.ui.main.archive.data.WritingInfo
 import team.bum.util.setInvisible
 import team.bum.util.setVisible
 
 class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveWritingViewHolder>() {
 
-    private val writingInfo = mutableListOf<WritingInfo>()
+    private val writing = mutableListOf<Writing>()
     private var itemViewMode = MODE_NORMAL
     private var selectedStatus = SparseBooleanArray(0)
     private lateinit var itemClickListener: ItemClickListener
@@ -21,11 +22,22 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
     inner class ArchiveWritingViewHolder(
         private val binding: ItemCardMywritingBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(writingListInfo: WritingInfo, position: Int) {
+        fun onBind(writingInfo: Writing, context: Context, position: Int) {
             binding.apply {
-                tvMywritingCategory.text = writingListInfo.category.name
-                tvMywritingTitle.text = writingListInfo.title
-                tvMywritingContent.text = writingListInfo.text
+                tvMywritingCategory.text = writingInfo.category.name
+                tvMywritingTitle.text = writingInfo.title
+                tvMywritingContent.text = writingInfo.text
+                when (writingInfo.category.index) {
+                    0 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_2_main))
+                    1 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.green_3))
+                    2 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.pink_3))
+                    3 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_4))
+                    4 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.green_5))
+                    5 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.green_2_main))
+                    6 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_3))
+                    7 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.pink_2_main))
+                    else -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.text_grey))
+                }
                 if (itemViewMode == MODE_SELECT) {
                     itemView.setOnClickListener {
                         val adapterPosition = adapterPosition
@@ -38,7 +50,7 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
                     }
                 } else {
                     itemView.setOnClickListener {
-                        itemClickListener.onClick(writingInfo[position])
+                        itemClickListener.onClick(writing[position])
                     }
                 }
             }
@@ -56,15 +68,15 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
 
     override fun getItemViewType(position: Int): Int = itemViewMode
 
-    override fun getItemCount(): Int = writingInfo.size
+    override fun getItemCount(): Int = writing.size
 
     override fun onBindViewHolder(holder: ArchiveWritingViewHolder, position: Int) {
-        holder.onBind(writingInfo[position], position)
+        holder.onBind(writing[position], holder.itemView.context, position)
     }
 
-    fun setItems(newItems: List<WritingInfo>) {
-        writingInfo.clear()
-        writingInfo.addAll(newItems)
+    fun setItems(newItems: List<Writing>) {
+        writing.clear()
+        writing.addAll(newItems)
         notifyDataSetChanged()
     }
 
@@ -100,7 +112,7 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
     }
 
     interface ItemClickListener {
-        fun onClick(writingInfo: WritingInfo)
+        fun onClick(writingInfo: Writing)
     }
 
     companion object {

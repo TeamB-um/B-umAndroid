@@ -84,7 +84,7 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         )
         call.enqueueUtil(
             onSuccess = { response ->
-                response.data.categories.forEach {
+                response.data.category.forEach {
                     category[it.name] = it._id
                 }
                 configureCategory(category)

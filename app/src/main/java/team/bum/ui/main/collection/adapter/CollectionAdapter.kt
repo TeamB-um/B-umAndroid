@@ -8,12 +8,13 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import team.bum.R
+import team.bum.api.data.Category
 import team.bum.ui.main.collection.data.CategoryInfo
 import team.bum.databinding.ItemCollectionBinding
 
 class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewHolder>() {
 
-    private val categoryInfo = mutableListOf<CategoryInfo>()
+    private val categoryInfo = mutableListOf<Category>()
 
     interface ItemClickListener {
         fun onClick(view: View, position: Int)
@@ -44,13 +45,13 @@ class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewH
 
     override fun getItemCount(): Int = categoryInfo.size
 
-    fun setItems(newItems: List<CategoryInfo>) {
+    fun setItems(newItems: List<Category>) {
         categoryInfo.clear()
         categoryInfo.addAll(newItems)
         notifyDataSetChanged()
     }
 
-    fun addItems(newItems: List<CategoryInfo>) {
+    fun addItems(newItems: List<Category>) {
         categoryInfo.addAll(newItems)
         notifyDataSetChanged()
     }
@@ -58,11 +59,11 @@ class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewH
     class CollectionViewHolder(
         private val binding: ItemCollectionBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(categoryInfo: CategoryInfo, context: Context) {
+        fun onBind(categoryInfo: Category, context: Context) {
             Glide.with(context).load(categoryInfo.img).into(binding.imageCollection)
             binding.apply {
                 tvCategory.text = categoryInfo.name
-               when (categoryInfo.index) {
+                when (categoryInfo.index) {
                    0 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_2_main))
                    1 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.green_3))
                    2 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.pink_3))

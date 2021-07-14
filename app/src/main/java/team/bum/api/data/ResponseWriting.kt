@@ -1,17 +1,30 @@
 package team.bum.api.data
 
-import com.google.gson.annotations.SerializedName
-
 data class ResponseWriting(
+    val data: Data,
     val status: Int,
-    val success: Boolean,
-    @SerializedName("writingresult") val writingResult: WritingResult
+    val success: Boolean
 ) {
-    data class WritingResult(
-        @SerializedName("_id") val id: String,
-        val category: Category,
-        @SerializedName("created_date") val date: String,
-        val text: String,
-        val title: String
-    )
+    data class Data(
+        val writing: Writing
+    ) {
+        data class Writing(
+            val _id: String,
+            val category: Category,
+            val category_id: String,
+            val created_date: String,
+            val text: String,
+            val title: String
+        ) {
+            data class Category(
+                val _id: String,
+                val count: Int,
+                val created_date: String,
+                val img: String,
+                val index: Int,
+                val name: String,
+                val user_id: String
+            )
+        }
+    }
 }

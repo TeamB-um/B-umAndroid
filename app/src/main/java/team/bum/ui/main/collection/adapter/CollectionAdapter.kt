@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import team.bum.api.data.CategoryInfo
+import team.bum.ui.main.collection.data.CategoryInfo
 import team.bum.databinding.ItemCollectionBinding
 
 class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewHolder>() {
@@ -26,13 +26,13 @@ class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewH
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CollectionAdapter.CollectionViewHolder {
+    ): CollectionViewHolder {
         val binding =
             ItemCollectionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CollectionViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CollectionAdapter.CollectionViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CollectionViewHolder, position: Int) {
         holder.onBind(categoryInfo[position], holder.itemView.context)
 
         holder.itemView.setOnClickListener {
@@ -51,10 +51,10 @@ class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewH
     class CollectionViewHolder(
         private val binding: ItemCollectionBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(categoryInfoInfo: CategoryInfo, context: Context) {
-            Glide.with(context).load(categoryInfoInfo.img).into(binding.imageCollection)
+        fun onBind(categoryInfo: CategoryInfo, context: Context) {
+            Glide.with(context).load(categoryInfo.img).into(binding.imageCollection)
             binding.apply {
-                tvCategory.text = categoryInfoInfo.name
+                tvCategory.text = categoryInfo.name
             }
         }
     }

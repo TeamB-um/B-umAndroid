@@ -127,11 +127,11 @@ class HomeDropFragment : BaseFragment<FragmentHomeDropBinding>() {
     }
 
     companion object {
-        const val IS_COLLECTION = true
-        const val IS_DELETE = false
+        const val COLLECTION = true
+        const val DELETE = false
 
-        fun newInstance(isWriting: Boolean) = HomeDropFragment().apply {
-            arguments = bundleOf("isWriting" to isWriting)
+        fun newInstance(dropTo: Boolean) = HomeDropFragment().apply {
+            arguments = bundleOf("dropTo" to dropTo)
         }
     }
 }

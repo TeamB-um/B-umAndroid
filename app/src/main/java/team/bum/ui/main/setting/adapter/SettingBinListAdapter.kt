@@ -4,9 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import team.bum.api.data.CategoryInfo
+import team.bum.ui.main.collection.data.CategoryInfo
 import team.bum.databinding.ItemCategoryBinding
-import team.bum.ui.main.setting.data.BinListInfo
 
 class SettingBinListAdapter :
     RecyclerView.Adapter<SettingBinListAdapter.SettingBinListViewHolder>() {
@@ -16,14 +15,14 @@ class SettingBinListAdapter :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): SettingBinListAdapter.SettingBinListViewHolder {
+    ): SettingBinListViewHolder {
         val binding =
             ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SettingBinListViewHolder(binding)
     }
 
     override fun onBindViewHolder(
-        holder: SettingBinListAdapter.SettingBinListViewHolder,
+        holder: SettingBinListViewHolder,
         position: Int
     ) {
         holder.onBind(categoryInfo[position], holder.itemView.context)

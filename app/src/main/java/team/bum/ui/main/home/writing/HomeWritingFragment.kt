@@ -21,8 +21,8 @@ import team.bum.ui.Paper
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity
-import team.bum.ui.main.home.drop.HomeDropFragment.Companion.IS_COLLECTION
-import team.bum.ui.main.home.drop.HomeDropFragment.Companion.IS_DELETE
+import team.bum.ui.main.home.drop.HomeDropFragment.Companion.COLLECTION
+import team.bum.ui.main.home.drop.HomeDropFragment.Companion.DELETE
 import team.bum.util.*
 
 class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDialog.ClickListener {
@@ -125,19 +125,19 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         }
     }
 
-    private fun submit(isWriting: Boolean) {
+    private fun submit(dropTo: Boolean) {
         val categoryId = category[getSelectedCategory()].toString()
         val title = binding.title.text.toString()
         val content = binding.content.text.toString()
-        val body = RequestWriting(categoryId, title, content, isWriting)
+        val body = RequestWriting(categoryId, title, content, dropTo)
         val call: Call<ResponseWriting> = ServiceCreator.bumService.postWriting(
             sharedPreferences.getValue("token", ""), body
         )
         call.enqueueUtil(
             onSuccess = {
-
+                Log.d("tag", "ResponseWriting : success")
             })
-        (activity as MainActivity).navigateWritingToDrop(isWriting)
+        (activity as MainActivity).navigateWritingToDrop(dropTo)
     }
 
     private fun getSelectedCategory(): String {
@@ -149,11 +149,11 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
     }
 
     override fun onClickYes() {
-        submit(IS_COLLECTION)
+        submit(COLLECTION)
     }
 
     override fun onClickCancel() {
-        submit(IS_DELETE)
+        submit(DELETE)
     }
 
     companion object {

@@ -6,5 +6,6 @@ data class RequestWriting(
     val category_id: String,
     val title: String,
     val text: String,
-    val iswriting: Boolean
+    @SerializedName("iswriting")
+    val drop_to: Boolean
 )

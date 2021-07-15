@@ -43,7 +43,7 @@ class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewH
                     else -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.text_grey))
                 }
                 itemView.setOnClickListener {
-                    itemClickListener.onClick(position, categoryInfo.name)
+                    itemClickListener.onClick(position, categoryInfo.name, categoryInfo.count)
                 }
             }
         }
@@ -67,7 +67,7 @@ class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewH
     }
 
     interface ItemClickListener {
-        fun onClick(position: Int, categoryName: String)
+        fun onClick(position: Int, categoryName: String, categoryCount: Int)
     }
 
     fun setItemClickListener(itemClickListener: ItemClickListener) {

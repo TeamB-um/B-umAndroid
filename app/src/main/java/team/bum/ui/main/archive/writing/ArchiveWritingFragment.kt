@@ -139,6 +139,7 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
                 title = writingInfo.title
                 date = createdTime.koFormat
                 content = writingInfo.text
+                colorIndex = writingInfo.category.index
                 showDialog()
             }
         })
@@ -155,5 +156,6 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
         var title = ""
         var date = ""
         var content = ""
+        var colorIndex = -1
     }
 }

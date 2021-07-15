@@ -3,7 +3,10 @@ package team.bum.ui.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
+import retrofit2.Call
 import team.bum.R
+import team.bum.api.data.ResponseCategory
+import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.ActivityMainBinding
 import team.bum.ui.main.archive.ArchiveFragment
 import team.bum.ui.main.collection.CollectionFragment
@@ -26,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         configureBottomNav()
+        getCategory()
     }
 
     private fun configureBottomNav() {
@@ -93,6 +97,19 @@ class MainActivity : AppCompatActivity() {
             startAnimation(slideDown)
             setInvisible()
         }
+    }
+
+    private fun getCategory() {
+        val call: Call<ResponseCategory> = ServiceCreator.bumService.getCategory(
+            MyApplication.mySharedPreferences.getValue("token", "")
+        )
+        call.enqueueUtil(
+            onSuccess = { response ->
+                response.data.category.forEach {
+                    categoryMap[it.name] = it._id
+                }
+            }
+        )
     }
 
     fun deleteBottomNav() {

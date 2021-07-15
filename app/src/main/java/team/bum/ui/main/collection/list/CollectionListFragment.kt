@@ -65,7 +65,6 @@ class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>() {
         )
         call.enqueueUtil(
             onSuccess = {
-                Log.d("tag-collection", "$categoryName / ${it.data.writing}")
                 binding.recyclerCollectionList.setVisible()
                 collectionListAdapter.setItems(it.data.writing)
             },
@@ -109,6 +108,7 @@ class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>() {
                 ArchiveWritingFragment.title = writingInfo.title
                 ArchiveWritingFragment.date = createdTime.koFormat
                 ArchiveWritingFragment.content = writingInfo.text
+                ArchiveWritingFragment.colorIndex = writingInfo.category.index
                 showDialog()
             }
         })

@@ -7,7 +7,7 @@ data class ResponseStats(
     val success: Boolean
 ) {
     data class Data(
-        @SerializedName("allstat") val allStat: List<AllStat>,
-        @SerializedName("monthstat") val monthStat: List<MonthStat>
+        @SerializedName("allstat") val allStat: List<Stat>,
+        @SerializedName("monthstat") val stat: List<Stat>
     )
 }

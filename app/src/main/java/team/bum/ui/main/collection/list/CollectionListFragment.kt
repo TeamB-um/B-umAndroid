@@ -1,7 +1,6 @@
 package team.bum.ui.main.collection.list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,14 +17,12 @@ import team.bum.ui.dialog.WritingDialog
 import team.bum.ui.main.MainActivity
 import team.bum.ui.main.MainActivity.Companion.categoryMap
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter
-import team.bum.ui.main.archive.data.ArchiveWritingInfo
 import team.bum.ui.main.archive.writing.ArchiveWritingFragment
 import team.bum.ui.main.collection.adapter.CollectionListAdapter
-import team.bum.ui.main.home.writing.HomeWritingFragment
 import team.bum.util.*
 import java.time.LocalDateTime
 
-class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>() {
+class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>(), CommonDialog.ClickListener {
 
     private val collectionListAdapter = CollectionListAdapter()
     private val sharedPreferences = MyApplication.mySharedPreferences
@@ -111,6 +108,10 @@ class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>() {
                 ArchiveWritingFragment.colorIndex = writingInfo.category.index
                 showDialog()
             }
+
+            override fun onSelect(writingId: List<String>) {
+                categoryWritingIds = writingId
+            }
         })
     }
 
@@ -120,9 +121,35 @@ class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>() {
         dialog.show(parentFragmentManager, "dialog")
     }
 
+    private fun deleteWriting() {
+        val call: Call<ResponseWriting> = ServiceCreator.bumService.deleteWriting(
+            sharedPreferences.getValue("token", ""), ids = categoryWritingIds
+        )
+        call.enqueueUtil(
+            onSuccess = { responseWriting ->
+                val responseData = responseWriting.data.writing
+                val categoryWriting = mutableListOf<Writing>()
+                responseData.forEach {
+                    if (it.category._id == categoryMap[categoryName]) categoryWriting.add(it)
+                }
+                collectionListAdapter.setItems(categoryWriting)
+                binding.chipSelect.text = "선택"
+                binding.chipSelect.isChecked = false
+                binding.chipDelete.setInvisible()
+                collectionListAdapter.setViewMode(ArchiveWritingAdapter.MODE_NORMAL)
+                collectionListAdapter.clearSelectedItem()
+            }
+        )
+    }
+
+    override fun onClickYes() {
+        deleteWriting()
+    }
+
     companion object {
         fun newInstance(categoryName: String) = CollectionListFragment().apply {
             arguments = bundleOf("categoryName" to categoryName)
         }
+        var categoryWritingIds = emptyList<String>()
     }
 }

@@ -1,7 +1,6 @@
 package team.bum.ui.main.archive.writing
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,7 @@ import team.bum.ui.main.archive.data.ArchiveWritingFilterInfo
 import team.bum.util.*
 import java.time.LocalDateTime
 
-class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
+class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>(), CommonDialog.ClickListener {
 
     private val archiveWritingAdapter = ArchiveWritingAdapter()
     private val sheetFragment: FilterSheetFragment = FilterSheetFragment()
@@ -89,14 +88,12 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
         )
         call.enqueueUtil(
             onSuccess = {
-                Log.d("tag-filter1", "$filterData / ${it.data.writing}")
                 binding.recyclerMywritingList.setVisible()
                 binding.emptyImage.setInvisible()
                 binding.emptyText.setInvisible()
                 archiveWritingAdapter.setItems(it.data.writing)
             },
             onError = {
-                Log.d("tag-filter2", "$filterData")
                 binding.recyclerMywritingList.setInvisible()
                 binding.emptyImage.setVisible()
                 binding.emptyText.setVisible()
@@ -142,6 +139,10 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
                 colorIndex = writingInfo.category.index
                 showDialog()
             }
+
+            override fun onSelect(writingId: List<String>) {
+                writingIds = writingId
+            }
         })
     }
 
@@ -151,11 +152,32 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
         dialog.show(parentFragmentManager, "dialog")
     }
 
+    private fun deleteWriting() {
+        val call: Call<ResponseWriting> = ServiceCreator.bumService.deleteWriting(
+            sharedPreferences.getValue("token", ""), ids = writingIds
+        )
+        call.enqueueUtil(
+            onSuccess = {
+                archiveWritingAdapter.setItems(it.data.writing)
+                binding.chipSelect.text = "선택"
+                binding.chipSelect.isChecked = false
+                binding.chipDelete.setInvisible()
+                archiveWritingAdapter.setViewMode(MODE_NORMAL)
+                archiveWritingAdapter.clearSelectedItem()
+            }
+        )
+    }
+
+    override fun onClickYes() {
+        deleteWriting()
+    }
+
     companion object {
         var category = ""
         var title = ""
         var date = ""
         var content = ""
         var colorIndex = -1
+        var writingIds = emptyList<String>()
     }
 }

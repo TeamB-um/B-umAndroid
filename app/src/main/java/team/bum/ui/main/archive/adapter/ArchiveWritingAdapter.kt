@@ -15,6 +15,7 @@ import team.bum.util.setVisible
 class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveWritingViewHolder>() {
 
     private val writing = mutableListOf<Writing>()
+    private val writingId = mutableListOf<String>()
     private var itemViewMode = MODE_NORMAL
     private var selectedStatus = SparseBooleanArray(0)
     private lateinit var itemClickListener: ItemClickListener
@@ -42,6 +43,7 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
                     itemView.setOnClickListener {
                         val adapterPosition = adapterPosition
                         toggleItemSelected(adapterPosition)
+                        itemClickListener.onSelect(writingId)
                     }
                     if (isItemSelected(position)) {
                         binding.checkCircle.setImageResource(R.drawable.btn_circle_checked)
@@ -89,9 +91,11 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
         if (selectedStatus.get(position, false)) {
             selectedStatus.delete(position)
             notifyItemChanged(position)
+            writingId.remove(writing[position]._id)
         } else {
             selectedStatus.put(position, true)
             notifyItemChanged(position)
+            writingId.add(writing[position]._id)
         }
     }
 
@@ -105,6 +109,7 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
             notifyItemChanged(position)
         }
         selectedStatus.clear()
+        writingId.clear()
     }
 
     fun setItemClickListener(itemClickListener: ItemClickListener) {
@@ -113,6 +118,7 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
 
     interface ItemClickListener {
         fun onClick(writingInfo: Writing)
+        fun onSelect(writingId: List<String>)
     }
 
     companion object {

@@ -13,6 +13,7 @@ import team.bum.util.setVisible
 class CollectionListAdapter : RecyclerView.Adapter<CollectionListAdapter.CollectionListViewHolder>() {
 
     private val writing = mutableListOf<Writing>()
+    private val writingId = mutableListOf<String>()
     private var itemViewMode = MODE_NORMAL
     private var selectedStatus = SparseBooleanArray(0)
     private lateinit var itemClickListener: ItemClickListener
@@ -28,6 +29,7 @@ class CollectionListAdapter : RecyclerView.Adapter<CollectionListAdapter.Collect
                     itemView.setOnClickListener {
                         val adapterPosition = adapterPosition
                         toggleItemSelected(adapterPosition)
+                        itemClickListener.onSelect(writingId)
                     }
                     if (isItemSelected(position)) {
                         binding.checkCircle.setImageResource(R.drawable.btn_circle_checked)
@@ -70,9 +72,11 @@ class CollectionListAdapter : RecyclerView.Adapter<CollectionListAdapter.Collect
         if (selectedStatus.get(position, false)) {
             selectedStatus.delete(position)
             notifyItemInserted(position)
+            writingId.remove(writing[position]._id)
         } else {
             selectedStatus.put(position, true)
             notifyItemChanged(position)
+            writingId.add(writing[position]._id)
         }
     }
 
@@ -91,6 +95,7 @@ class CollectionListAdapter : RecyclerView.Adapter<CollectionListAdapter.Collect
             notifyItemChanged(position)
         }
         selectedStatus.clear()
+        writingId.clear()
     }
 
     fun setItemClickListener(itemClickListener: ItemClickListener) {
@@ -99,6 +104,7 @@ class CollectionListAdapter : RecyclerView.Adapter<CollectionListAdapter.Collect
 
     interface ItemClickListener {
         fun onClick(writingInfo: Writing)
+        fun onSelect(writingId: List<String>)
     }
 
     companion object {

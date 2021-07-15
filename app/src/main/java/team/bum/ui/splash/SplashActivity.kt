@@ -37,7 +37,13 @@ class SplashActivity : AppCompatActivity() {
                     signIn(uuid)
                 } else {
                     Log.d("tag", "UUID : $uuid")
-                    signIn(uuid)
+                    // FiXME 테스트용
+                    //  signIn(uuid)
+                    MyApplication.mySharedPreferences.setValue(
+                        "token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBlZTgyMTZjMDljYjQ2MDRkNmUyZWU5In0sImlhdCI6MTYyNjI0MzYwNywiZXhwIjoxNjI2NjAzNjA3fQ.cHXNOUWs3p-DXpShrAY_8f6iqeY44VsQoHMMLfU0K7Q"
+                    )
+                    navigateMain()
+                    finish()
                 }
             }
         })
@@ -50,8 +56,6 @@ class SplashActivity : AppCompatActivity() {
             onSuccess = {
                 Log.d("tag", "token : ${it.data.token}")
                 MyApplication.mySharedPreferences.setValue("token", it.data.token)
-                navigateMain()
-                finish()
             })
     }
 

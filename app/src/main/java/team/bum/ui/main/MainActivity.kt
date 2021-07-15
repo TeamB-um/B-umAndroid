@@ -57,8 +57,8 @@ class MainActivity : AppCompatActivity() {
         replaceFragment(binding.fragmentContainer, SettingBinFragment::class.java, true)
     }
 
-    fun navigateCollectionList() {
-        replaceFragment(binding.fragmentContainer, CollectionListFragment::class.java, true)
+    fun navigateCollectionToList(categoryName: String) {
+        replaceFragment(binding.fragmentContainer, CollectionListFragment.newInstance(categoryName), true)
     }
 
     fun popHomeWriting() {
@@ -106,5 +106,9 @@ class MainActivity : AppCompatActivity() {
         }
         shortToast("'뒤로' 버튼을 한번 더 누르시면 앱이 종료됩니다.")
         backPressedTime = System.currentTimeMillis()
+    }
+
+    companion object {
+        val categoryMap = mutableMapOf<String, String>()
     }
 }

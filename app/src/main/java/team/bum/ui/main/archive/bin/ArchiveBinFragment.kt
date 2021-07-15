@@ -1,19 +1,16 @@
 package team.bum.ui.main.archive.bin
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import retrofit2.Call
-import team.bum.api.data.ResponseCategory
 import team.bum.api.data.ResponseTrashCans
 import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentArchiveBinBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.main.archive.adapter.ArchiveBinAdapter
-import team.bum.ui.main.archive.data.ArchiveBinInfo
 import team.bum.util.MyApplication
 import team.bum.util.enqueueUtil
 

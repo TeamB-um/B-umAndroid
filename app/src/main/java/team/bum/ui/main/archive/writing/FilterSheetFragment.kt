@@ -6,12 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.TextView
-import androidx.core.view.get
+import androidx.core.view.forEach
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import retrofit2.Call
 import team.bum.R
+import team.bum.api.data.ResponseCategory
+import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentFilterSheetBinding
+import team.bum.ui.main.MainActivity.Companion.categoryMap
 import team.bum.ui.main.archive.data.ArchiveWritingFilterInfo
 import team.bum.util.*
 import java.time.LocalDateTime
@@ -20,8 +24,8 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentFilterSheetBinding
     private lateinit var clickListener: ClickListener
+    private val sharedPreferences = MyApplication.mySharedPreferences
     private var isStart = true
-    private var selectedId = -1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +42,7 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
         configureDatePicker()
         setDatePicker(binding.startPicker, binding.startDate)
         setSwitch()
-        configureCategory()
+        getCategory()
     }
 
     private fun initFilter() {
@@ -49,10 +53,10 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
 
     private fun configureButton() {
         binding.btnCheck.setOnClickListener {
-            val selectedChip = binding.chipGroup[getSelectedChip()] as Chip
-            val filterInfo = ArchiveWritingFilterInfo(
-                "${binding.startDate.text}", "${binding.endDate.text}", "${selectedChip.text}"
-            )
+            val startDate = binding.startDate.text.split(".").joinToString("-")
+            val endDate = binding.endDate.text.split(".").joinToString("-")
+            val categoryName = getSelectedCategory()
+            val filterInfo = ArchiveWritingFilterInfo(startDate, endDate, categoryName)
             clickListener.onClickYes(filterInfo)
             dismiss()
         }
@@ -116,10 +120,24 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private fun configureCategory() {
-        val category = listOf("인간관계", "취업", "오늘하루", "우울", "건강", "웅앵웅")
+    private fun getCategory() {
+        val call: Call<ResponseCategory> = ServiceCreator.bumService.getCategory(
+            sharedPreferences.getValue("token", "")
+        )
+        call.enqueueUtil(
+            onSuccess = { response ->
+                response.data.category.forEach {
+                    categoryMap[it.name] = it._id
+                }
+                configureCategory(categoryMap)
+            }
+        )
+    }
 
-        category.forEachIndexed { i, text ->
+    private fun configureCategory(category: MutableMap<String, String>) {
+        val categoryName = mutableListOf<String>()
+        category.forEach { categoryName.add(it.key) }
+        categoryName.forEachIndexed { i, text ->
             if (i == 0) binding.chipGroup.addView(createChip(text, true))
             else binding.chipGroup.addView(createChip(text))
         }
@@ -134,12 +152,12 @@ class FilterSheetFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private fun getSelectedChip(): Int {
-        for (i in 0 until binding.chipGroup.childCount) {
-            val chip = binding.chipGroup.getChildAt(i) as Chip
-            if (chip.isChecked) selectedId = i
+    private fun getSelectedCategory(): String {
+        var selectedCategory = ""
+        binding.chipGroup.forEach {
+            if ((it as Chip).isChecked) selectedCategory = it.text.toString()
         }
-        return selectedId
+        return selectedCategory
     }
 
     fun setClickYesListener(clickListener: ClickListener) {

@@ -19,10 +19,8 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
     private val sheetFragment: SheetFragment = SheetFragment()
     private val sharedPreferences = MyApplication.mySharedPreferences
 
-    override fun initBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ) = FragmentSettingBinding.inflate(inflater, container, false)
+    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
+        FragmentSettingBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         bottomSheetEvent()
@@ -49,7 +47,6 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
     private fun setDuration() {
         sheetFragment.setClickYesListener(object : SheetFragment.ClickListener {
             override fun onClickYes(date: String) {
-                Log.d("야", date)
                 binding.tvDurationDay.text = date
             }
         })

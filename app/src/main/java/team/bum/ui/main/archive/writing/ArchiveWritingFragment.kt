@@ -1,6 +1,7 @@
 package team.bum.ui.main.archive.writing
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import team.bum.databinding.FragmentArchiveWritingBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.dialog.WritingDialog
+import team.bum.ui.main.MainActivity.Companion.categoryMap
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_NORMAL
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter.Companion.MODE_SELECT
@@ -25,7 +27,6 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
     private val archiveWritingAdapter = ArchiveWritingAdapter()
     private val sheetFragment: FilterSheetFragment = FilterSheetFragment()
     private val sharedPreferences = MyApplication.mySharedPreferences
-
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentArchiveWritingBinding.inflate(inflater, container, false)
@@ -54,10 +55,54 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
                 binding.chipAllCategory.apply {
                     isCheckable = true
                     isChecked = true
-                    text = filterData.category
+                    text = filterData.categoryName
                 }
+                getFilterWriting(filterData)
             }
         })
+    }
+
+    private fun getWritingInfo() {
+        val call: Call<ResponseWriting> = ServiceCreator.bumService.getWriting(
+            sharedPreferences.getValue("token", "")
+        )
+        call.enqueueUtil(
+            onSuccess = {
+                binding.recyclerMywritingList.setVisible()
+                binding.emptyImage.setInvisible()
+                binding.emptyText.setInvisible()
+                archiveWritingAdapter.setItems(it.data.writing)
+            },
+            onError = {
+                binding.recyclerMywritingList.setInvisible()
+                binding.emptyImage.setVisible()
+                binding.emptyText.setVisible()
+                binding.emptyText.text = "아직 글을 작성하지 않았어요!"
+            }
+        )
+    }
+
+    private fun getFilterWriting(filterData: ArchiveWritingFilterInfo) {
+        val call: Call<ResponseWriting> = ServiceCreator.bumService.getWriting(
+            sharedPreferences.getValue("token", ""),
+            filterData.startDate, filterData.endDate, categoryMap[filterData.categoryName]
+        )
+        call.enqueueUtil(
+            onSuccess = {
+                Log.d("tag-filter1", "$filterData / ${it.data.writing}")
+                binding.recyclerMywritingList.setVisible()
+                binding.emptyImage.setInvisible()
+                binding.emptyText.setInvisible()
+                archiveWritingAdapter.setItems(it.data.writing)
+            },
+            onError = {
+                Log.d("tag-filter2", "$filterData")
+                binding.recyclerMywritingList.setInvisible()
+                binding.emptyImage.setVisible()
+                binding.emptyText.setVisible()
+                binding.emptyText.text = "글을 찾지 못했어요!"
+            }
+        )
     }
 
     private fun configureSelectChip() {
@@ -103,16 +148,6 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
         val dialog = WritingDialog.CustomDialogBuilder().create()
         dialog.isCancelable = false
         dialog.show(parentFragmentManager, "dialog")
-    }
-
-    private fun getWritingInfo() {
-        val call: Call<ResponseWriting> = ServiceCreator.bumService.getWriting(
-            sharedPreferences.getValue("token", "")
-        )
-        call.enqueueUtil(
-            onSuccess = {
-                archiveWritingAdapter.setItems(it.data.writing)
-            })
     }
 
     companion object {

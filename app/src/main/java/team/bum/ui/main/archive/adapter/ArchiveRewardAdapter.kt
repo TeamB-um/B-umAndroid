@@ -2,7 +2,9 @@ package team.bum.ui.main.archive.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import team.bum.R
 import team.bum.databinding.ItemCardRewardBinding
 import team.bum.ui.main.archive.data.RewardInfo
 import team.bum.util.dateFormat
@@ -31,7 +33,17 @@ class ArchiveRewardAdapter : RecyclerView.Adapter<ArchiveRewardAdapter.ArchiveRe
                 tvRewardDate.text = createdTime.dateFormat
                 tvRewardContent.text = reward.sentence
                 tvRewardAuthor.text = reward.author
-
+                when (reward.index) {
+                    0 -> viewCardReward.setBackgroundResource(R.drawable.gradient1)
+                    1 -> viewCardReward.setBackgroundResource(R.drawable.gradient5)
+                    2 -> viewCardReward.setBackgroundResource(R.drawable.gradient8)
+                    3 -> viewCardReward.setBackgroundResource(R.drawable.gradient3)
+                    4 -> viewCardReward.setBackgroundResource(R.drawable.gradient6)
+                    5 -> viewCardReward.setBackgroundResource(R.drawable.gradient4)
+                    6 -> viewCardReward.setBackgroundResource(R.drawable.gradient2)
+                    7 -> viewCardReward.setBackgroundResource(R.drawable.gradient7)
+                    else -> viewCardReward.setBackgroundResource(R.color.bg)
+                }
                 itemView.setOnClickListener {
                     itemClickListener.onClick(rewardInfo[position])
                 }

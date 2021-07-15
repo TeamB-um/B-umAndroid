@@ -43,6 +43,7 @@ class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
                 sentence = rewardInfo.sentence
                 author = rewardInfo.author
                 content = rewardInfo.context
+                bgColorIndex = rewardInfo.index
                 showDialog()
             }
         })
@@ -71,5 +72,6 @@ class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
         var sentence = ""
         var author = ""
         var content = ""
+        var bgColorIndex = -1
     }
 }

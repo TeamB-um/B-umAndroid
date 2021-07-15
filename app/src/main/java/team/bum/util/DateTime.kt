@@ -33,6 +33,12 @@ val LocalDateTime.dateString: DateString
     get() = "${year}.${monthValue.padZero()}.${dayOfMonth.padZero()}"
 
 /**
+ * 2021-07-15
+ */
+val LocalDateTime.filterDateString: DateString
+    get() = "${year}-${monthValue.padZero()}-${dayOfMonth.padZero()}"
+
+/**
  * 2021.07.14 (수)
  */
 val LocalDateTime.dateFormat: DateString

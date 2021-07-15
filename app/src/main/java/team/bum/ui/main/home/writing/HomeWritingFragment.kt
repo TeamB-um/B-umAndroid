@@ -20,6 +20,7 @@ import team.bum.ui.Paper
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity
+import team.bum.ui.main.MainActivity.Companion.categoryMap
 import team.bum.ui.main.home.drop.HomeDropFragment
 import team.bum.ui.main.home.drop.HomeDropFragment.Companion.COLLECTION
 import team.bum.ui.main.home.drop.HomeDropFragment.Companion.DELETE
@@ -85,9 +86,9 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         call.enqueueUtil(
             onSuccess = { response ->
                 response.data.category.forEach {
-                    category[it.name] = it._id
+                    categoryMap[it.name] = it._id
                 }
-                configureCategory(category)
+                configureCategory(categoryMap)
             }
         )
     }
@@ -137,7 +138,7 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
     }
 
     private fun sendWritingData(dropTo: Boolean) {
-        val categoryId = category[getSelectedCategory()].toString()
+        val categoryId = categoryMap[getSelectedCategory()].toString()
         val title = binding.title.text.toString()
         val content = binding.content.text.toString()
         HomeDropFragment.newInstance(categoryId, title, content, dropTo)

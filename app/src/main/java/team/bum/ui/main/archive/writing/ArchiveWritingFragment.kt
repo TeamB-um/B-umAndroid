@@ -1,6 +1,7 @@
 package team.bum.ui.main.archive.writing
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,6 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
     private val archiveWritingAdapter = ArchiveWritingAdapter()
     private val sheetFragment: FilterSheetFragment = FilterSheetFragment()
     private val sharedPreferences = MyApplication.mySharedPreferences
-
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentArchiveWritingBinding.inflate(inflater, container, false)
@@ -54,7 +54,7 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>() {
                 binding.chipAllCategory.apply {
                     isCheckable = true
                     isChecked = true
-                    text = filterData.category
+                    text = filterData.categoryName
                 }
             }
         })

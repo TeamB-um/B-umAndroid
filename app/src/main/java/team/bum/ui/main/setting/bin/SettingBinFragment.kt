@@ -69,12 +69,13 @@ class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>(), CommonDial
                     "확인", true, "취소", true, showEdit = true
                 ).show(childFragmentManager, null)
                 editCategoryId = categoryInfo._id
-                Log.d("tag000", "$editCategoryId")
+                Log.d("tag000", editCategoryId)
             }
         })
     }
 
     private fun getCategoryList() {
+
         val call: Call<ResponseCategory> = ServiceCreator.bumService.getCategory(
             sharedPreferences.getValue("token", "")
         )
@@ -113,7 +114,6 @@ class SettingBinFragment : BaseFragment<FragmentSettingBinBinding>(), CommonDial
     }
 
     private fun editCategory(text: String) {
-        Log.d("tagdddd", "찍히냐")
         val categoryName = RequestCategory(text)
         val call: Call<ResponseCategory> = ServiceCreator.bumService.editCategory(
             sharedPreferences.getValue("token", ""), editCategoryId, categoryName

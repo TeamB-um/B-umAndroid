@@ -57,8 +57,8 @@ class MainActivity : AppCompatActivity() {
         replaceFragment(binding.fragmentContainer, SettingBinFragment::class.java, true)
     }
 
-    fun navigateCollectionList() {
-        replaceFragment(binding.fragmentContainer, CollectionListFragment::class.java, true)
+    fun navigateCollectionToList(categoryName: String) {
+        replaceFragment(binding.fragmentContainer, CollectionListFragment.newInstance(categoryName), true)
     }
 
     fun popHomeWriting() {

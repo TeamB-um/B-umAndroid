@@ -29,7 +29,6 @@ import team.bum.util.*
 class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDialog.ClickListener {
 
     private val sharedPreferences = MyApplication.mySharedPreferences
-    private val category = mutableMapOf<String, String>()
     private val paperId
         get() = arguments?.getInt("paperId")
 

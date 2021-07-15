@@ -3,17 +3,13 @@ package team.bum.ui.dialog.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import team.bum.api.data.AllStat
-import team.bum.api.data.MonthStat
+import team.bum.api.data.Stat
 import team.bum.databinding.ItemStatsBinding
-import team.bum.ui.dialog.data.StatsMonthInfo
-import team.bum.ui.dialog.data.StatsTotalInfo
-import java.net.BindException
 
 class StatsDialogAdapter : RecyclerView.Adapter<StatsDialogAdapter.StatsDialogViewHolder>() {
 
-    private val statsMonthInfo = mutableListOf<MonthStat>()
-    private val statsTotalInfo = mutableListOf<AllStat>()
+    private val statsInfo = mutableListOf<Stat>()
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -24,37 +20,29 @@ class StatsDialogAdapter : RecyclerView.Adapter<StatsDialogAdapter.StatsDialogVi
     }
 
     override fun onBindViewHolder(holder: StatsDialogAdapter.StatsDialogViewHolder, position: Int) {
-        holder.onBind(statsMonthInfo[position])
-        holder.Bind(statsTotalInfo[position])
+        holder.onBind(statsInfo[position])
     }
 
-    fun setMonthItems(newItems: List<MonthStat>) {
-        statsMonthInfo.clear()
-        statsMonthInfo.addAll(newItems)
+    fun setItems(newItems: List<Stat>) {
+        statsInfo.clear()
+        statsInfo.addAll(newItems)
         notifyDataSetChanged()
     }
 
-    fun setTotalItems(newItems: List<AllStat>) {
-        statsTotalInfo.clear()
-        statsTotalInfo.addAll(newItems)
+    fun addItems(newItems: List<Stat>) {
+        statsInfo.addAll(newItems)
         notifyDataSetChanged()
     }
 
-    override fun getItemCount(): Int = statsMonthInfo.size
+    override fun getItemCount(): Int = statsInfo.size
 
     class StatsDialogViewHolder(
         private val binding: ItemStatsBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(statsMonthInfo: MonthStat) {
+        fun onBind(statsInfo: Stat) {
             binding.apply {
-                tvStatsCategory.text = statsMonthInfo.name
-                tvStatsNumber.text = statsMonthInfo.percent.toString()
-            }
-        }
-        fun Bind(statsTotalInfo: AllStat) {
-            binding.apply {
-                tvStatsCategory.text = statsTotalInfo.name
-                tvStatsNumber.text = statsTotalInfo.percent.toString()
+                tvStatsCategory.text = statsInfo.name
+                tvStatsNumber.text = statsInfo.percent.toString()
             }
         }
     }

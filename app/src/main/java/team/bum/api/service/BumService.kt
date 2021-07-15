@@ -25,14 +25,9 @@ interface BumService {
     @GET("writings")
     fun getWriting(
         @Header("x-auth-token") token: String,
-    ): Call<ResponseWriting>
-
-    @GET("writings")
-    fun filterWriting(
-        @Header("x-auth-token") token: String,
-        @Query("start_date") start_date: DateString,
-        @Query("end_date") end_date: DateString,
-        @Query("category_ids") category_ids: List<String>
+        @Query("start_date") start_date: String? = null,
+        @Query("end_date") end_date: String? = null,
+        @Query("category_ids") category_ids: String? = null
     ): Call<ResponseWriting>
 
     @GET("writings/stat/graph")

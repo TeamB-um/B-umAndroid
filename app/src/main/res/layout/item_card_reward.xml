@@ -16,7 +16,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradient">
+            android:background="@drawable/gradient2">
 
             <TextView
                 android:id="@+id/tv_reward_date"

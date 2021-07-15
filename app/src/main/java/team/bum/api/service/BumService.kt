@@ -35,6 +35,12 @@ interface BumService {
         @Header("x-auth-token") token: String
     ): Call<ResponseStats>
 
+    @DELETE("writings")
+    fun deleteWriting(
+        @Header("x-auth-token") token: String,
+        @Query("ids") ids: List<String>
+    ): Call<ResponseWriting>
+
     // TRASHCANS
     @GET("trashcans")
     fun getTrashCans(

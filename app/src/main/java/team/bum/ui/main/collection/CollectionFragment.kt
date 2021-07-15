@@ -1,6 +1,7 @@
 package team.bum.ui.main.collection
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,14 +10,20 @@ import androidx.recyclerview.widget.GridLayoutManager
 import retrofit2.Call
 import team.bum.api.data.Category
 import team.bum.api.data.ResponseCategory
+import team.bum.api.data.ResponseCategoryReward
 import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentCollectionBinding
 import team.bum.ui.base.BaseFragment
+import team.bum.ui.dialog.RewardDialog
 import team.bum.ui.dialog.StatsDialog
 import team.bum.ui.main.MainActivity
+import team.bum.ui.main.MainActivity.Companion.categoryMap
+import team.bum.ui.main.archive.reward.ArchiveRewardFragment
 import team.bum.ui.main.collection.adapter.CollectionAdapter
 import team.bum.util.MyApplication
+import team.bum.util.dateFormat
 import team.bum.util.enqueueUtil
+import java.time.LocalDateTime
 
 class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
 
@@ -61,8 +68,11 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
 
     private fun recyclerViewClickEvent() {
         collectionAdapter.setItemClickListener(object : CollectionAdapter.ItemClickListener {
-            override fun onClick(position: Int, categoryName: String) {
-                if (position == collectionAdapter.itemCount-1) {
+            override fun onClick(position: Int, categoryName: String, categoryCount: Int) {
+                if (categoryCount >= 5) {
+                    callRewardDialog(categoryName)
+                    (activity as MainActivity).navigateCollectionToList(categoryName)
+                } else if (position == collectionAdapter.itemCount - 1) {
                     (activity as MainActivity).navigateSettingToManagement()
                 } else {
                     (activity as MainActivity).navigateCollectionToList(categoryName)
@@ -71,10 +81,36 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
         })
     }
 
+    private fun callRewardDialog(categoryName: String) {
+        val call: Call<ResponseCategoryReward> =
+            ServiceCreator.bumService.getCategoryRewards(
+                sharedPreferences.getValue("token", ""),
+                categoryMap[categoryName].toString()
+            )
+        call.enqueueUtil(
+            onSuccess = {
+                Log.d("test", "성공")
+                val createdTime =
+                    LocalDateTime.parse(it.data.reward.created_date.split(".")[0])
+                ArchiveRewardFragment.date = createdTime.dateFormat
+                ArchiveRewardFragment.sentence = it.data.reward.sentence
+                ArchiveRewardFragment.author = it.data.reward.author
+                ArchiveRewardFragment.content = it.data.reward.context
+                showRewardDialog()
+            }
+        )
+    }
+
     private fun statsClickEvent() {
         binding.imageStats.setOnClickListener {
             showDialog()
         }
+    }
+
+    private fun showRewardDialog() {
+        val dialog = RewardDialog.CustomDialogBuilder().create()
+        dialog.isCancelable = false
+        dialog.show(parentFragmentManager, "dialog")
     }
 
     private fun showDialog() {

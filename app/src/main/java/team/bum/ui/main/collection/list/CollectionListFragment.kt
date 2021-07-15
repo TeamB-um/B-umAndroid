@@ -1,98 +1,53 @@
 package team.bum.ui.main.collection.list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.core.os.bundleOf
+import retrofit2.Call
+import team.bum.api.data.ResponseWriting
+import team.bum.api.data.Writing
+import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentCollectionListBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.dialog.WritingDialog
 import team.bum.ui.main.MainActivity
+import team.bum.ui.main.MainActivity.Companion.categoryMap
 import team.bum.ui.main.archive.adapter.ArchiveWritingAdapter
 import team.bum.ui.main.archive.data.ArchiveWritingInfo
 import team.bum.ui.main.archive.writing.ArchiveWritingFragment
 import team.bum.ui.main.collection.adapter.CollectionListAdapter
-import team.bum.util.setInvisible
-import team.bum.util.setVisible
+import team.bum.ui.main.home.writing.HomeWritingFragment
+import team.bum.util.*
+import java.time.LocalDateTime
 
 class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>() {
+
     private val collectionListAdapter = CollectionListAdapter()
-    override fun initBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ) = FragmentCollectionListBinding.inflate(inflater, container, false)
+    private val sharedPreferences = MyApplication.mySharedPreferences
+    private val categoryName
+        get() = arguments?.getString("categoryName")
+
+    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) =
+        FragmentCollectionListBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.recyclerCollectionList.adapter = collectionListAdapter
+        binding.tvCategory.text = categoryName
 
         configureChips()
-        addCollectionListInfo()
         configureCollectionNavigation()
+        getCategoryWriting()
     }
 
     private fun configureChips() {
         configureSelectChip()
         configureDeleteChip()
         configureClickEvent()
-    }
-
-    private fun addCollectionListInfo() {
-        collectionListAdapter.setItems(
-            listOf<ArchiveWritingInfo>(
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목2",
-                    content = "어쩌고저쩌고",
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목2",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "이강민",
-                    title = "이강민아",
-                    content = "스트레스 안받아?"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                ),
-                ArchiveWritingInfo(
-                    category = "인간관계",
-                    title = "글제목1",
-                    content = "어쩌고저쩌고"
-                )
-            )
-        )
     }
 
     private fun configureCollectionNavigation() {
@@ -102,6 +57,22 @@ class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>() {
         requireActivity().onBackPressedDispatcher.addCallback {
             (activity as MainActivity).popCollection()
         }
+    }
+
+    private fun getCategoryWriting() {
+        val call: Call<ResponseWriting> = ServiceCreator.bumService.getWriting(
+            sharedPreferences.getValue("token", ""), category_ids = categoryMap[categoryName]
+        )
+        call.enqueueUtil(
+            onSuccess = {
+                Log.d("tag-collection", "$categoryName / ${it.data.writing}")
+                binding.recyclerCollectionList.setVisible()
+                collectionListAdapter.setItems(it.data.writing)
+            },
+            onError = {
+                binding.recyclerCollectionList.setInvisible()
+            }
+        )
     }
 
     private fun configureSelectChip() {
@@ -132,11 +103,12 @@ class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>() {
 
     private fun configureClickEvent() {
         collectionListAdapter.setItemClickListener(object : CollectionListAdapter.ItemClickListener {
-            override fun onClick(archiveWritingInfo: ArchiveWritingInfo) {
-                ArchiveWritingFragment.category = archiveWritingInfo.category
-                ArchiveWritingFragment.title = archiveWritingInfo.title
-                ArchiveWritingFragment.date = "2021년 07월 10일 (토)"
-                ArchiveWritingFragment.content = archiveWritingInfo.content
+            override fun onClick(writingInfo: Writing) {
+                val createdTime = LocalDateTime.parse(writingInfo.created_date.split(".")[0])
+                ArchiveWritingFragment.category = writingInfo.category.name
+                ArchiveWritingFragment.title = writingInfo.title
+                ArchiveWritingFragment.date = createdTime.koFormat
+                ArchiveWritingFragment.content = writingInfo.text
                 showDialog()
             }
         })
@@ -146,5 +118,11 @@ class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>() {
         val dialog = WritingDialog.CustomDialogBuilder().create()
         dialog.isCancelable = false
         dialog.show(parentFragmentManager, "dialog")
+    }
+
+    companion object {
+        fun newInstance(categoryName: String) = CollectionListFragment().apply {
+            arguments = bundleOf("categoryName" to categoryName)
+        }
     }
 }

@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import team.bum.R
+import team.bum.api.data.Writing
 import team.bum.databinding.ItemCardCollectionBinding
-import team.bum.ui.main.archive.data.ArchiveWritingInfo
 import team.bum.util.setInvisible
 import team.bum.util.setVisible
 
 class CollectionListAdapter : RecyclerView.Adapter<CollectionListAdapter.CollectionListViewHolder>() {
 
-    private val archiveWritingInfo = mutableListOf<ArchiveWritingInfo>()
+    private val writing = mutableListOf<Writing>()
     private var itemViewMode = MODE_NORMAL
     private var selectedStatus = SparseBooleanArray(0)
     private lateinit var itemClickListener: ItemClickListener
@@ -20,10 +20,10 @@ class CollectionListAdapter : RecyclerView.Adapter<CollectionListAdapter.Collect
     inner class CollectionListViewHolder(
         private val binding: ItemCardCollectionBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(archiveInfo: ArchiveWritingInfo, position: Int) {
+        fun onBind(writingInfo: Writing, position: Int) {
             binding.apply {
-                tvCollectionName.text = archiveInfo.title
-                tvCollectionContext.text = archiveInfo.content
+                tvCollectionName.text = writingInfo.title
+                tvCollectionContext.text = writingInfo.text
                 if (itemViewMode == MODE_SELECT) {
                     itemView.setOnClickListener {
                         val adapterPosition = adapterPosition
@@ -36,7 +36,7 @@ class CollectionListAdapter : RecyclerView.Adapter<CollectionListAdapter.Collect
                     }
                 } else {
                     itemView.setOnClickListener {
-                        itemClickListener.onClick(archiveWritingInfo[position])
+                        itemClickListener.onClick(writing[position])
                     }
                 }
             }
@@ -53,16 +53,16 @@ class CollectionListAdapter : RecyclerView.Adapter<CollectionListAdapter.Collect
     }
 
     override fun onBindViewHolder(holder: CollectionListViewHolder, position: Int) {
-        holder.onBind(archiveWritingInfo[position], position)
+        holder.onBind(writing[position], position)
     }
 
-    override fun getItemCount(): Int = archiveWritingInfo.size
+    override fun getItemCount(): Int = writing.size
 
     override fun getItemViewType(position: Int): Int = itemViewMode
 
-    fun setItems(newItems: List<ArchiveWritingInfo>) {
-        archiveWritingInfo.clear()
-        archiveWritingInfo.addAll(newItems)
+    fun setItems(newItems: List<Writing>) {
+        writing.clear()
+        writing.addAll(newItems)
         notifyDataSetChanged()
     }
 
@@ -98,7 +98,7 @@ class CollectionListAdapter : RecyclerView.Adapter<CollectionListAdapter.Collect
     }
 
     interface ItemClickListener {
-        fun onClick(archiveInfo: ArchiveWritingInfo)
+        fun onClick(writingInfo: Writing)
     }
 
     companion object {

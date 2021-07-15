@@ -15,7 +15,6 @@ import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.StatsDialog
 import team.bum.ui.main.MainActivity
 import team.bum.ui.main.collection.adapter.CollectionAdapter
-import team.bum.ui.main.collection.data.CategoryInfo
 import team.bum.util.MyApplication
 import team.bum.util.enqueueUtil
 
@@ -62,13 +61,12 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
 
     private fun recyclerViewClickEvent() {
         collectionAdapter.setItemClickListener(object : CollectionAdapter.ItemClickListener {
-            override fun onClick(view: View, position: Int) {
+            override fun onClick(position: Int, categoryName: String) {
                 if (position == collectionAdapter.itemCount-1) {
                     (activity as MainActivity).navigateSettingToManagement()
                 } else {
-                    (activity as MainActivity).navigateCollectionList()
+                    (activity as MainActivity).navigateCollectionToList(categoryName)
                 }
-
             }
         })
     }

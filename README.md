@@ -35,8 +35,8 @@
   </tr>
   <tr>
     <td align="center"><b>Splash</b></td>
-    <td><b>글 쓰기</b></td>
-    <td><b>버리기 모션</b></td>
+    <td align="center"><b>글 쓰기</b></td>
+    <td align="center"><b>버리기 모션</b></td>
   </tr>
   <tr>
     <td><img width="300" src="https://user-images.githubusercontent.com/72553506/125940437-3c479e38-0c33-4b05-9765-c79b9d705e18.gif"></td>
@@ -44,9 +44,9 @@
     <td><img width="300" src="https://user-images.githubusercontent.com/72553506/125940496-6fe67841-462c-4667-895f-18e127abbbe2.gif"></td>
   </tr>
   <tr>
-    <td><b>글 삭제</b></td>
-    <td><b>분리수거함</b></td>
-    <td><b>분리수거함 관리</b></td>
+    <td align="center"><b>글 삭제</b></td>
+    <td align="center"><b>분리수거함</b></td>
+    <td align="center"><b>분리수거함 관리</b></td>
   </tr>
   <tr>
     <td><img width="300" src="https://user-images.githubusercontent.com/72553506/125941538-4565b5c8-eb9d-45e5-837d-830881121bf4.gif"></td>
@@ -54,9 +54,9 @@
     <td><img width="300" src="https://user-images.githubusercontent.com/72553506/125940512-b6441785-5728-4bc1-8f59-2a5c92e64cd4.gif"></td>
   </tr>
   <tr>
-    <td><b>그래프</b></td>
-    <td><b>리워드</b></td>
-    <td><b>설정</b></td>
+    <td align="center"><b>그래프</b></td>
+    <td align="center"><b>리워드</b></td>
+    <td align="center"><b>설정</b></td>
   </tr>
 </table>
 <br><br>

@@ -16,7 +16,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginEnd="17dp">
 
             <TextView
                 android:id="@+id/tv_collection_name"
@@ -34,8 +35,10 @@
                 android:id="@+id/tv_collection_context"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginBottom="16dp"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:text="@string/collection_card_context"
                 android:textColor="@color/icon_grey"
                 android:textSize="14dp"
@@ -47,7 +50,6 @@
                 android:id="@+id/check_circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="17dp"
                 android:src="@drawable/btn_circle_unchecked"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@id/tv_collection_name"

@@ -70,42 +70,21 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
         )
         call.enqueueUtil(
             onSuccess = {
+                val statsData = it.data.stat
+                val allStatsData = it.data.allStat
+
                 statsItems = listOf<Stat>(
-                    Stat(
-                        index = it.data.stat[0].index,
-                        name = it.data.stat[0].name,
-                        percent = it.data.stat[0].percent
-                    ),
-                    Stat(
-                        index = it.data.stat[1].index,
-                        name = it.data.stat[1].name,
-                        percent = it.data.stat[1].percent
-                    ),
-                    Stat(
-                        index = it.data.stat[2].index,
-                        name = it.data.stat[2].name,
-                        percent = it.data.stat[2].percent
-                    )
+                    Stat(statsData[0].index, statsData[0].name, statsData[0].percent),
+                    Stat(statsData[1].index, statsData[1].name, statsData[1].percent),
+                    Stat(statsData[2].index, statsData[2].name, statsData[2].percent)
                 )
-                statsSecondItems = listOf<Stat>(
-                    Stat(
-                        index = it.data.allStat[0].index,
-                        name = it.data.allStat[0].name,
-                        percent = it.data.allStat[0].percent
-                    ),
-                    Stat(
-                        index = it.data.allStat[1].index,
-                        name = it.data.allStat[1].name,
-                        percent = it.data.allStat[1].percent
-                    ),
-                    Stat(
-                        index = it.data.allStat[2].index,
-                        name = it.data.allStat[2].name,
-                        percent = it.data.allStat[2].percent
-                    )
+                allStatsItems = listOf<Stat>(
+                    Stat(allStatsData[0].index, allStatsData[0].name, allStatsData[0].percent),
+                    Stat(allStatsData[1].index, allStatsData[1].name, allStatsData[1].percent),
+                    Stat(allStatsData[2].index, allStatsData[2].name, allStatsData[2].percent)
                 )
-                for (i in 3 until it.data.stat.size) monthPercent += it.data.stat[i].percent
-                for (i in 3 until it.data.allStat.size) totalPercent += it.data.allStat[i].percent
+                for (i in 3 until statsData.size) monthPercent += statsData[i].percent
+                for (i in 3 until allStatsData.size) totalPercent += allStatsData[i].percent
             }
         )
     }
@@ -173,7 +152,7 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
 
     companion object {
         var statsItems = emptyList<Stat>()
-        var statsSecondItems = emptyList<Stat>()
+        var allStatsItems = emptyList<Stat>()
         var monthPercent: Int = 0
         var totalPercent: Int = 0
     }

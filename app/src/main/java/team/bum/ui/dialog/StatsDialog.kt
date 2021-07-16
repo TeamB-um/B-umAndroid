@@ -13,7 +13,7 @@ import team.bum.ui.base.BaseDialogFragment
 import team.bum.ui.dialog.adapter.StatsDialogAdapter
 import team.bum.ui.main.collection.CollectionFragment.Companion.monthPercent
 import team.bum.ui.main.collection.CollectionFragment.Companion.statsItems
-import team.bum.ui.main.collection.CollectionFragment.Companion.statsSecondItems
+import team.bum.ui.main.collection.CollectionFragment.Companion.allStatsItems
 import team.bum.ui.main.collection.CollectionFragment.Companion.totalPercent
 
 class StatsDialog : BaseDialogFragment<DialogStatsBinding>() {
@@ -34,7 +34,7 @@ class StatsDialog : BaseDialogFragment<DialogStatsBinding>() {
 
     private fun setStatsList() {
         statsDialogAdapter.setItems(statsItems)
-        statsSecondDialogAdapter.setItems(statsSecondItems)
+        statsSecondDialogAdapter.setItems(allStatsItems)
         statsDialogAdapter.addItems(
             listOf<Stat>(
                 Stat(

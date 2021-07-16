@@ -40,10 +40,6 @@
     <td>DataBinding, ViewModel, ViewPager2, Navigation</td>
   </tr>
   <tr>
-    <td><b>Dependency Injection</b></td>
-    <td>Koin</td>
-  </tr>
-  <tr>
     <td><b>Third Party Library</b></td>
     <td>Glide</td>
   </tr>
@@ -52,7 +48,7 @@
     <td>Git Flow</td>
   </tr>
   <tr>
-    <td><b>Other Tool</b></td>
+    <td><b>Other Tools</b></td>
     <td>Notion, Slack</td>
   </tr>
 </table>

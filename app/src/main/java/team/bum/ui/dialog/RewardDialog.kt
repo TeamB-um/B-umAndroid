@@ -2,6 +2,7 @@ package team.bum.ui.dialog
 
 import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,7 @@ class RewardDialog : BaseDialogFragment<DialogRewardBinding>() {
             binding.tvPopupAuthor.text = author
             binding.tvPopupComment.text = content
             binding.ivClose.setOnClickListener { dismiss() }
+            Log.d("tag-dd", bgColorIndex.toString())
             when (bgColorIndex) {
                 0 -> viewReward.setBackgroundResource(R.drawable.gradient1)
                 1 -> viewReward.setBackgroundResource(R.drawable.gradient5)

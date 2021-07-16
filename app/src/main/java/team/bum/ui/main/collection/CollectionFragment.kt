@@ -121,6 +121,7 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
                 ArchiveRewardFragment.sentence = it.data.reward.sentence
                 ArchiveRewardFragment.author = it.data.reward.author
                 ArchiveRewardFragment.content = it.data.reward.context
+                ArchiveRewardFragment.bgColorIndex = it.data.reward.index
                 showRewardDialog()
             }
         )

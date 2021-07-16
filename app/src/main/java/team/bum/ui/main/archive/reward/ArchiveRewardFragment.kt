@@ -1,7 +1,6 @@
 package team.bum.ui.main.archive.reward
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,7 +60,6 @@ class ArchiveRewardFragment : BaseFragment<FragmentArchiveRewardBinding>() {
         )
         call.enqueueUtil(
             onSuccess = {
-                Log.d("test", it.success.toString() + "rewards")
                 archiveRewardAdapter.setItems(it.data.rewards)
             }
         )

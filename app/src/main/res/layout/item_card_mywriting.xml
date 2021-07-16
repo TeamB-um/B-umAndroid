@@ -35,11 +35,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
+                android:ellipsize="end"
                 android:fontFamily="@font/nanum_square_extrabold"
+                android:maxLines="1"
+                android:paddingStart="16dp"
+                android:paddingEnd="18dp"
                 android:text="@string/archive_mywriting_title"
                 android:textColor="@color/header"
                 android:textSize="18dp"
-                app:layout_constraintStart_toStartOf="@+id/tv_mywriting_category"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_mywriting_category" />
 
             <TextView
@@ -48,8 +52,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="43dp"
+                android:ellipsize="end"
                 android:lineSpacingExtra="7dp"
-                android:lines="2"
+                android:maxLines="2"
                 android:paddingStart="16dp"
                 android:paddingEnd="18dp"
                 android:text="@string/archive_mywriting_content"

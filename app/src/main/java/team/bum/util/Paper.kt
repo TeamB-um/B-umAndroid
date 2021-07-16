@@ -1,4 +1,4 @@
-package team.bum.ui
+package team.bum.util
 
 import team.bum.R
 

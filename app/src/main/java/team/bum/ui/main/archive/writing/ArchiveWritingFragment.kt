@@ -53,8 +53,13 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>(), Co
             override fun onClickYes(filterData: ArchiveWritingFilterInfo) {
                 binding.chipAllCategory.apply {
                     isCheckable = true
-                    isChecked = true
-                    text = filterData.categoryName
+                    if ((filterData.startDate == "") && (filterData.endDate == "") && (filterData.categoryName == "")) {
+                        isChecked = false
+                        text = "전체 카테고리"
+                    } else {
+                        isChecked = true
+                        text = filterData.categoryName
+                    }
                 }
                 getFilterWriting(filterData)
             }
@@ -91,7 +96,6 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>(), Co
                 binding.recyclerMywritingList.setVisible()
                 binding.emptyImage.setInvisible()
                 binding.emptyText.setInvisible()
-                archiveWritingAdapter.setItems(it.data.writing)
             },
             onError = {
                 binding.recyclerMywritingList.setInvisible()

@@ -1,16 +1,13 @@
 package team.bum.ui.main.collection
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.recyclerview.widget.GridLayoutManager
 import retrofit2.Call
-import team.bum.api.data.Category
-import team.bum.api.data.ResponseCategory
-import team.bum.api.data.ResponseCategoryReward
+import team.bum.api.data.*
 import team.bum.api.retrofit.ServiceCreator
 import team.bum.databinding.FragmentCollectionBinding
 import team.bum.ui.base.BaseFragment
@@ -38,6 +35,7 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
         binding.recyclerCollection.adapter = collectionAdapter
 
         getCategoryInfo()
+        getStatsInfo()
         recyclerViewClickEvent()
         statsClickEvent()
         setBackButtonEvent()
@@ -66,16 +64,66 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
         )
     }
 
+    private fun getStatsInfo() {
+        val call: Call<ResponseStats> = ServiceCreator.bumService.getStats(
+            sharedPreferences.getValue("token", "")
+        )
+        call.enqueueUtil(
+            onSuccess = {
+                statsItems = listOf<Stat>(
+                    Stat(
+                        index = it.data.stat[0].index,
+                        name = it.data.stat[0].name,
+                        percent = it.data.stat[0].percent
+                    ),
+                    Stat(
+                        index = it.data.stat[1].index,
+                        name = it.data.stat[1].name,
+                        percent = it.data.stat[1].percent
+                    ),
+                    Stat(
+                        index = it.data.stat[2].index,
+                        name = it.data.stat[2].name,
+                        percent = it.data.stat[2].percent
+                    )
+                )
+                statsSecondItems = listOf<Stat>(
+                    Stat(
+                        index = it.data.allStat[0].index,
+                        name = it.data.allStat[0].name,
+                        percent = it.data.allStat[0].percent
+                    ),
+                    Stat(
+                        index = it.data.allStat[1].index,
+                        name = it.data.allStat[1].name,
+                        percent = it.data.allStat[1].percent
+                    ),
+                    Stat(
+                        index = it.data.allStat[2].index,
+                        name = it.data.allStat[2].name,
+                        percent = it.data.allStat[2].percent
+                    )
+                )
+                for (i in 3 until it.data.stat.size) monthPercent += it.data.stat[i].percent
+                for (i in 3 until it.data.allStat.size) totalPercent += it.data.allStat[i].percent
+            }
+        )
+    }
+
     private fun recyclerViewClickEvent() {
         collectionAdapter.setItemClickListener(object : CollectionAdapter.ItemClickListener {
             override fun onClick(position: Int, categoryName: String, categoryCount: Int) {
-                if (categoryCount >= 5) {
-                    callRewardDialog(categoryName)
-                    (activity as MainActivity).navigateCollectionToList(categoryName)
-                } else if (position == collectionAdapter.itemCount - 1) {
-                    (activity as MainActivity).navigateSettingToManagement()
-                } else {
-                    (activity as MainActivity).navigateCollectionToList(categoryName)
+                when {
+                    categoryCount >= 5 -> {
+                        callRewardDialog(categoryName)
+                        (activity as MainActivity).navigateCollectionToList(categoryName)
+                    }
+                    position == collectionAdapter.itemCount - 1 -> {
+                        (activity as MainActivity).navigateSettingToManagement()
+                    }
+                    else -> {
+                        (activity as MainActivity).navigateCollectionToList(categoryName)
+                    }
                 }
             }
         })
@@ -89,9 +137,7 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
             )
         call.enqueueUtil(
             onSuccess = {
-                Log.d("test", "성공")
-                val createdTime =
-                    LocalDateTime.parse(it.data.reward.created_date.split(".")[0])
+                val createdTime = LocalDateTime.parse(it.data.reward.created_date.split(".")[0])
                 ArchiveRewardFragment.date = createdTime.dateFormat
                 ArchiveRewardFragment.sentence = it.data.reward.sentence
                 ArchiveRewardFragment.author = it.data.reward.author
@@ -123,5 +169,12 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
         requireActivity().onBackPressedDispatcher.addCallback {
             (activity as MainActivity).showFinishToast()
         }
+    }
+
+    companion object {
+        var statsItems = emptyList<Stat>()
+        var statsSecondItems = emptyList<Stat>()
+        var monthPercent: Int = 0
+        var totalPercent: Int = 0
     }
 }

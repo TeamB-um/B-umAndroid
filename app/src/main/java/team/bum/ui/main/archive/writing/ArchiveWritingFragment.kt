@@ -1,6 +1,7 @@
 package team.bum.ui.main.archive.writing
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -94,9 +95,11 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>(), Co
         )
         call.enqueueUtil(
             onSuccess = {
+                Log.d("tag-filter", "$filterData / ${it.data.writing}")
                 binding.recyclerMywritingList.setVisible()
                 binding.emptyImage.setInvisible()
                 binding.emptyText.setInvisible()
+                archiveWritingAdapter.setItems(it.data.writing)
             },
             onError = {
                 binding.recyclerMywritingList.setInvisible()

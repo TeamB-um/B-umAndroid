@@ -45,7 +45,7 @@ class SplashActivity : AppCompatActivity() {
 //                    signIn(uuid)
                 }
                 sharedPreferences.setValue("token",
-                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBmMTU4Yjc2M2NlZjY1YmI3YTM3ZmE2In0sImlhdCI6MTYyNjQyOTYyNCwiZXhwIjoxNjI2Nzg5NjI0fQ.d8Xq9RKdchbpqEVMmYiZcW8gkl7yJjQrUK2PI3Ovnus")
+                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBmMTZhOTgxYmU0ODU1ZTQ3YWU3NTM4In0sImlhdCI6MTYyNjQzNDIwMSwiZXhwIjoxNjI2Nzk0MjAxfQ.iR9PuHr_zSDmJmrxASl3dxmInPq64xNZ8CCds3l4wdo")
                 navigateMain()
                 finish()
             }

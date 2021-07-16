@@ -63,10 +63,14 @@ class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>(), Co
         call.enqueueUtil(
             onSuccess = {
                 binding.recyclerCollectionList.setVisible()
+                binding.emptyImage.setInvisible()
+                binding.emptyText.setInvisible()
                 collectionListAdapter.setItems(it.data.writing)
             },
             onError = {
                 binding.recyclerCollectionList.setInvisible()
+                binding.emptyImage.setVisible()
+                binding.emptyText.setVisible()
             }
         )
     }

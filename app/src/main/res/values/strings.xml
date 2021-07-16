@@ -96,5 +96,6 @@
     <string name="stats_item_category">인간관계</string>
     <string name="stats_item_percent">%</string>
     <string name="stats_item_number">35</string>
+    <string name="empty_text">아직 글을 작성하지 않았어요!</string>
 
 </resources>

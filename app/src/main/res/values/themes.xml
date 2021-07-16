@@ -81,8 +81,8 @@
         <item name="rippleColor">@android:color/transparent</item>
         <item name="chipMinHeight">32dp</item>
         <item name="textStartPadding">5dp</item>
-        <item name="textEndPadding">15dp</item>
-        <item name="iconStartPadding">15dp</item>
+        <item name="textEndPadding">10dp</item>
+        <item name="iconStartPadding">10dp</item>
         <item name="chipIconSize">19dp</item>
     </style>
 

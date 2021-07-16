@@ -3,7 +3,6 @@ package team.bum.api
 import retrofit2.http.*
 import team.bum.api.data.*
 import retrofit2.Call
-import team.bum.util.DateString
 
 interface BumService {
     // USER
@@ -11,9 +10,15 @@ interface BumService {
     fun getToken(@Body body: RequestSignIn): Call<ResponseToken>
 
     @GET("users")
-    fun getUserInfo(
+    fun getUser(
         @Header("x-auth-token") token: String
-    ): Call<ResponseUserInfo>
+    ): Call<ResponseUser>
+
+    @PATCH("users")
+    fun editUser(
+        @Header("x-auth-token") token: String,
+        @Body body: RequestUser
+    ): Call<ResponseUser>
 
     // WRITING
     @POST("writings")

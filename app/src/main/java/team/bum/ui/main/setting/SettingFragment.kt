@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import retrofit2.Call
-import team.bum.api.data.ResponseUserInfo
 import team.bum.api.ServiceCreator
+import team.bum.api.data.ResponseUser
 import team.bum.databinding.FragmentSettingBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.main.MainActivity
@@ -53,15 +53,15 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
     }
 
     private fun getUserInfoData() {
-        val call: Call<ResponseUserInfo> = ServiceCreator.bumService.getUserInfo(
+        val call: Call<ResponseUser> = ServiceCreator.bumService.getUser(
             sharedPreferences.getValue("token", "")
         )
         call.enqueueUtil(
             onSuccess = {
                 sharedPreferences.apply {
                     Log.d("userInfo", "$it")
-                    setValue("period", it.data.deletePeriod.toString())
-                    setBooleanValue("isPush", it.data.isPush)
+                    setValue("period", it.data.user.delPeriod.toString())
+                    setBooleanValue("isPush", it.data.user.isPush)
                 }
             })
     }

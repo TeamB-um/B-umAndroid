@@ -57,8 +57,9 @@ class ArchiveWritingFragment : BaseFragment<FragmentArchiveWritingBinding>(), Co
                         isChecked = false
                         text = "전체 카테고리"
                     } else {
+                        text = if (filterData.categoryName == "") "전체 카테고리"
+                        else filterData.categoryName
                         isChecked = true
-                        text = filterData.categoryName
                     }
                 }
                 getFilterWriting(filterData)

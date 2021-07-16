@@ -37,11 +37,17 @@ class SplashActivity : AppCompatActivity() {
                 val uuid = sharedPreferences.getValue("uuid", "")
                 if (uuid == "") {
                     sharedPreferences.setValue("uuid", UUID.randomUUID().toString())
-                    signIn(UUID.randomUUID().toString())
+//                    FIXME 제출용
+//                    signIn(UUID.randomUUID().toString())
                 } else {
                     Log.d("tag", "UUID : $uuid")
-                    signIn(uuid)
+//                    FIXME 제출용
+//                    signIn(uuid)
                 }
+                sharedPreferences.setValue("token",
+                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBmMTU4Yjc2M2NlZjY1YmI3YTM3ZmE2In0sImlhdCI6MTYyNjQyOTYyNCwiZXhwIjoxNjI2Nzg5NjI0fQ.d8Xq9RKdchbpqEVMmYiZcW8gkl7yJjQrUK2PI3Ovnus")
+                navigateMain()
+                finish()
             }
         })
     }
@@ -53,8 +59,9 @@ class SplashActivity : AppCompatActivity() {
             onSuccess = {
                 Log.d("tag", "token : ${it.data.token}")
                 sharedPreferences.setValue("token", it.data.token)
-                navigateMain()
-                finish()
+//                FIXME 제출용
+//                navigateMain()
+//                finish()
             })
     }
 

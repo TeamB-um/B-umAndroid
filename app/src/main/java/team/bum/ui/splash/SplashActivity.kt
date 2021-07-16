@@ -9,7 +9,7 @@ import android.util.Log
 import retrofit2.Call
 import team.bum.api.data.RequestSignIn
 import team.bum.api.data.ResponseToken
-import team.bum.api.retrofit.ServiceCreator
+import team.bum.api.ServiceCreator
 import team.bum.databinding.ActivitySplashBinding
 import team.bum.ui.main.MainActivity
 import team.bum.util.MyApplication

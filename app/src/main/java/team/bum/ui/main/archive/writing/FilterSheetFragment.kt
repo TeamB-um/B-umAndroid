@@ -13,7 +13,7 @@ import com.google.android.material.chip.ChipGroup
 import retrofit2.Call
 import team.bum.R
 import team.bum.api.data.ResponseCategory
-import team.bum.api.retrofit.ServiceCreator
+import team.bum.api.ServiceCreator
 import team.bum.databinding.FragmentFilterSheetBinding
 import team.bum.ui.main.MainActivity.Companion.categoryMap
 import team.bum.ui.main.archive.data.ArchiveWritingFilterInfo

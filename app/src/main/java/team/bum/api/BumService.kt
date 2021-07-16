@@ -1,4 +1,4 @@
-package team.bum.api.service
+package team.bum.api
 
 import retrofit2.http.*
 import team.bum.api.data.*

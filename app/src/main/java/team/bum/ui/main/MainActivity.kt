@@ -6,7 +6,7 @@ import android.view.animation.AnimationUtils
 import retrofit2.Call
 import team.bum.R
 import team.bum.api.data.ResponseCategory
-import team.bum.api.retrofit.ServiceCreator
+import team.bum.api.ServiceCreator
 import team.bum.databinding.ActivityMainBinding
 import team.bum.ui.main.archive.ArchiveFragment
 import team.bum.ui.main.collection.CollectionFragment

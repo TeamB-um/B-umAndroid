@@ -11,7 +11,7 @@ import retrofit2.Call
 import team.bum.api.data.Category
 import team.bum.api.data.RequestCategory
 import team.bum.api.data.ResponseCategory
-import team.bum.api.retrofit.ServiceCreator
+import team.bum.api.ServiceCreator
 import team.bum.databinding.FragmentSettingBinBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog

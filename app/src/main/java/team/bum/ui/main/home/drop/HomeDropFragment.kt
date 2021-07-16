@@ -17,7 +17,7 @@ import retrofit2.Call
 import team.bum.R
 import team.bum.api.data.RequestWriting
 import team.bum.api.data.ResponseWriting
-import team.bum.api.retrofit.ServiceCreator
+import team.bum.api.ServiceCreator
 import team.bum.databinding.FragmentHomeDropBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.main.MainActivity

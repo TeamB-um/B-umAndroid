@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import retrofit2.Call
 import team.bum.api.data.ResponseUserInfo
-import team.bum.api.retrofit.ServiceCreator
+import team.bum.api.ServiceCreator
 import team.bum.databinding.FragmentSettingBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.main.MainActivity

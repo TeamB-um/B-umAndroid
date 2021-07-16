@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import retrofit2.Call
 import team.bum.api.data.ResponseTrashCans
-import team.bum.api.retrofit.ServiceCreator
+import team.bum.api.ServiceCreator
 import team.bum.databinding.FragmentArchiveBinBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.main.archive.adapter.ArchiveBinAdapter

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import retrofit2.Call
 import team.bum.api.data.ResponseWriting
 import team.bum.api.data.Writing
-import team.bum.api.retrofit.ServiceCreator
+import team.bum.api.ServiceCreator
 import team.bum.databinding.FragmentArchiveWritingBinding
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog

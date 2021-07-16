@@ -14,7 +14,7 @@ import com.google.android.material.chip.ChipGroup
 import retrofit2.Call
 import team.bum.R
 import team.bum.api.data.*
-import team.bum.api.retrofit.ServiceCreator
+import team.bum.api.ServiceCreator
 import team.bum.databinding.FragmentHomeWritingBinding
 import team.bum.ui.Paper
 import team.bum.ui.base.BaseFragment

@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         popFragment(SettingBinFragment::class.java)
     }
 
-    fun popCollection() {
+    fun popCollectionList() {
         popFragment(CollectionListFragment::class.java)
     }
 

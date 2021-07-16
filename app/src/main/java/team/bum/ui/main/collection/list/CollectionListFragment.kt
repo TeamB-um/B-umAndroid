@@ -49,10 +49,10 @@ class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>(), Co
 
     private fun configureCollectionNavigation() {
         binding.imageBack.setOnClickListener {
-            (activity as MainActivity).popCollection()
+            (activity as MainActivity).popCollectionList()
         }
         requireActivity().onBackPressedDispatcher.addCallback {
-            (activity as MainActivity).popCollection()
+            (activity as MainActivity).popCollectionList()
         }
     }
 

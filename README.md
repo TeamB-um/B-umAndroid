@@ -37,7 +37,7 @@
   </tr>
   <tr>
     <td><b>Jetpack Components</b></td>
-    <td>DataBinding, ViewModel, ViewPager2, Navigation</td>
+    <td>ViewPager2, Navigation</td>
   </tr>
   <tr>
     <td><b>Third Party Library</b></td>

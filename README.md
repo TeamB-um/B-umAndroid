@@ -49,6 +49,6 @@
   </tr>
   <tr>
     <td><b>Other Tools</b></td>
-    <td><a alt="Notion" src="https://www.notion.so/ANDROID-6ba5afb3cbd64a1297423431a92ad484", Slack</td>
+    <td><a href="https://www.notion.so/ANDROID-6ba5afb3cbd64a1297423431a92ad484">Notion</a>, Slack</td>
   </tr>
 </table>

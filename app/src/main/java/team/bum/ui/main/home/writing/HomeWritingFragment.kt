@@ -16,7 +16,7 @@ import team.bum.R
 import team.bum.api.data.*
 import team.bum.api.ServiceCreator
 import team.bum.databinding.FragmentHomeWritingBinding
-import team.bum.util.Paper
+import team.bum.model.Paper
 import team.bum.ui.base.BaseFragment
 import team.bum.ui.dialog.CommonDialog
 import team.bum.ui.main.MainActivity

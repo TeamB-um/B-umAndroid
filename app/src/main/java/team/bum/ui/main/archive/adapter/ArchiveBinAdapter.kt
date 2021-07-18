@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import team.bum.R
+import team.bum.model.Category
 import team.bum.api.data.Trashcan
 import team.bum.databinding.ItemCardBinBinding
 
@@ -42,16 +42,9 @@ class ArchiveBinAdapter: RecyclerView.Adapter<ArchiveBinAdapter.ArchiveBinViewHo
                 tvBinTitle.text = archiveInfo.title
                 tvBinContent.text = archiveInfo.text
                 tvBinDday.text = archiveInfo.d_day.toString()
-                when (archiveInfo.category.index) {
-                    0 -> tvBinCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_2_main))
-                    1 -> tvBinCategory.setTextColor(ContextCompat.getColor(context, R.color.green_3))
-                    2 -> tvBinCategory.setTextColor(ContextCompat.getColor(context, R.color.pink_3))
-                    3 -> tvBinCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_4))
-                    4 -> tvBinCategory.setTextColor(ContextCompat.getColor(context, R.color.green_5))
-                    5 -> tvBinCategory.setTextColor(ContextCompat.getColor(context, R.color.green_2_main))
-                    6 -> tvBinCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_3))
-                    7 -> tvBinCategory.setTextColor(ContextCompat.getColor(context, R.color.pink_2_main))
-                    else -> tvBinCategory.setTextColor(ContextCompat.getColor(context, R.color.text_grey))
+                Category.values().forEach {
+                    if (archiveInfo.category.index == it.id)
+                        tvBinCategory.setTextColor(ContextCompat.getColor(context, it.textColor))
                 }
             }
         }

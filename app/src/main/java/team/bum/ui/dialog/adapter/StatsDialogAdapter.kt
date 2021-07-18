@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import team.bum.R
 import team.bum.api.data.Stat
 import team.bum.databinding.ItemStatsBinding
+import team.bum.model.Category
+import team.bum.ui.main.archive.writing.ArchiveWritingFragment
+import team.bum.util.getColor
 import team.bum.util.setInvisible
 import team.bum.util.setVisible
 
@@ -55,42 +58,10 @@ class StatsDialogAdapter : RecyclerView.Adapter<StatsDialogAdapter.StatsDialogVi
                     tvStatsPercent.text = "${statsInfo.percent}%"
                     imageCircle.setVisible()
                 }
-                when (statsInfo.index) {
-                    0 -> {
-                        tvStatsCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_2_main))
-                        imageCircle.setColorFilter(ContextCompat.getColor(context, R.color.blue_2_main))
-                    }
-                    1 -> {
-                        tvStatsCategory.setTextColor(ContextCompat.getColor(context, R.color.green_3))
-                        imageCircle.setColorFilter(ContextCompat.getColor(context, R.color.green_3))
-                    }
-                    2 -> {
-                        tvStatsCategory.setTextColor(ContextCompat.getColor(context, R.color.pink_3))
-                        imageCircle.setColorFilter(ContextCompat.getColor(context, R.color.pink_3))
-                    }
-                    3 -> {
-                        tvStatsCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_4))
-                        imageCircle.setColorFilter(ContextCompat.getColor(context, R.color.blue_4))
-                    }
-                    4 -> {
-                        tvStatsCategory.setTextColor(ContextCompat.getColor(context, R.color.green_5))
-                        imageCircle.setColorFilter(ContextCompat.getColor(context, R.color.green_5))
-                    }
-                    5 -> {
-                        tvStatsCategory.setTextColor(ContextCompat.getColor(context, R.color.green_2_main))
-                        imageCircle.setColorFilter(ContextCompat.getColor(context, R.color.green_2_main))
-                    }
-                    6 -> {
-                        tvStatsCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_3))
-                        imageCircle.setColorFilter(ContextCompat.getColor(context, R.color.blue_3))
-                    }
-                    7 -> {
-                        tvStatsCategory.setTextColor(ContextCompat.getColor(context, R.color.pink_2_main))
-                        imageCircle.setColorFilter(ContextCompat.getColor(context, R.color.pink_2_main))
-                    }
-                    else -> {
-                        tvStatsCategory.setTextColor(ContextCompat.getColor(context, R.color.text_grey))
-                        imageCircle.setColorFilter(ContextCompat.getColor(context, R.color.text_grey))
+                Category.values().forEach {
+                    if (statsInfo.index == it.id) {
+                        tvStatsCategory.setTextColor(ContextCompat.getColor(context, it.textColor))
+                        imageCircle.setColorFilter(ContextCompat.getColor(context, it.textColor))
                     }
                 }
             }

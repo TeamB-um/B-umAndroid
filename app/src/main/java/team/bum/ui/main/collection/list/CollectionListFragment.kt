@@ -142,6 +142,11 @@ class CollectionListFragment : BaseFragment<FragmentCollectionListBinding>(), Co
                 binding.chipDelete.setInvisible()
                 collectionListAdapter.setViewMode(ArchiveWritingAdapter.MODE_NORMAL)
                 collectionListAdapter.clearSelectedItem()
+            },
+            onError = {
+                binding.recyclerCollectionList.setInvisible()
+                binding.emptyImage.setVisible()
+                binding.emptyText.setVisible()
             }
         )
     }

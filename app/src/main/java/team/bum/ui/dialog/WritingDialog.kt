@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.core.content.ContextCompat
 import team.bum.R
 import team.bum.databinding.DialogWritingBinding
+import team.bum.model.Category
 import team.bum.ui.base.BaseDialogFragment
 import team.bum.ui.main.archive.writing.ArchiveWritingFragment.Companion.category
 import team.bum.ui.main.archive.writing.ArchiveWritingFragment.Companion.colorIndex
@@ -33,16 +35,9 @@ class WritingDialog : BaseDialogFragment<DialogWritingBinding>() {
             tvDate.text = date
             tvContent.text = content
             imageClose.setOnClickListener { dismiss() }
-            when (colorIndex) {
-                0 -> tvCategory.setTextColor(getColor(R.color.blue_2_main))
-                1 -> tvCategory.setTextColor(getColor(R.color.green_3))
-                2 -> tvCategory.setTextColor(getColor(R.color.pink_3))
-                3 -> tvCategory.setTextColor(getColor(R.color.blue_4))
-                4 -> tvCategory.setTextColor(getColor(R.color.green_5))
-                5 -> tvCategory.setTextColor(getColor(R.color.green_2_main))
-                6 -> tvCategory.setTextColor(getColor(R.color.blue_3))
-                7 -> tvCategory.setTextColor(getColor(R.color.pink_2_main))
-                else -> tvCategory.setTextColor(getColor(R.color.text_grey))
+            Category.values().forEach {
+                if (colorIndex == it.id)
+                    tvCategory.setTextColor(getColor(it.textColor))
             }
         }
     }

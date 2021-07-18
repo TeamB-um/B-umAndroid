@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import team.bum.R
 import team.bum.api.data.Category
 import team.bum.databinding.ItemCollectionBinding
+import team.bum.ui.main.archive.writing.ArchiveWritingFragment
 
 class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewHolder>() {
 
@@ -31,16 +32,9 @@ class CollectionAdapter : RecyclerView.Adapter<CollectionAdapter.CollectionViewH
             Glide.with(context).load(categoryInfo.img).into(binding.imageCollection)
             binding.apply {
                 tvCategory.text = categoryInfo.name
-                when (categoryInfo.index) {
-                    0 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_2_main))
-                    1 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.green_3))
-                    2 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.pink_3))
-                    3 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_4))
-                    4 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.green_5))
-                    5 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.green_2_main))
-                    6 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_3))
-                    7 -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.pink_2_main))
-                    else -> tvCategory.setTextColor(ContextCompat.getColor(context, R.color.text_grey))
+                team.bum.model.Category.values().forEach {
+                    if (categoryInfo.index == it.id)
+                        tvCategory.setTextColor(ContextCompat.getColor(context, it.textColor))
                 }
                 itemView.setOnClickListener {
                     itemClickListener.onClick(position, categoryInfo.name, categoryInfo.count)

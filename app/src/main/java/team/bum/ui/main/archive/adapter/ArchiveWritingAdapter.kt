@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import team.bum.R
 import team.bum.api.data.Writing
 import team.bum.databinding.ItemCardMywritingBinding
+import team.bum.model.Category
 import team.bum.util.setInvisible
 import team.bum.util.setVisible
 
@@ -28,16 +29,9 @@ class ArchiveWritingAdapter: RecyclerView.Adapter<ArchiveWritingAdapter.ArchiveW
                 tvMywritingCategory.text = writingInfo.category.name
                 tvMywritingTitle.text = writingInfo.title
                 tvMywritingContent.text = writingInfo.text
-                when (writingInfo.category.index) {
-                    0 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_2_main))
-                    1 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.green_3))
-                    2 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.pink_3))
-                    3 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_4))
-                    4 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.green_5))
-                    5 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.green_2_main))
-                    6 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.blue_3))
-                    7 -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.pink_2_main))
-                    else -> tvMywritingCategory.setTextColor(ContextCompat.getColor(context, R.color.text_grey))
+                Category.values().forEach {
+                    if (writingInfo.category.index == it.id)
+                        tvMywritingCategory.setTextColor(ContextCompat.getColor(context, it.textColor))
                 }
                 if (itemViewMode == MODE_SELECT) {
                     itemView.setOnClickListener {

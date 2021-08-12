@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "615999608982",
+    "project_id": "bium-sever",
+    "storage_bucket": "bium-sever.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615999608982:android:f5d6b2f5b40f1f5167cab7",
+        "android_client_info": {
+          "package_name": "team.bum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615999608982-rrsqhfm8b8s6i2fjsonq0feapamde915.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "team.bum",
+            "certificate_hash": "327638004edc89b2395f7eaa2bdd3b7d9381da7d"
+          }
+        },
+        {
+          "client_id": "615999608982-179cg00u7hnl37f1rb4qhfg77b49f8mg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAN9Zlek04I8s_2ApvwtnPW9wc9KRJyB98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "615999608982-179cg00u7hnl37f1rb4qhfg77b49f8mg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "615999608982-vlj580ck7i9se225ol6qn75nmg7k4qt6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.codershigh.B-umiOS"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

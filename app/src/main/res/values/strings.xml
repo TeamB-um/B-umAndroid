@@ -98,4 +98,7 @@
     <string name="stats_item_number">35</string>
     <string name="empty_text">아직 글을 작성하지 않았어요!</string>
 
+    <!--firebase-->
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+
 </resources>

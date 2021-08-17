@@ -47,7 +47,7 @@ class HomeWritingFragment : BaseFragment<FragmentHomeWritingBinding>(), CommonDi
         Paper.values().forEach {
             if (paperId == it.id) {
                 val text = listOf(binding.title, binding.content, binding.count, binding.countTotal)
-                binding.root.setBackgroundColor(getColor(it.backgroundColor))
+//                binding.root.setBackgroundColor(getColor(it.backgroundColor))
                 text.forEach { view -> view.setTextColor(getColor(it.textColor)) }
                 binding.title.setHintTextColor(getColor(it.hintColor))
                 binding.content.setHintTextColor(getColor(it.hintColor))

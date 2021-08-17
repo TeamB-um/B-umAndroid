@@ -32,7 +32,7 @@ enum class Paper (
         R.color.white,
         R.color.paper_2,
         R.color.paper_2,
-        R.drawable.btn_setting_white,
+        R.drawable.btn_setting_black,
     ),
     PAPER_4(
         4,
@@ -40,6 +40,6 @@ enum class Paper (
         R.color.white,
         R.color.paper_2,
         R.color.paper_2,
-        R.drawable.btn_setting_white,
+        R.drawable.btn_setting_black,
     ),
 }

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/paper_1"
+    android:background="@color/bg"
     tools:context=".ui.main.home.writing.HomeWritingFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/bg"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView

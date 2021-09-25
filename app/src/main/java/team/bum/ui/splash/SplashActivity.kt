@@ -6,11 +6,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import retrofit2.Call
-import team.bum.api.data.RequestSignIn
-import team.bum.api.data.ResponseToken
 import team.bum.api.ServiceCreator
-import team.bum.api.data.ResponseUser
+import team.bum.api.data.*
 import team.bum.databinding.ActivitySplashBinding
 import team.bum.ui.main.MainActivity
 import team.bum.util.MyApplication

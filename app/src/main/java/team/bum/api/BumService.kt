@@ -88,4 +88,7 @@ interface BumService {
     fun getReward(
         @Header("x-auth-token") token: String
     ): Call<ResponseRewards>
+
+    @POST("pushtokens")
+    fun getPushToken(@Body body: RequestPushToken): Call<ResponsePushToken>
 }

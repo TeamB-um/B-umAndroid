@@ -50,6 +50,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-database:19.2.1'
     implementation 'com.google.firebase:firebase-firestore-ktx:23.0.3'
+    implementation 'com.google.firebase:firebase-messaging:22.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -69,5 +70,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation platform('com.google.firebase:firebase-bom:28.3.1')
     implementation 'com.google.firebase:firebase-messaging-ktx'
+
+    // JSON의 자바 오브젝트의 직렬화, 역직렬화
+    implementation 'com.google.code.gson:gson:2.8.5'
+    // okhttp3
+    implementation 'com.squareup.okhttp3:okhttp:3.4.1'
 }
 

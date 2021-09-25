@@ -6,7 +6,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import retrofit2.Call
@@ -15,7 +14,6 @@ import team.bum.api.data.*
 import team.bum.databinding.ActivitySplashBinding
 import team.bum.ui.main.MainActivity
 import team.bum.util.MyApplication
-import team.bum.util.MyFirebase
 import team.bum.util.enqueueUtil
 import java.util.*
 
@@ -31,20 +29,6 @@ class SplashActivity : AppCompatActivity() {
 
         setLottieListener()
         getUserInfo()
-        firebase()
-    }
-
-    private fun firebase() {
-        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-            if (task.isSuccessful) {
-                // Get new FCM registration token
-                val token = task.result.toString()
-
-                Log.d("tag", "pushToken: $token")
-                sharedPreferences.setValue("pushTokenId", token)
-                requestPushToken(token)
-            }
-        })
     }
 
     private fun setLottieListener() {
@@ -60,16 +44,6 @@ class SplashActivity : AppCompatActivity() {
                 }
             }
         })
-    }
-
-    private fun requestPushToken(pushToken: String) {
-        val body = RequestPushToken(pushToken)
-        val call: Call<ResponsePushToken> = ServiceCreator.bumService.getPushToken(body)
-        call.enqueueUtil(
-            onSuccess = {
-                Log.d("tag", "pushTokenSuccess?: ${it.success}")
-            }
-        )
     }
 
     private fun signIn(uuid: String) {

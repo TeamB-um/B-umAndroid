@@ -76,10 +76,10 @@
     <string name="popup_writtenContent">당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.</string>
 
     <!--collection-->
-    <string name="collection_header">분리수거</string>
-    <string name="collection_explain_first">당신이 보관한&#160;</string>
-    <string name="collection_stress">스트레스</string>
-    <string name="collection_explain_last">입니다.</string>
+    <string name="collection_header">보관함</string>
+    <string name="collection_explain_first">&#160;</string>
+    <string name="collection_stress">쓰레기</string>
+    <string name="collection_explain_last">가 꽉 차면 미화원이 비워갈게요!</string>
     <string name="collection_card_category">인간관계</string>
     <string name="collection_card_name">글제목1</string>
     <string name="collection_card_context">글 내용 미리보기 미리보기 미리보기</string>
@@ -88,10 +88,10 @@
     <string name="filter_start">시작</string>
 
     <!--stats-->
-    <string name="stats_header">통계</string>
-    <string name="stats_month_header">월간 통계</string>
+    <string name="stats_header">그래프</string>
+    <string name="stats_month_header">월간 그래프</string>
     <string name="stats_month_context">한 달 내 카테고리별 스트레스 비율입니다</string>
-    <string name="stats_total_header">전체 통계</string>
+    <string name="stats_total_header">전체 그래프</string>
     <string name="stats_total_context">전체 사용 기간 동안의 스트레스 비율입니다</string>
     <string name="stats_item_category">인간관계</string>
     <string name="stats_item_percent">%</string>

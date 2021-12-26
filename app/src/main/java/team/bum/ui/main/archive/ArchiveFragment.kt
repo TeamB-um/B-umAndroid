@@ -29,7 +29,7 @@ class ArchiveFragment : BaseFragment<FragmentArchiveBinding>() {
             when (position) {
                 0 -> { tab.text = "글"}
                 1 -> { tab.text = "리워드"}
-                2 -> { tab.text = "삭제함"}
+//                2 -> { tab.text = "삭제함"}
             }
         }.attach()
     }

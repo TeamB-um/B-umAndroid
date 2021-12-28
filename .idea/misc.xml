@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/bg_dialog_common.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_dialog_reward.xml" value="0.30277777777777776" />
+        <entry key="app/src/main/res/drawable/bg_edit_border.xml" value="0.10989583333333333" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/activity_push.xml" value="0.11041666666666666" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.3523076923076923" />
+        <entry key="app/src/main/res/layout/dialog_common.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/dialog_push.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/dialog_push_gift.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/dialog_reward.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/dialog_stats.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/dialog_writing.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/fragment_archive.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/fragment_archive_bin.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/fragment_archive_reward.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/fragment_archive_writing.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/fragment_collection.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/fragment_collection_list.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/fragment_dialog_sheet.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/fragment_filter_sheet.xml" value="0.3523076923076923" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/fragment_home_drop.xml" value="0.3523076923076923" />
+        <entry key="app/src/main/res/layout/fragment_home_writing.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/fragment_setting_bin.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/layout/view_chip.xml" value="0.20052083333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

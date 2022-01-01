@@ -25,11 +25,11 @@
         <activity android:name=".ui.main.MainActivity"
             android:exported="true"/>
         <activity android:name=".ui.main.push.PushActivity"
-            android:parentActivityName=".ui.splash.SplashActivity"
+            android:parentActivityName=".ui.main.MainActivity"
             android:exported="true" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.splash.SplashActivity"/>
+                android:value=".ui.main.MainActivity"/>
         </activity>
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"

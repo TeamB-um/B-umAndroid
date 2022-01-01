@@ -72,4 +72,11 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun navigateMain() = startActivity(Intent(this, MainActivity::class.java))
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+
+        Log.d("alalal","alalal")
+    }
 }

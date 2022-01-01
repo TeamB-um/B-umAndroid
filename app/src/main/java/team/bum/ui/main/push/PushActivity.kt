@@ -1,6 +1,7 @@
 package team.bum.ui.main.push
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import team.bum.databinding.ActivityPushBinding
 
@@ -13,6 +14,7 @@ class PushActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         initDialog()
+        Log.d("alalalal", "push")
     }
 
     private fun initDialog() {

@@ -22,9 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.main.MainActivity"
+            android:exported="true"/>
         <activity android:name=".ui.main.push.PushActivity"
+            android:parentActivityName=".ui.splash.SplashActivity"
             android:exported="true" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.splash.SplashActivity"/>
         </activity>
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"

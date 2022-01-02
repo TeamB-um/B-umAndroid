@@ -27,54 +27,12 @@
         app:layout_constraintTop_toBottomOf="@id/tv_setting_header">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_delete_duration"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/tv_delete_duration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/setting_delete_duration"
-                android:textColor="@color/paper_4"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_duration_day"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="@string/setting_day"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toStartOf="@id/image_delete_time"
-                app:layout_constraintTop_toTopOf="@id/tv_delete_duration" />
-
-            <ImageView
-                android:id="@+id/image_delete_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/brn_edit"
-                app:layout_constraintBottom_toBottomOf="@id/tv_delete_duration"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_delete_duration" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_trash_management"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_delete_duration">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/tv_trash_management"

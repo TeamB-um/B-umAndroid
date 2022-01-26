@@ -91,4 +91,9 @@ interface BumService {
 
     @POST("pushtokens")
     fun getPushToken(@Body body: RequestPushToken): Call<ResponsePushToken>
+
+    @GET("presents")
+    fun getGift(
+        @Header("x-auth-token") token: String
+    ): Call<ResponseGift>
 }

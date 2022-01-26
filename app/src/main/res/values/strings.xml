@@ -10,8 +10,8 @@
 
     <!--Setting-->
     <string name="setting_header">설정</string>
-    <string name="setting_delete_duration">삭제 휴지통 기간</string>
-    <string name="setting_day">3일</string>
+<!--    <string name="setting_delete_duration">삭제 휴지통 기간</string>-->
+<!--    <string name="setting_day">3일</string>-->
     <string name="setting_trash_management">분리수거함 관리</string>
     <string name="setting_push">푸시알림</string>
     <string name="setting_privacy">개인정보 처리방침</string>
@@ -77,9 +77,9 @@
 
     <!--collection-->
     <string name="collection_header">분리수거</string>
-    <string name="collection_explain_first">당신이 보관한&#160;</string>
-    <string name="collection_stress">스트레스</string>
-    <string name="collection_explain_last">입니다.</string>
+    <string name="collection_explain_first">&#160;</string>
+    <string name="collection_stress">쓰레기</string>
+    <string name="collection_explain_last">가 꽉 차면 미화원이 비워갈게요!</string>
     <string name="collection_card_category">인간관계</string>
     <string name="collection_card_name">글제목1</string>
     <string name="collection_card_context">글 내용 미리보기 미리보기 미리보기</string>
@@ -100,5 +100,12 @@
 
     <!--firebase-->
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+
+    <!--push-->
+    <string name="push_title">깜짝 선물을 발견했어요!</string>
+    <string name="push_body">미화원이 휴지통 속에서 무언가\n 발견했어요! 확인해볼까요?</string>
+    <string name="push_cancel">닫기</string>
+    <string name="push_open">보러가기</string>
+    <string name="push_gift_title">오늘의 선물</string>
 
 </resources>
